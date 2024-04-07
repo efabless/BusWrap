@@ -1,0 +1,362 @@
+info:
+  name: EF_TMR32
+  description: " 
+A 32-bit timer and PWM generator with the following features:
+
+- 32-bit prescaler.
+
+- Up Counting, Down Counting and Up/Down Counting.
+
+- One-shot and Periodic.
+
+- Two independent PWM channels with two compare registers.
+
+- Optional PWM signal inversion.
+
+- Configurable PWM dead time/band to generate PWM signals such as those required by a half-H bridge driver.
+
+- Fault handling.
+
+  "
+  repo: github.com/efabless/EF_TMR32/tree/main
+  owner: Efabless Corp.
+  license: APACHE 2.0
+  author: Mohamed Shalan
+  email: mshalan@efabless.com
+  version: v1.0.0
+  date: 12-01-2024
+  category: digital
+  tags:
+    - timer
+    - pwm
+    - peripheral
+    - motor control
+    - time
+    - periodic
+  bus:
+    - generic
+  type": soft
+  status: n/a
+  qualification: n/a
+  cell_count: 
+    - IP: 797
+    - APB: 1435
+    - AHBL: 1501
+  width": 0.0
+  height": 0.0
+  technology: n/a
+  clock_freq_mhz:
+    - IP: 163
+    - APB: 135
+    - AHBL: 128
+  digital_supply_voltage: n/a
+  analog_supply_voltage: n/a
+
+parameters:
+  - name: PRW
+    default: 16
+    description: Number of bits for the prescaler register
+
+ports:
+ - name: tmr_en
+   width: 1
+   direction: input
+   description: Flag to enable timer
+ - name: tmr_start
+   width: 1
+   direction: input
+   description: Flag to make tmr start in one shot mode
+ - name: pwm0_en
+   width: 1
+   direction: input
+   description: Enable signal for PWM0 generation
+ - name: pwm1_en
+   width: 1
+   direction: input
+   description:  Enable signal for PWM1 generation
+ - name: tmr_reload
+   width: 32
+   direction: input
+   description: The reload value which the counter will reach or start from 
+ - name: cmpx
+   width: 32
+   direction: input
+   description: The compare value X
+ - name: cmpy
+   width: 32
+   direction: input
+   description: The compare value Y
+ - name: prescaler
+   width: PRW
+   direction: input
+   description: Prescaler value; Timer frequency = clock frequency / (prescaler + 1)
+ - name: tmr_cfg
+   width: 3
+   direction: input
+   description: Timer configuration value; periodic or one shot and counting direction 
+ - name: pwm0_cfg
+   width: 12
+   direction: input
+   description: Actions configuration for pwm0
+ - name: pwm1_cfg
+   width: 12
+   direction: input
+   description: Actions configuration for pwm1
+ - name: pwm0_inv
+   width: 1
+   direction: input
+   description: Invert pwm0 signal 
+ - name: pwm1_inv
+   width: 1
+   direction: input
+   description: Invert pwm1 signal 
+ - name: pwm_dt
+   width: 8
+   direction: input
+   description: Deadtime for pwm
+ - name: pwm_fault_clr
+   width: 16
+   direction: input
+   description: PWM fault input
+ - name: pwm_dt_en
+   width: 1
+   direction: input
+   description: PWM deadtime enable 
+ - name: tmr
+   width: 32
+   direction: output
+   description: The actual value for the timer 
+ - name: matchx_flag
+   width: 1
+   direction: output
+   description: Flag raised when matching compare value x
+ - name: matchy_flag
+   width: 1
+   direction: output
+   description: Flag raised when matching compare value x
+ - name: timeout_flag
+   width: 1
+   direction: output
+   description: Flag raised when timeout happen 
+
+
+clock:
+ name: clk
+
+reset:
+ name: rst_n
+ level: 0
+
+external_interface:
+- name: pwm0
+  port: pwm0
+  direction: output
+  width: 1
+  description: The generated PWM0 signal 
+- name: pwm1
+  port: pwm1
+  direction: output
+  width: 1
+  description: The generated PWM1 signal 
+- name: pwm_fault
+  port: pwm_fault
+  direction: input
+  width: 1
+  description: PWM fault input 
+
+registers:
+- name: TMR
+  size: 32
+  mode: r
+  fifo: no
+  offset: 0
+  bit_access: no
+  read_port: tmr
+  description: The current value of the Timer.
+- name: RELOAD
+  size: 32
+  mode: w
+  fifo: no
+  offset: 4
+  bit_access: no
+  write_port: tmr_reload
+  description: The timer reload value. In up counting it is used as the terminal count. For down counting it is used as the initial count.
+- name: PR
+  size: PRW
+  mode: w
+  init: "'h0"
+  fifo: no
+  offset: 8
+  bit_access: no
+  write_port: prescaler
+  description: The Prescaler. The timer counting frequency is $Clock\ freq/(PR + 1)$
+- name: CMPX
+  size: 32
+  mode: w
+  fifo: no
+  offset: 12
+  bit_access: no
+  write_port: cmpx
+  description: Compare Register X.
+- name: CMPY
+  size: 32
+  mode: w
+  fifo: no
+  offset: 16
+  bit_access: no
+  write_port: cmpy
+  description: Compare Register Y.
+- name: CTRL
+  size: 7
+  mode: w
+  fifo: no
+  offset: 20
+  bit_access: no
+  description: Control Register.
+  fields:
+  - name: TE
+    bit_offset: 0
+    bit_width: 1
+    write_port: tmr_en
+    description: Timer enable
+  - name: TS
+    bit_offset: 1
+    bit_width: 1
+    write_port: tmr_start
+    description: Timer re-start; used in the one-shot mode to restart the timer. Write 1 then 0 to re-start the timer.
+  - name: P0E
+    bit_offset: 2
+    bit_width: 1
+    write_port: pwm0_en
+    description: PWM 0 enable
+  - name: P1E
+    bit_offset: 3
+    bit_width: 1
+    write_port: pwm1_en
+    description: PWM 1 enable
+  - name: DTE
+    bit_offset: 4
+    bit_width: 1
+    write_port: pwm_dt_en
+    description: PWM deadtime enable
+  - name: PI0
+    bit_offset: 5
+    bit_width: 1
+    write_port: pwm0_inv
+    description: Invert PWM0 output. 
+  - name: PI1
+    bit_offset: 6
+    bit_width: 1
+    write_port: pwm1_inv
+    description: Invert PWM1 output. 
+  
+- name: CFG
+  size: 3
+  mode: w
+  fifo: no
+  offset: 24
+  bit_access: no
+  write_port: tmr_cfg
+  description: Configuration Register.
+  fields:
+  - name: DIR
+    bit_offset: 0
+    bit_width: 2
+    description: "Count direction; 10: Up, 01: Down, 11: Up/Down"
+  - name: P
+    bit_offset: 2
+    bit_width: 1
+    description: "1: Periodic, 0: One Shot"
+- name: PWM0CFG
+  size: 12
+  mode: w
+  fifo: no
+  offset: 28
+  bit_access: no
+  write_port: pwm0_cfg
+  description: PWM0 Configuration Register.
+  fields:
+  - name: E0
+    bit_offset: 0
+    bit_width: 2
+    description: "PWM0 action for matching zero. 00: No Action, 01: Low, 10: High, 11: Invert"
+  - name: E1
+    bit_offset: 2
+    bit_width: 2
+    description: "PWM0 action for matching CMPX (going up). 00: No Action, 01: Low, 10: High, 11: Invert"
+  - name: E2
+    bit_offset: 4
+    bit_width: 2
+    description: "PWM0 action for matching CMPY (going up). 00: No Action, 01: Low, 10: High, 11: Invert"
+  - name: E3
+    bit_offset: 6
+    bit_width: 2
+    description: "PWM0 action for matching RELOAD. 00: No Action, 01: Low, 10: High, 11: Invert"
+  - name: E4
+    bit_offset: 8
+    bit_width: 2
+    description: "PWM0 action for  matching CMPY (going down). 00: No Action, 01: Low, 10: High, 11: Invert"
+  - name: E5
+    bit_offset: 10
+    bit_width: 2
+    description: "PWM0 action for matching CMPX (going down). 00: No Action, 01: Low, 10: High, 11: Invert"
+- name: PWM1CFG
+  size: 16
+  mode: w
+  fifo: no
+  offset: 32
+  bit_access: no
+  write_port: pwm1_cfg
+  description: PWM1 Configuration Register.
+  fields:
+  - name: E0
+    bit_offset: 0
+    bit_width: 2
+    description: "PWM1 action for matching zero. 00: No Action, 01: Low, 10: High, 11: Invert"
+  - name: E1
+    bit_offset: 2
+    bit_width: 2
+    description: "PWM1 action for matching CMPX (going up). 00: No Action, 01: Low, 10: High, 11: Invert"
+  - name: E2
+    bit_offset: 4
+    bit_width: 2
+    description: "PWM1 action for matching CMPY (going up). 00: No Action, 01: Low, 10: High, 11: Invert"
+  - name: E3
+    bit_offset: 6
+    bit_width: 2
+    description: "PWM1 action for matching RELOAD. 00: No Action, 01: Low, 10: High, 11: Invert"
+  - name: E4
+    bit_offset: 8
+    bit_width: 2
+    description: "PWM1 action for matching CMPY (going down). 00: No Action, 01: Low, 10: High, 11: Invert"
+  - name: E5
+    bit_offset: 10
+    bit_width: 2
+    description: "PWM1 action for matching CMPX (going down). 00: No Action, 01: Low, 10: High, 11: Invert"
+- name: PWMDT
+  size: 8
+  mode: w
+  fifo: no
+  offset: 36
+  bit_access: no
+  write_port: pwm_dt
+  description: PWM deadtime Register.
+- name: PWMFC
+  size: 16
+  mode: w
+  fifo: no
+  offset: 40
+  bit_access: no
+  write_port: pwm_fault_clr
+  description: PWM fault clear register.
+
+flags:
+- name: TO
+  port: timeout_flag
+  description: Timeout; TMR matches 0 (down counting) or RELOAD (up counting).
+- name: MX
+  port: matchx_flag
+  description: TMR matches CMPX register.
+- name: MY
+  port: matchy_flag
+  description: TMR matches CMPY register.

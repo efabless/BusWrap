@@ -1,0 +1,325 @@
+---
+info:
+  name: EF_GPIO8
+  description: A generic GPIO peripheral
+  repo: github.com/efabless/EF_GPIO8
+  owner: Efabless Corp.
+  license: APACHE 2.0
+  author: Mohamed Shalan
+  email: mshalan@efabless.com
+  version: v1.0.0
+  date: 8-28-2023
+  category: digital
+  tags:
+    - peripheral
+    - GPIO
+  bus:
+    - generic
+  type: soft
+  status: verified
+  cell_count: 
+    - IP: 72
+    - APB: 476
+    - AHBL: 493
+  width": "0.0"
+  height": "0.0"
+  technology: n/a
+  clock_freq_mhz: 
+    - IP: 1666
+    - APB: 1250
+    - AHBL: 294
+  digital_supply_voltage: n/a
+  analog_supply_voltage: n/a
+
+ports:
+  - name: bus_in
+    width: 8
+    direction: output
+    description: Synchronized GPIOs input connected to the bus (it drives the DATAI register) 
+  - name: bus_out
+    width: 8
+    direction: input
+    description: GPIOs output connected to the bus (it's driven by writing to DATAO register)
+  - name: bus_oe
+    width: 8
+    direction: input
+    description: GPIOs output enable connected to the bus (it's driven by writing to DIR register)
+  - name: pin0_hi
+    width: 1
+    direction: output
+    description: Pin 0 high flag 
+  - name: pin1_hi
+    width: 1
+    direction: output
+    description: Pin 1 high flag 
+  - name: pin2_hi
+    width: 1
+    direction: output
+    description: Pin 2 high flag 
+  - name: pin3_hi
+    width: 1
+    direction: output
+    description: Pin 3 high flag 
+  - name: pin4_hi
+    width: 1
+    direction: output
+    description: Pin 4 high flag 
+  - name: pin5_hi
+    width: 1
+    direction: output
+    description: Pin 5 high flag 
+  - name: pin6_hi
+    width: 1
+    direction: output
+    description: Pin 6 high flag 
+  - name: pin7_hi
+    width: 1
+    direction: output
+    description: Pin 7 high flag 
+  - name: pin0_lo
+    width: 1
+    direction: output
+    description: Pin 0 low flag 
+  - name: pin1_lo
+    width: 1
+    direction: output
+    description: Pin 1 low flag 
+  - name: pin2_lo
+    width: 1
+    direction: output
+    description: Pin 2 low flag 
+  - name: pin3_lo
+    width: 1
+    direction: output
+    description: Pin 3 low flag 
+  - name: pin4_lo
+    width: 1
+    direction: output
+    description: Pin 4 low flag 
+  - name: pin5_lo
+    width: 1
+    direction: output
+    description: Pin 5 low flag 
+  - name: pin6_lo
+    width: 1
+    direction: output
+    description: Pin 6 low flag 
+  - name: pin7_lo
+    width: 1
+    direction: output
+    description: Pin 7 low flag 
+  - name: pin0_pe
+    width: 1
+    direction: output
+    description: Pin 0 positive edge flag 
+  - name: pin1_pe
+    width: 1
+    direction: output
+    description: Pin 1 positive edge flag 
+  - name: pin2_pe
+    width: 1
+    direction: output
+    description: Pin 2 positive edge flag 
+  - name: pin3_pe
+    width: 1
+    direction: output
+    description: Pin 3 positive edge flag 
+  - name: pin4_pe
+    width: 1
+    direction: output
+    description: Pin 4 positive edge flag 
+  - name: pin5_pe
+    width: 1
+    direction: output
+    description: Pin 5 positive edge flag 
+  - name: pin6_pe
+    width: 1
+    direction: output
+    description: Pin 6 positive edge flag 
+  - name: pin7_pe
+    width: 1
+    direction: output
+    description: Pin 7 positive edge flag 
+  - name: pin0_ne
+    width: 1
+    direction: output
+    description: Pin 0 negative edge flag 
+  - name: pin1_ne
+    width: 1
+    direction: output
+    description: Pin 1 negative edge flag 
+  - name: pin2_ne
+    width: 1
+    direction: output
+    description: Pin 2 negative edge flag 
+  - name: pin3_ne
+    width: 1
+    direction: output
+    description: Pin 3 negative edge flag 
+  - name: pin4_ne
+    width: 1
+    direction: output
+    description: Pin 4 negative edge flag 
+  - name: pin5_ne
+    width: 1
+    direction: output
+    description: Pin 5 negative edge flag 
+  - name: pin6_ne
+    width: 1
+    direction: output
+    description: Pin 6 negative edge flag 
+  - name: pin7_ne
+    width: 1
+    direction: output
+    description: Pin 7 negative edge flag 
+
+external_interface:
+  - name: io_in
+    port: io_in
+    direction: input
+    width: 8
+    description: GPIOs input (external interface)
+  - name: io_out
+    port: io_out
+    direction: output
+    width: 8
+    description: GPIOs output (external interface)
+  - name: io_oe
+    port: io_oe
+    direction: output
+    width: 8
+    description : GPIOs output enable (external interface)
+
+
+clock:
+  name: clk
+
+reset:
+  name: rst_n
+  level: 0
+
+registers:
+  - name: DATAI
+    size: 8
+    mode: r
+    fifo: no
+    offset: 0
+    bit_access: no
+    read_port: bus_in
+    description: Data In Register; Reading from this register returns the pins status (8 pins); one bit per pin
+  - name: DATAO
+    size: 8
+    mode: w
+    fifo: no
+    offset: 4
+    bit_access: no
+    write_port: bus_out
+    description: Data Out Register; Writing to this register change the status of the port pins (8 pins); one bit per pin
+  - name: DIR
+    size: 8
+    mode: w
+    fifo: no
+    offset: 8
+    bit_access: no
+    write_port: bus_oe
+    description: "Direction Register; One bit per pin 1: output, 0: input"
+
+flags:
+  - name: P0HI
+    port: pin0_hi
+    description: Pin 0 is high 
+  - name: P1HI
+    port: pin1_hi
+    description: Pin 1 is high 
+  - name: P2HI
+    port: pin2_hi
+    description: Pin 2 is high 
+  - name: P3HI
+    port: pin3_hi
+    description: Pin 3 is high 
+  - name: P4HI
+    port: pin4_hi
+    description: Pin 4 is high 
+  - name: P5HI
+    port: pin5_hi
+    description: Pin 5 is high 
+  - name: P6HI
+    port: pin6_hi
+    description: Pin 6 is high 
+  - name: P7HI
+    port: pin7_hi
+    description: Pin 7 is high
+  - name: P0LO
+    port: pin0_lo
+    description: Pin 0 is low
+  - name: P1LO
+    port: pin1_lo
+    description: Pin 1 is low
+  - name: P2LO
+    port: pin2_lo
+    description: Pin 2 is low
+  - name: P3LO
+    port: pin3_lo
+    description: Pin 3 is low
+  - name: P4LO
+    port: pin4_lo
+    description: Pin 4 is low
+  - name: P5LO
+    port: pin5_lo
+    description: Pin 5 is low
+  - name: P6LO
+    port: pin6_lo
+    description: Pin 6 is low
+  - name: P7LO
+    port: pin7_lo
+    description: Pin 7 is low
+  - name: P0PE
+    port: pin0_pe
+    description: Pin 0 has observed a rising edge
+  - name: P1PE
+    port: pin1_pe
+    description: Pin 1 has observed a rising edge
+  - name: P2PE
+    port: pin2_pe
+    description: Pin 2 has observed a rising edge
+  - name: P3PE
+    port: pin3_pe
+    description: Pin 3 has observed a rising edge
+  - name: P4PE
+    port: pin4_pe
+    description: Pin 4 has observed a rising edge
+  - name: P5PE
+    port: pin5_pe
+    description: Pin 5 has observed a rising edge
+  - name: P6PE
+    port: pin6_pe
+    description: Pin 6 has observed a rising edge
+  - name: P7PE
+    port: pin7_pe
+    description: Pin 7 has observed a rising edge
+  - name: P0NE
+    port: pin0_ne
+    description: Pin 0 has observed a falling edge
+  - name: P1NE
+    port: pin1_ne
+    description: Pin 1 has observed a falling edge
+  - name: P2NE
+    port: pin2_ne
+    description: Pin 2 has observed a falling edge
+  - name: P3NE
+    port: pin3_ne
+    description: Pin 3 has observed a falling edge
+  - name: P4NE
+    port: pin4_ne
+    description: Pin 4 has observed a falling edge
+  - name: P5NE
+    port: pin5_ne
+    description: Pin 5 has observed a falling edge
+  - name: P6NE
+    port: pin6_ne
+    description: Pin 6 has observed a falling edge
+  - name: P7NE
+    port: pin7_ne
+    description: Pin 7 has observed a falling edge
+   
+
