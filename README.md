@@ -1,6 +1,6 @@
 # BusWrap
 
-## IP wrapper generator for AMBA APB, AHB Lite and Wishbone
+## IP wrapper generator for APB, AHB Lite and Wishbone
 
 ``bus_wrap.py ip.yml|ip.json -apb|-ahbl|-wb -tb|-ch|-md``
 - Options:
@@ -130,6 +130,7 @@ external_interface:
 ```
 
 ### Clock and Reset Definitions
+This section defines the ports for clock and reset in the IP and reset level (0: active low, 1: active high)
 
 ```YAML
 clock:
