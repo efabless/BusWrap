@@ -2,7 +2,7 @@
 
 ## IP wrapper generator for APB, AHB Lite and Wishbone
 
-``bus_wrap.py ip.yml|ip.json -apb|-ahbl|-wb -tb|-ch|-md``
+``python3 bus_wrap.py ip.yml|ip.json -apb|-ahbl|-wb -tb|-ch|-md``
 - Options:
     - `-apb` : generates an APB wrapper.
     - `-ahbl` : generates an AHB Lite wrapper.
@@ -15,7 +15,7 @@
 
 ## YAML Template Generator
 
-``v2yaml.py IP.v module_name``
+``python3 v2yaml.py IP.v module_name``
 
 ## A Typical Workflow
 
@@ -182,7 +182,7 @@ registers:
 - The ``fifo`` property is used to specify whether this register is used to access a FIFO. If it is set to ``yes`` the FIFO has to be defined.
 
 ### FIFO Definitions
-
+This section defines FIFOs if there are any in the IP. For example:
 ```yaml
 fifos:
   - type: read  
