@@ -477,8 +477,12 @@ def print_fifos(bus_type):
             data = "HWDATA"
   
         for f in IP["fifos"]:
-            rd = f"({bus_type.lower()}_re & ({addr}[`{bus_type}_AW-1:0] == {f['register']}_REG_OFFSET))"
-            wr = f"({bus_type.lower()}_we & ({addr}[`{bus_type}_AW-1:0] == {f['register']}_REG_OFFSET))"
+            if bus_type == "WB":
+                rd = f" ack_o & ({bus_type.lower()}_re & ({addr}[`{bus_type}_AW-1:0] == {f['register']}_REG_OFFSET))"
+                wr = f"ack_o & ({bus_type.lower()}_we & ({addr}[`{bus_type}_AW-1:0] == {f['register']}_REG_OFFSET))"
+            else:
+                rd = f"({bus_type.lower()}_re & ({addr}[`{bus_type}_AW-1:0] == {f['register']}_REG_OFFSET))"
+                wr = f"({bus_type.lower()}_we & ({addr}[`{bus_type}_AW-1:0] == {f['register']}_REG_OFFSET))"
             if f['type'] == "write":
                 print(f"\tassign\t{f['data_port']} = {data};") #{f['register']}_WIRE;")
                 print(f"\tassign\t{f['control_port']} = {wr};")
