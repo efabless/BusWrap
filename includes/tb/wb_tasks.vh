@@ -44,9 +44,11 @@ task WB_W_READ(input [31:0] addr, output [31:0] data);
         dat_i   = 0;
         sel_i   = 4'hF;
         wait (ack_o == 1);
-        @(posedge clk_i);
+        #1;
         data    = dat_o;
+        @(posedge clk_i);
         cyc_i   = 0;
         stb_i   = 0;
+
     end
 endtask
