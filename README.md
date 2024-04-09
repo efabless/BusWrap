@@ -54,7 +54,7 @@ Basic information about the IP like the author, the license, etc. For an example
 info: 
   name: "MS_GPIO"
   description: "An 8-bit bi-directional General Purpose I/O (GPIO) with synchronizers and edge detectors."
-  repo: "github.com/shala/MS_GPIO"
+  repo: "github.com/shalan/MS_GPIO"
   owner: "AUCOHL"
   license: "MIT"
   author: "Mohamed Shalan"
@@ -187,7 +187,7 @@ registers:
 - The ``fifo`` property is used to specify whether this register is used to access a FIFO. If it is set to ``yes`` the FIFO has to be defined.
 
 ### FIFO Definitions
-This section is used if the IP has data FIFOs. For each FIFO, you need to specify:
+This section is used if the IP has internal data FIFOs. This is typically the case of IPs that deal with data streams such as UART. Data received by the IP is placed into a ``receive`` FIFO by the IP and data to be sent is placed by the bus wrapper into the ``transmit`` FIFO. For each FIFO, you need to specify:
 - `type` : `read` (receive) or `write` (transmit)
 - The FIFO has `depth` number of words, each is `width` bits.
 - The `register` is used to access the FIFO in firmware
@@ -223,4 +223,11 @@ flags:
   description: Capture is done.
 ```
 The bus wrapper generator generates four different registers to manage interrupts: ``RIS`` (Raw Interrupt Status), ``IM`` (Interrupt Mask), ``MIS`` (Masked Interrupt Status) and ``IC`` (Interrupt Clear). Each bit in each represents one of the flags.
+
+|Register | Mode | Function  |
+|---|---|---
+|RIS | Read-only  | Has the interrupt flags before masking  |
+|IM  | Read/Write  | Interrupt Masking, clearing a bit disables the corresponding interrupt  |
+|MIS | Read-only | Masked Interrupt status, the outcome of bitwise-ANDing RIS and IM |
+|IC | Read/Write | Interrupt Flag Clear, setting a bit clears the corresponding interrupt flag |
 
