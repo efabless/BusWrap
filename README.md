@@ -54,7 +54,7 @@ Basic information about the IP like the author, the license, etc. For an example
 info: 
   name: "MS_GPIO"
   description: "An 8-bit bi-directional General Purpose I/O (GPIO) with synchronizers and edge detectors."
-  repo: "github.com/shalan/MS_GPIO"
+  repo: "github.com/shala/MS_GPIO"
   owner: "AUCOHL"
   license: "MIT"
   author: "Mohamed Shalan"
@@ -69,19 +69,23 @@ info:
     - generic
   type": "soft"
   status: "verified"
-  cell_count:
-    - IP: 72
-      APB: 476
-      AHBL: 493
-  width": "0.0"
-  height": "0.0"
+  cell_count: 
+    - IP: 797
+    - APB: 1435
+    - AHBL: 1501
+    - WB: 0
+  width": 0.0
+  height": 0.0
   technology: "n/a"
   clock_freq_mhz:
-    - IP: 1666
-    - APB: 1250
-    - AHBL: 294
+    - IP: 163
+    - APB: 135
+    - AHBL: 128
+    - WB: 0
   digital_supply_voltage: "n/a"
   analog_supply_voltage: "n/a"
+  static_power: 0.0,
+  dynamic_power: 0.0
   ```
 
 ### Parameter Definitions
@@ -101,7 +105,7 @@ parameters:
 ```
 ### Port Definitions
 
-IP Port definitions. The Verilog ports if it is a digital soft IP or the macro pins if hard macro. For an example:
+IP Port definitions. The Verilog ports it is a digital soft IP or the macro pins if hard macro. For an example:
 ```yaml
 ports:
   - name: "data_in"
@@ -114,7 +118,8 @@ ports:
     description: "The output data"
 ```
 ### External Interface Definitions
-IP External Interfaces to other sub-systems. In other words, the IP ports that pass through the bus wrapper to outside; typically, IP ports connected to I/Os. For an example:
+IP External Interfaces to other sub-systems. In other words, the IP ports that pass through the bus wrapper to outside the wrapper; typically, the IP ports connected to I/Os. For an example:
+
 ```yaml
 external_interface: 
   - name: "i_pad_in"
@@ -130,7 +135,6 @@ external_interface:
 ```
 
 ### Clock and Reset Definitions
-This section defines the ports for clock and reset in the IP and reset level (0: active low, 1: active high)
 
 ```YAML
 clock:
@@ -141,6 +145,7 @@ reset:
   level: 0
 ```
 
+`level`: determines the edge, 0: negative, 1: positive
 ### Register Definitions
 
 Register definitions. For an example:
@@ -155,7 +160,7 @@ registers:
   read_port: capture
   description: The captured value.
 - name: CTRL
-  size: 4
+  size: 2
   mode: w
   fifo: no
   offset: 12
@@ -176,13 +181,19 @@ registers:
 - The ``mode`` property can be set to: 
   - ``w`` for registers that are meant for writing only; reading from it returns the last written data value.
   - ``r`` for registers that are meant for reading only; hence they cannot be written. 
-  - ``rw`` for registers that are read and written differently; for an example, the data register of a GPIO peripheral. Reading this register returns the data provided on input GPIO pins and writting the register sets the values of output GPIO pins.
+  - ``rw`` for registers that are read and written differently; for example, the data register of a GPIO peripheral. Reading this register returns the data provided on input GPIO pins and writing the register sets the values of output GPIO pins.
 
-- The ``bit_access`` property is used to enable bit level access (Not implemented functionality).
+- The ``bit_access`` property is used to enable bit-level access (Not implemented functionality).
 - The ``fifo`` property is used to specify whether this register is used to access a FIFO. If it is set to ``yes`` the FIFO has to be defined.
 
 ### FIFO Definitions
-This section defines FIFOs if there are any in the IP. For example:
+This section is used if the IP has data FIFOs. For each FIFO, you need to specify:
+- `type` : `read` (receive) or `write` (transmit)
+- The FIFO has `depth` number of words, each is `width` bits.
+- The `register` is used to access the FIFO in firmware
+- The `data_port` is used to provide the data to `write` FIFO or read the data from `read` FIFO.
+- The `control_port` is used to specify the ports used to control the FIFO read or write operations.
+
 ```yaml
 fifos:
   - type: read  
@@ -199,10 +210,8 @@ fifos:
     control_port: wr
 ```
 
-
-### Event Flag Definitions
-
-Event flags used for generating interrupts. For an example:
+### Event Flags Definitions
+Event flags are used for generating interrupts. For an example:
 
 ```yaml
 flags:
@@ -213,3 +222,5 @@ flags:
   port: cap_done
   description: Capture is done.
 ```
+The bus wrapper generator generates four different registers to manage interrupts: ``RIS`` (Raw Interrupt Status), ``IM`` (Interrupt Mask), ``MIS`` (Masked Interrupt Status) and ``IC`` (Interrupt Clear). Each bit in each represents one of the flags.
+
