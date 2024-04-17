@@ -1,0 +1,196 @@
+---
+info:
+  name: EF_I2S
+  description: Two-wire I2S synchronous serial interface, compatible with I2S specification.
+  repo: github.com/efabless/EF_I2S
+  owner: Efabless Corp.
+  license: APACHE 2.0
+  author: Mohamed Shalan
+  email: mshalan@efabless.com
+  version: v1.0.4
+  date: 11-05-2023
+  category: digital
+  tags:
+    - peripheral
+    - audio
+    - serial
+  bus:
+    - generic
+  type": soft
+  status: verified
+  cell_count: "2661"
+  width": "0.0"
+  height": "0.0"
+  technology: n/a
+  clock_freq_mhz: "10"
+  digital_supply_voltage: n/a
+  analog_supply_voltage: n/a
+
+ports:
+  - name: fifo_rd
+    width: 1
+    direction: input
+    description: Read from FIFO signal 
+  - name: fifo_level_threshold
+    width: 5
+    direction: input
+    description: FIFO Threshold
+  - name: fifo_full
+    width: 1
+    direction: output
+    description: FIFO is full flag
+  - name: fifo_empty
+    width: 1
+    direction: output
+    description: FIFO is empty flag
+  - name: fifo_level
+    width: 5
+    direction: output
+    description: The current FIFO level
+  - name: fifo_level_above
+    width: 1
+    direction: output
+    description: FIFO level is above threshold flag 
+  - name: fifo_rdata
+    width: 32
+    direction: output
+    description: Data read from  FIFO
+  - name: sign_extend
+    width: 1
+    direction: input
+    description: Flag to show if input data is sign extended 
+  - name: left_justified
+    width: 1
+    direction: input
+    description: Flag to show if input data is left justified
+  - name: sample_size
+    width: 5
+    direction: input
+    description: The sample size of input data 
+  - name: sck_prescaler
+    width: 8
+    direction: input
+    description: The clock prescaler
+  - name: channels
+    width: 2
+    direction: input
+    description: Channels used (left, right, or stereo)
+  - name: en
+    width: 1
+    direction: input
+    description: Enable signal
+
+external_interface:
+  - name: ws
+    port: ws
+    direction: output
+    description: Word select (logic high on WS indicates right-channel audio)
+    width: 1
+  - name: sck
+    port: sck
+    direction: output
+    width: 1
+    description: The data clock 
+  - name: sdi
+    port: sdi
+    direction: input
+    sync: True
+    width: 1
+    description: The input serial data 
+
+clock:
+  name: clk
+
+reset:
+  name: rst_n
+  level: 0
+
+registers:
+  - name: RXDATA
+    size: 32
+    mode: r
+    fifo: yes
+    offset: 0
+    bit_access: no
+    read_port: fifo_rdata
+    description: The received sample
+  - name: PR
+    size: 8
+    mode: w
+    fifo: no
+    offset: 4
+    bit_access: no
+    write_port: sck_prescaler
+    description: The Prescaler register; used to determine the sck signal frequency . $Prescaler = clk_freq/(2 x sck_freq) - 1$.
+  - name: FIFOLEVEL
+    size: 5
+    mode: r
+    fifo: no
+    offset: 8
+    bit_access: no
+    read_port: fifo_level
+    description: The current receive FIFO level
+  - name: RXFIFOT
+    size: 5
+    mode: w
+    fifo: no
+    offset: 12
+    bit_access: no
+    write_port: fifo_level_threshold
+    description: The FIFO threshold
+  - name: CTRL
+    size: 1
+    mode: w
+    fifo: no
+    offset: 16
+    bit_access: no
+    write_port: en
+    description: Enable 
+  - name: CFG
+    size: 9
+    mode: w
+    fifo: no
+    offset: 20
+    bit_access: no
+    init: "'h3F08"
+    description: "0-1: Channels to read, '01': right, '10': left, '11': Both (stereo) 2: Sign Extend 3: Left Justify 4-8: Sample Size (0-31)"
+    fields:
+      - name: channels
+        bit_offset: 0
+        bit_width: 2
+        write_port: channels
+        description: "Channels to read, '01': right, '10': left, '11': Both (stereo)"
+      - name: sign_extend
+        bit_offset: 2
+        bit_width: 1
+        write_port: sign_extend
+        description: "Sign Extend"
+      - name: left_justified
+        bit_offset: 3
+        bit_width: 1
+        write_port: left_justified
+        description: "Left justified flag"
+      - name: sample_size
+        bit_offset: 4
+        bit_width: 5
+        write_port: sample_size
+        description: "Sample size"
+
+flags:
+  - name: FIFOE
+    port: fifo_empty
+    description: Receive FIFO is Empty
+  - name: FIFOA
+    port: fifo_level_above
+    description: FIFO level is above the set level threshold
+  - name: FIFOF
+    port: fifo_full
+    description: Receive FIFO is Full.
+
+fifos:
+  - type: read  
+    width: 8
+    depth: 32 
+    register: RXDATA
+    data_port: fifo_rdata
+    control_port: fifo_rd
