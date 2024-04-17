@@ -218,9 +218,10 @@ def print_instance_to_wrap(bus_type):
     if "external_interface" in IP:
         for index, ifc in enumerate(IP['external_interface']):
             if "sync" in ifc:
-                if ifc["direction"] != "input":
-                    raise sys.exit("You cannot attach a synchronizer to non-input intertface")
-                print_synchronizer(bus_type, ifc['name'], ifc['port'], ifc['width'], 2)
+                if ifc["sync"] == True:
+                    if ifc["direction"] != "input":
+                        raise sys.exit("You cannot attach a synchronizer to non-input interface")
+                    print_synchronizer(bus_type, ifc['name'], ifc['port'], ifc['width'], 2)
 
     if "parameters" in IP:
         print(f"\t{IP['info']['name']} #(")
@@ -241,12 +242,11 @@ def print_instance_to_wrap(bus_type):
             print(f"\t\t.{p['name']}({p['name']})")
     if "external_interface" in IP:
         for index, ifc in enumerate(IP['external_interface']):
+            port = f"{ifc['name']}"
             if "sync" in ifc:
-                #print_synchronizer(bus_type, ifc['name'], ifc['port'], ifc['width'], 2)
-                port = f"_{ifc['port']}_"
-            else:
-                port = f"{ifc['name']}"
-
+                if ifc['sync'] == True:
+                    port = f"_{ifc['port']}_"
+            
             if index != len(IP['external_interface']) - 1:
                 print(f"\t\t.{ifc['port']}({port}),")
             else:
