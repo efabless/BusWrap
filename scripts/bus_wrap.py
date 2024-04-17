@@ -203,7 +203,7 @@ def print_wires(bus_type):
 
     #print("")
   
-def print_instance_to_wrap():
+def print_instance_to_wrap(bus_type):
     """
     Print the instance to wrap by formatting the IP dictionary.
 
@@ -213,6 +213,15 @@ def print_instance_to_wrap():
     Returns:
         None
     """
+
+    # Generate synchronizers for input interfaces if needed
+    if "external_interface" in IP:
+        for index, ifc in enumerate(IP['external_interface']):
+            if "sync" in ifc:
+                if ifc["direction"] != "input":
+                    raise sys.exit("You cannot attach a synchronizer to non-input intertface")
+                print_synchronizer(bus_type, ifc['name'], ifc['port'], ifc['width'], 2)
+
     if "parameters" in IP:
         print(f"\t{IP['info']['name']} #(")
         for index, p in enumerate(IP['parameters']):
@@ -232,14 +241,39 @@ def print_instance_to_wrap():
             print(f"\t\t.{p['name']}({p['name']})")
     if "external_interface" in IP:
         for index, ifc in enumerate(IP['external_interface']):
-            if index != len(IP['external_interface']) - 1:
-                print(f"\t\t.{ifc['port']}({ifc['name']}),")
+            if "sync" in ifc:
+                #print_synchronizer(bus_type, ifc['name'], ifc['port'], ifc['width'], 2)
+                port = f"_{ifc['port']}_"
             else:
-                print(f"\t\t.{ifc['port']}({ifc['name']})")
+                port = f"{ifc['name']}"
+
+            if index != len(IP['external_interface']) - 1:
+                print(f"\t\t.{ifc['port']}({port}),")
+            else:
+                print(f"\t\t.{ifc['port']}({port})")
     print("\t);\n")
 
+def print_synchronizer(bus_type, name, port, width, stages):
+    if bus_type == "AHBL":
+        clk = "HCLK"
+        rst = "HRESETn"
+        pol = 0
+    elif bus_type == "APB":
+        clk = "PCLK"
+        rst = "PRESETn"
+        pol = 0
+    elif bus_type == "AHBL":
+        clk = "HCLK"
+        rst = "HRESETn"
+        pol = 1
+    
+    clock_edge = "posedge" if pol == 1 else "negedge"
 
-
+    print(f"\treg [{width-1}:0]\t_{name}_reg_[{stages-1}:0];")
+    print(f"\twire\t\t_{port}_w_ = _{name}_[{stages-1}];")
+    print(f"\talways@(posedge {clk} or {clock_edge} {rst})")
+    print(f"\t\tif({rst} == {pol})\n\t\t\t_{name}_reg_ <= 'b0;")
+    print(f"\t\telse\n\t\t\t_{name}_reg_ <= {{_{name}_reg_[{stages-2}:0], {name}}};\n")
 
 def print_registers(bus_type):
     """
@@ -499,7 +533,7 @@ def print_bus_wrapper(bus_type):
     print_registers(bus_type)
     if "flags" in IP:
         print_IRQ_registers(bus_type)
-    print_instance_to_wrap()
+    print_instance_to_wrap(bus_type)
     if bus_type == "WB":
         print_wb_dat_o(bus_type)
     else:
