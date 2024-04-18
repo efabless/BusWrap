@@ -26,13 +26,21 @@ info:
   digital_supply_voltage: n/a
   analog_supply_voltage: n/a
 
+parameters:
+  - name: DW
+    default: 32
+    description: "FIFO data width"
+  - name: AW
+    default: 4
+    description: "FIFO Address width; Depth=2^AW"
+
 ports:
   - name: fifo_rd
     width: 1
     direction: input
     description: Read from FIFO signal 
   - name: fifo_level_threshold
-    width: 5
+    width: AW
     direction: input
     description: FIFO Threshold
   - name: fifo_full
@@ -44,7 +52,7 @@ ports:
     direction: output
     description: FIFO is empty flag
   - name: fifo_level
-    width: 5
+    width: AW
     direction: output
     description: The current FIFO level
   - name: fifo_level_above
@@ -64,7 +72,7 @@ ports:
     direction: input
     description: Flag to show if input data is left justified
   - name: sample_size
-    width: 5
+    width: 6
     direction: input
     description: The sample size of input data 
   - name: sck_prescaler
@@ -123,7 +131,7 @@ registers:
     write_port: sck_prescaler
     description: The Prescaler register; used to determine the sck signal frequency . $Prescaler = clk_freq/(2 x sck_freq) - 1$.
   - name: FIFOLEVEL
-    size: 5
+    size: AW
     mode: r
     fifo: no
     offset: 8
@@ -131,7 +139,7 @@ registers:
     read_port: fifo_level
     description: The current receive FIFO level
   - name: RXFIFOT
-    size: 5
+    size: AW
     mode: w
     fifo: no
     offset: 12
@@ -172,7 +180,7 @@ registers:
         description: "Left justified flag"
       - name: sample_size
         bit_offset: 4
-        bit_width: 5
+        bit_width: 6
         write_port: sample_size
         description: "Sample size"
 
