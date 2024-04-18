@@ -240,12 +240,13 @@ def print_instance_to_wrap(bus_type):
             print(f"\t\t.{p['name']}({p['name']}),")
         else:
             print(f"\t\t.{p['name']}({p['name']})")
+    
     if "external_interface" in IP:
         for index, ifc in enumerate(IP['external_interface']):
             port = f"{ifc['name']}"
             if "sync" in ifc:
                 if ifc['sync'] == True:
-                    port = f"_{ifc['port']}_"
+                    port = f"_{ifc['port']}_w_"
             
             if index != len(IP['external_interface']) - 1:
                 print(f"\t\t.{ifc['port']}({port}),")
@@ -262,19 +263,25 @@ def print_synchronizer(bus_type, name, port, width, stages):
         clk = "PCLK"
         rst = "PRESETn"
         pol = 0
-    elif bus_type == "AHBL":
-        clk = "HCLK"
-        rst = "HRESETn"
+    elif bus_type == "WB":
+        clk = "clk_i"
+        rst = "rst_i"
         pol = 1
     
     clock_edge = "posedge" if pol == 1 else "negedge"
 
     print(f"\treg [{width-1}:0]\t_{name}_reg_[{stages-1}:0];")
-    print(f"\twire\t\t_{port}_w_ = _{name}_[{stages-1}];")
+    print(f"\twire\t\t_{port}_w_ = _{name}_reg_[{stages-1}];")
     print(f"\talways@(posedge {clk} or {clock_edge} {rst})")
-    print(f"\t\tif({rst} == {pol})\n\t\t\t_{name}_reg_ <= 'b0;")
-    print(f"\t\telse\n\t\t\t_{name}_reg_ <= {{_{name}_reg_[{stages-2}:0], {name}}};\n")
-
+    print(f"\t\tif({rst} == {pol}) begin")
+    for i in range(stages):
+        print(f"\t\t\t_{name}_reg_[{i}] <= 'b0;")
+    print(f"\t\tend")
+    print(f"\t\telse begin")
+    print(f"\t\t\t_{name}_reg_[0] <= {name};")
+    for i in range(stages-1):
+        print(f"\t\t\t_{name}_reg_[{i+1}] <= _{name}_reg_[{i}];")
+    print(f"\t\tend")
 def print_registers(bus_type):
     """
     Print the register declarations for the given IP.
