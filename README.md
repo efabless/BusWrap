@@ -105,7 +105,7 @@ parameters:
 ```
 ### Port Definitions
 
-IP Port definitions. The Verilog ports it is a digital soft IP or the macro pins if hard macro. For an example:
+IP Port definitions. The Verilog ports it is a digital soft IP or the macro pins if hard macro. For example:
 ```yaml
 ports:
   - name: "data_in"
@@ -118,7 +118,7 @@ ports:
     description: "The output data"
 ```
 ### External Interface Definitions
-IP External Interfaces to other sub-systems. In other words, the IP ports that pass through the bus wrapper to outside the wrapper; typically, the IP ports connected to I/Os. For an example:
+IP External Interfaces to other sub-systems. In other words, the IP ports that pass through the bus wrapper to outside the wrapper; typically, the IP ports connected to I/Os. For example:
 
 ```yaml
 external_interface: 
@@ -132,6 +132,16 @@ external_interface:
     direction: "output"
     width: 8
     description: The output pads
+```
+If the external interface needs a synchronizer, add the ```sync``` property and set to ```True```. For example:
+```yaml
+external_interface:
+  - name: sdi
+    port: sdi
+    direction: input
+    sync: True
+    width: 1
+    description: The input serial data 
 ```
 
 ### Clock and Reset Definitions
@@ -148,7 +158,7 @@ reset:
 `level`: determines the edge, 0: negative, 1: positive
 ### Register Definitions
 
-Register definitions. For an example:
+Register definitions. For example:
 ```yaml
 registers:
 - name: CAP
