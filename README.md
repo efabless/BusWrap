@@ -155,7 +155,7 @@ reset:
   level: 0
 ```
 
-`level`: determines the edge, 0: negative, 1: positive
+`level`: determines the edge, 0: Negative, 1: Positive
 ### Register Definitions
 
 Register definitions. For example:
@@ -203,21 +203,35 @@ This section is used if the IP has internal data FIFOs. This is typically the ca
 - The `register` is used to access the FIFO in firmware
 - The `data_port` is used to provide the data to `write` FIFO or read the data from `read` FIFO.
 - The `control_port` is used to specify the ports used to control the FIFO read or write operations.
+- The `flush_enable` and `flush_port` are used to enable the FIFO flush feature and set the port if enabled.
+- The `threshold_port` is used to specify the level threshold port
+- The `level_port` is used to specify the level port
+
 
 ```yaml
 fifos:
-  - type: read  
+  - name: RX_FIFO
+    type: read  
     width: MDW
     depth: 16 
-    register: rxdata
+    register: RXDATA
     data_port: rdata
     control_port: rd
-  - type: write
+    flush_enable: True
+    flush_port: rx_fifo_flush
+    threshold_port: rxfifotr
+    level_port: rx_level
+  - name: TX_FIFO
+    type: write
     width: MDW
     depth: 16
-    register: txdata
+    register: TXDATA
     data_port: wdata
     control_port: wr
+    flush_enable: True
+    flush_port: tx_fifo_flush
+    threshold_port: txfifotr
+    level_port: tx_level
 ```
 
 ### Event Flags Definitions

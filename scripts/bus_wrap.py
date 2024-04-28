@@ -26,7 +26,7 @@ Copyright (c) 2020 AUCOHL
 
 
 import sys
-#import os.path
+import math
 import yaml
 import json
 
@@ -34,10 +34,10 @@ import json
 IP          = None
 
 
-# COnfigurations to be loaded from a configuration file
-BUS_AW      = 16
-INT_REG_OFF = 0x0F00
-
+# Configurations to be loaded from a configuration file
+BUS_AW          = 16
+INT_REG_OFF     = 0x0F00
+FIFO_REG_OFF    = 0x1000
 
 # Interrupt registers offsets
 IC_OFF      = 0x0C + INT_REG_OFF
@@ -45,6 +45,10 @@ RIS_OFF     = 0x08 + INT_REG_OFF
 IM_OFF      = 0x00 + INT_REG_OFF
 MIS_OFF     = 0x04 + INT_REG_OFF
 
+# FIFO register offsets
+FLUSH_OFF       = 0x0
+THRESHOLD_OFF   = 0x4
+LEVEL_OFF       = 0x8
 
 def print_license():
    print(f"/*\n\tCopyright {IP['info']['date'].split('-')[2]} {IP['info']['owner']}\n")
@@ -282,6 +286,8 @@ def print_synchronizer(bus_type, name, port, width, stages):
     for i in range(stages-1):
         print(f"\t\t\t_{name}_reg_[{i+1}] <= _{name}_reg_[{i}];")
     print(f"\t\tend")
+
+
 def print_registers(bus_type):
     """
     Print the register declarations for the given IP.
@@ -292,9 +298,30 @@ def print_registers(bus_type):
     Returns:
         None
     """
-    if IP['registers'] is False:
+
+    if "fifos" in IP:
+        print("\t// FIFO Registers")
+        for f in IP['fifos']:
+            fifo_aw = int(math.log2(f["depth"]))
+            fifo_name = f"{f['name'].upper()}";
+            print(f"\t// {fifo_name} Registers")
+            print(f"\treg\t[{fifo_aw-1}:0]\t{fifo_name}_THRESHOLD_REG;")
+            print(f"\tassign\t\t{f['threshold_port']} = {fifo_name}_THRESHOLD_REG;")
+            print(f"\t`{bus_type}_REG({fifo_name}_THRESHOLD_REG, 0, 1)")
+            print(f"\twire\t[{fifo_aw-1}:0]\t{fifo_name}_LEVEL_REG;")
+            print(f"\tassign\t\t{fifo_name}_LEVEL_REG = {f['threshold_port']}")
+            if f["flush_enable"] == True:
+                flush_reg_name = f"{fifo_name}_FLUSH_REG";
+                print(f"\treg\t\t{flush_reg_name};")
+                print(f"\t`{bus_type}_AUTO_CLR_REG({flush_reg_name}, 0, 1)")
+                print(f"\tassign\t\t{f['flush_port']} = {flush_reg_name};")
+            print("")
+    print("")
+
+    if "registers" not in IP:
         return
-            
+
+    print("\t// Register Definitions")
     for r in IP['registers']:    
         if r['fifo'] is True:
             print(f"\twire\t[{r['size']}-1:0]\t{r['name']}_WIRE;")
@@ -433,29 +460,40 @@ def print_IRQ_registers(bus_type):
 
 
 def print_registers_offsets(bus_type):
-   """
-   Print the register offsets for the given IP.
+    """
+    Print the register offsets for the given IP.
 
 
-   Args:
-       None
+    Args:
+        None
 
 
-   Returns:
-       None
-   """
-   # user defined registers
-   for r in IP['registers']:
-       print(f"\tlocalparam\t{r['name']}_REG_OFFSET = `{bus_type}_AW'd{r['offset']};")
+    Returns:
+        None
+    """
 
+    # user defined registers
+    if "registers" in IP:
+        for r in IP['registers']:
+            print(f"\tlocalparam\t{r['name']}_REG_OFFSET = `{bus_type}_AW'd{r['offset']};")
 
-   # Interrupt registers
-   print(f"\tlocalparam\tIM_REG_OFFSET = `{bus_type}_AW'd{IM_OFF};")
-   print(f"\tlocalparam\tMIS_REG_OFFSET = `{bus_type}_AW'd{MIS_OFF};")
-   print(f"\tlocalparam\tRIS_REG_OFFSET = `{bus_type}_AW'd{RIS_OFF};")
-   print(f"\tlocalparam\tIC_REG_OFFSET = `{bus_type}_AW'd{IC_OFF};")
-              
-   print("")
+    # Interrupt registers
+    if "flags" in IP:
+        print(f"\tlocalparam\tIM_REG_OFFSET = `{bus_type}_AW'd{IM_OFF};")
+        print(f"\tlocalparam\tMIS_REG_OFFSET = `{bus_type}_AW'd{MIS_OFF};")
+        print(f"\tlocalparam\tRIS_REG_OFFSET = `{bus_type}_AW'd{RIS_OFF};")
+        print(f"\tlocalparam\tIC_REG_OFFSET = `{bus_type}_AW'd{IC_OFF};")
+
+    # Fifo Registers
+    if "fifos" in IP:
+        f_indx = 0
+        for f in IP['fifos']:
+            print(f"\tlocalparam\t{f['name'].upper()}_FLUSH_REG_OFFSET = `{bus_type}_AW'd{FLUSH_OFF + 0x10 * f_indx};")
+            print(f"\tlocalparam\t{f['name'].upper()}_THRESHOLD_REG_OFFSET = `{bus_type}_AW'd{THRESHOLD_OFF + 0x10 * f_indx};")
+            print(f"\tlocalparam\t{f['name'].upper()}_LEVEL_REG_OFFSET = `{bus_type}_AW'd{LEVEL_OFF + 0x10 * f_indx};")
+            f_indx = f_indx + 1
+               
+    print("")
 
 def print_rdata(bus_type):
     IRQ_REGS = ["IM", "MIS", "RIS", "IC"]
@@ -475,6 +513,11 @@ def print_rdata(bus_type):
     if "flags" in IP:
         for r in IRQ_REGS:
             print(f"\t\t\t({prefix}ADDR[`{bus_type}_AW-1:0] == {r}_REG_OFFSET)\t? {r}_REG :")
+
+    if "fifos" in IP:
+        for f in IP["fifos"]:
+            print(f"\t\t\t({prefix}ADDR[`{bus_type}_AW-1:0] == {f['name'].upper()}_LEVEL_REG_OFFSET)\t? {f['name'].upper()}_LEVEL_REG :")
+
     
     print("\t\t\t32'hDEADBEEF;")
     
@@ -497,6 +540,10 @@ def print_wb_dat_o(bus_type):
     if "flags" in IP:
         for r in IRQ_REGS:
             print(f"\t\t\t(adr_i[`{bus_type}_AW-1:0] == {r}_REG_OFFSET)\t? {r}_REG :")
+
+    if "fifos" in IP:
+        for f in IP["fifos"]:
+            print(f"\t\t\t(adr_i[`{bus_type}_AW-1:0] == {f['name'].upper()}_LEVEL_REG_OFFSET)\t? {f['name'].upper()}_LEVEL_REG :")
 
     print("\t\t\t32'hDEADBEEF;")
 
