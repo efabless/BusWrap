@@ -1,6 +1,9 @@
 # BusWrap
 
-## IP wrapper generator for APB, AHB Lite and Wishbone
+A set of Python utilities as well as Verilog macros to help with IP development. 
+
+## IP wrapper generator 
+For APB, AHB Lite and Wishbone buses. It converts an IP description in YAML (or JSON) to a Verilog RTL of the bus interface including all I/O registers as well as the necessary control logic. 
 
 ``python3 bus_wrap.py ip.yml|ip.json -apb|-ahbl|-wb -tb|-ch|-md``
 - Options:
@@ -14,6 +17,7 @@
     - `ip.yaml|ip.json`: A YAML/JSON file that contains the IP definition.
 
 ## YAML Template Generator
+Generates a YAML template of the IP given its Verilog RTL source file.
 
 ``python3 v2yaml.py IP.v module_name``
 
