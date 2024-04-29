@@ -223,7 +223,8 @@ registers:
     bit_offset: 1
     bit_width: 1
     write_port: tmr_start
-    description: Timer re-start; used in the one-shot mode to restart the timer. Write 1 then 0 to re-start the timer.
+    auto_clear: True
+    description: Timer re-start; used in the one-shot mode to restart the timer. Write 1 to restart; automatically cleared.
   - name: P0E
     bit_offset: 2
     bit_width: 1

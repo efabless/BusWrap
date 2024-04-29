@@ -20,6 +20,8 @@
 
 `define     WB_REG(name, init, size)    `WB_BLOCK(name, init) else if(wb_we & (adr_i[`WB_AW-1:0]==``name``_OFFSET)) name <= dat_i[size-1:0];
 
+`define     WB_REG_AC(name, init, size, pat)    `WB_BLOCK(name, init) else if(wb_we & (adr_i[`WB_AW-1:0]==``name``_OFFSET)) name <= dat_i[size-1:0]; else name <= pat & name;
+
 `define     WB_AUTO_CLR_REG(name, init, size)    `WB_BLOCK(name, init) else if(wb_we & (adr_i[`WB_AW-1:0]==``name``_OFFSET)) name <= dat_i[size-1:0] else name <= 'b0;
 
 `define     WB_CTRL_SIGNALS             wire            wb_valid    = cyc_i & stb_i;\

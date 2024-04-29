@@ -35,6 +35,13 @@
                                         else if(ahbl_we & (last_HADDR[`AHBL_AW-1:0]==``name``_OFFSET)) \
                                             name <= HWDATA[``size``-1:0];
 
+`define     AHBL_REG_AC(name, init, size, pat)	`AHBL_BLOCK(name, init)\
+                                                else if(ahbl_we & (last_HADDR[`AHBL_AW-1:0]==``name``_OFFSET)) \
+                                                    name <= HWDATA[``size``-1:0];\
+                                                else\
+                                                    name <= pat & name;
+    
+
 `define		AHBL_AUTO_CLR_REG(name, init, size) `AHBL_BLOCK(name, init)\
                                                 else if(ahbl_we & (last_HADDR[`AHBL_AW-1:0]==``name``_OFFSET)) \
                                                     name <= HWDATA[``size``-1:0];\

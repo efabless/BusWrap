@@ -195,6 +195,7 @@ registers:
 
 - The ``bit_access`` property is used to enable bit-level access (Not implemented functionality).
 - The ``fifo`` property is used to specify whether this register is used to access a FIFO. If it is set to ``yes`` the FIFO has to be defined.
+- The ``auto_clear`` property is used to clear the field to 0 after writing to it 1.
 
 ### FIFO Definitions
 This section is used if the IP has internal data FIFOs. This is typically the case of IPs that deal with data streams such as UART. Data received by the IP is placed into a ``receive`` FIFO by the IP and data to be sent is placed by the bus wrapper into the ``transmit`` FIFO. For each FIFO, you need to specify:

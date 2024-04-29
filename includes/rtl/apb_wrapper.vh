@@ -26,6 +26,12 @@
                                         else if(apb_we & (PADDR[`APB_AW-1:0]==``name``_OFFSET))\ 
                                             name <= PWDATA[``size``-1:0];
 
+`define		APB_REG_AC(name, init, size, pat)	`APB_BLOCK(name, init)\ 
+                                                else if(apb_we & (PADDR[`APB_AW-1:0]==``name``_OFFSET))\ 
+                                                    name <= PWDATA[``size``-1:0];\    
+                                                else\
+                                                    name <= pat & name;
+
 `define		APB_AUTO_CLR_REG(name, init, size)	`APB_BLOCK(name, init)\ 
                                                 else if(apb_we & (PADDR[`APB_AW-1:0]==``name``_OFFSET))\ 
                                                     name <= PWDATA[``size``-1:0];\

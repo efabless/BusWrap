@@ -326,6 +326,9 @@ def print_registers(bus_type):
         if r['fifo'] is True:
             print(f"\twire\t[{r['size']}-1:0]\t{r['name']}_WIRE;")
         else:
+            if "auto_clear" in r:
+                if r['mode'] != 'w':
+                    exit_with_message(f"The auto_clear property cannot be True for a '{r['mode']}' filed") 
             if r['mode'] == 'rw':
                 # 'rw' registers cannot have field
                 print(f"\treg\t[{r['size']}-1:0]\t{r['name']}_REG;")
@@ -334,7 +337,13 @@ def print_registers(bus_type):
                 print(f"\tassign\t{r['write_port']} = {r['name']}_REG;")
                 print(f"\t`{bus_type}_REG({r['name']}_REG, 0, 8)")
             elif r['mode'] == 'w':
-                print(f"\treg [{r['size']}-1:0]\t{r['name']}_REG;")
+                if f"{r['size']}".isnumeric():
+                    rsz = r['size']-1
+                else:
+                    rsz = f"{r['size']}-1"
+                print(f"\treg [{rsz}:0]\t{r['name']}_REG;")
+                f_indx = 0
+                update_pattern = 0
                 if "fields" in r and "write_port" not in r:
                     for f in r['fields']:
                         if isinstance(f['bit_width'], int):
@@ -345,9 +354,18 @@ def print_registers(bus_type):
                             else:
                                 to = f"({f['bit_width']} + {f['bit_offset'] - 1})"
                         print(f"\tassign\t{f['write_port']}\t=\t{r['name']}_REG[{to} : {f['bit_offset']}];")
+                        if "auto_clear" in f:
+                            if f["auto_clear"] == True:
+                                update_pattern = update_pattern | (1 << f_indx)
+                        f_indx = f_indx + 1
+                    #print(f"{(~update_pattern & (1<<r['size'])-1):x}")
                 else:
                     print(f"\tassign\t{r['write_port']} = {r['name']}_REG;")
-                print(f"\t`{bus_type}_REG({r['name']}_REG, {r['init'] if 'init' in r else 0}, {r['size']})")
+                if update_pattern !=0 :
+                    pat = f"{r['size']}'h{(~update_pattern & (1<<r['size'])-1):x}"
+                    print(f"\t`{bus_type}_REG_AC({r['name']}_REG, {r['init'] if 'init' in r else 0}, {r['size']}, {pat})")
+                else:
+                    print(f"\t`{bus_type}_REG({r['name']}_REG, {r['init'] if 'init' in r else 0}, {r['size']})")
             elif r['mode'] == 'r':
                 print(f"\twire [{r['size']}-1:0]\t{r['name']}_WIRE;")
                 if "fields" in r:
