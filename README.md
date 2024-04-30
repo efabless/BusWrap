@@ -51,6 +51,8 @@ Generates a YAML template of the IP given its Verilog RTL source file.
 
 A YAML file is used to capture the IP information for the sake of generating the RTL bus wrappers including I/O registers. This includes:
 
+Note: The key/property ``port`` always means a port in the IP to wrap.
+
 ### General Information
 
 Basic information about the IP like the author, the license, etc. For an example:
@@ -121,6 +123,9 @@ ports:
     direction: output
     description: "The output data"
 ```
+
+Note: The CLock, Rest and External Interfaces must not be listed here. 
+
 ### External Interface Definitions
 IP External Interfaces to other sub-systems. In other words, the IP ports that pass through the bus wrapper to outside the wrapper; typically, the IP ports connected to I/Os. For example:
 
@@ -148,7 +153,11 @@ external_interface:
     description: The input serial data 
 ```
 
+Note: If you need to drive an external interface using an I/O register field, just create passthrough ports in the wrapped IP. One of these ports is input and the other port is output. Connect the two ports inside the wrapped IP (e.e., using ``assign`` statement in Verilog). Set the ``port`` property in the field to the input port and the ``external_interface`` port to the output port.
+
 ### Clock and Reset Definitions
+
+The Clock and Reset ports definition. You must not list them under the ports section.
 
 ```YAML
 clock:
