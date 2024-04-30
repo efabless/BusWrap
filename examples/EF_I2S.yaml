@@ -55,6 +55,9 @@ ports:
     width: AW
     direction: output
     description: The current FIFO level
+  - name: fifo_flush
+    width: 1
+    description: FIFO flushing control
   - name: fifo_level_above
     width: 1
     direction: output
@@ -130,22 +133,6 @@ registers:
     bit_access: no
     write_port: sck_prescaler
     description: The Prescaler register; used to determine the sck signal frequency . $Prescaler = clk_freq/(2 x sck_freq) - 1$.
-  - name: FIFOLEVEL
-    size: AW
-    mode: r
-    fifo: no
-    offset: 8
-    bit_access: no
-    read_port: fifo_level
-    description: The current receive FIFO level
-  - name: RXFIFOT
-    size: AW
-    mode: w
-    fifo: no
-    offset: 12
-    bit_access: no
-    write_port: fifo_level_threshold
-    description: The FIFO threshold
   - name: CTRL
     size: 1
     mode: w
@@ -196,9 +183,14 @@ flags:
     description: Receive FIFO is Full.
 
 fifos:
-  - type: read  
+  - name: "rx_fifo"
+    type: read  
     width: 8
     depth: 32 
     register: RXDATA
     data_port: fifo_rdata
     control_port: fifo_rd
+    flush_enable: True
+    flush_port: fifo_flush
+    threshold_port: fifo_level_threshold
+    level_port: fifo_level
