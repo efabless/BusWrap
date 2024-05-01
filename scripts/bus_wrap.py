@@ -30,9 +30,7 @@ import math
 import yaml
 import json
 
-
-IP          = None
-
+IP  =   None
 
 # Configurations to be loaded from a configuration file
 BUS_AW          = 16
@@ -40,15 +38,15 @@ INT_REG_OFF     = 0x0F00
 FIFO_REG_OFF    = 0x1000
 
 # Interrupt registers offsets
-IC_OFF      = 0x0C + INT_REG_OFF
-RIS_OFF     = 0x08 + INT_REG_OFF
-IM_OFF      = 0x00 + INT_REG_OFF
-MIS_OFF     = 0x04 + INT_REG_OFF
+IC_OFF          = 0x0C + INT_REG_OFF
+RIS_OFF         = 0x08 + INT_REG_OFF
+IM_OFF          = 0x00 + INT_REG_OFF
+MIS_OFF         = 0x04 + INT_REG_OFF
 
 # FIFO register offsets
-FLUSH_OFF       = 0x0
-THRESHOLD_OFF   = 0x4
-LEVEL_OFF       = 0x8
+FLUSH_OFF       = 0x0 + FIFO_REG_OFF
+THRESHOLD_OFF   = 0x4 + FIFO_REG_OFF
+LEVEL_OFF       = 0x8 + FIFO_REG_OFF
 
 def print_license():
    print(f"/*\n\tCopyright {IP['info']['date'].split('-')[2]} {IP['info']['owner']}\n")
