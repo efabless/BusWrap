@@ -147,10 +147,10 @@ def print_module_header(bus_type):
         for index, ifc in enumerate(IP['external_interface']):
             if index != len(IP['external_interface']) - 1:
                 # Print interface details with comma
-                print(f"\t{ifc['direction']}\t[{ifc['width']-1}:0]\t{ifc['name']},")
+                print(f"\t{ifc['direction']}\t[{ifc['width']}-1:0]\t{ifc['name']},")
             else:
                 # Print interface details without comma
-                print(f"\t{ifc['direction']}\t[{ifc['width']-1}:0]\t{ifc['name']}")
+                print(f"\t{ifc['direction']}\t[{ifc['width']}-1:0]\t{ifc['name']}")
     else:
         # Print only {bus_type}_SLAVE_PORTS
         print("\t`{bus_type}_SLAVE_PORTS")
