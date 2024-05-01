@@ -213,7 +213,7 @@ registers:
 ### FIFO Definitions
 This section is used if the IP has internal data FIFOs. This is typically the case of IPs that deal with data streams such as UART. Data received by the IP is placed into a ``receive`` FIFO by the IP and data to be sent is placed by the bus wrapper into the ``transmit`` FIFO. For each FIFO, you need to specify:
 - `type` : `read` (receive) or `write` (transmit)
-- The FIFO has `depth` number of words, each is `width` bits.
+- The FIFO has `address_width`^2 number of words, each is `width` bits.
 - The `register` is used to access the FIFO in firmware
 - The `data_port` is used to provide the data to `write` FIFO or read the data from `read` FIFO.
 - The `control_port` is used to specify the ports used to control the FIFO read or write operations.
@@ -225,8 +225,8 @@ This section is used if the IP has internal data FIFOs. This is typically the ca
 fifos:
   - name: RX_FIFO
     type: read  
-    width: MDW
-    depth: 16 
+    width: DW
+    address_width: AW 
     register: RXDATA
     data_port: rdata
     control_port: rd
@@ -236,8 +236,8 @@ fifos:
     level_port: rx_level
   - name: TX_FIFO
     type: write
-    width: MDW
-    depth: 16
+    width: DW
+    depth: AW
     register: TXDATA
     data_port: wdata
     control_port: wr
