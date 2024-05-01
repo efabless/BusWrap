@@ -307,7 +307,7 @@ def print_registers(bus_type):
             print(f"\tassign\t\t{f['threshold_port']} = {fifo_name}_THRESHOLD_REG;")
             print(f"\t`{bus_type}_REG({fifo_name}_THRESHOLD_REG, 0, 1)")
             print(f"\twire\t[{fifo_aw-1}:0]\t{fifo_name}_LEVEL_REG;")
-            print(f"\tassign\t\t{fifo_name}_LEVEL_REG = {f['threshold_port']}")
+            print(f"\tassign\t\t{fifo_name}_LEVEL_REG = {f['level_port']};")
             if f["flush_enable"] == True:
                 flush_reg_name = f"{fifo_name}_FLUSH_REG";
                 print(f"\treg\t\t{flush_reg_name};")
