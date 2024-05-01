@@ -300,13 +300,14 @@ def print_registers(bus_type):
     if "fifos" in IP:
         print("\t// FIFO Registers")
         for f in IP['fifos']:
-            fifo_aw = int(math.log2(f["depth"]))
+            # fifo_aw = int(math.log2(f["depth"]))
+            fifo_aw = f['address_width']
             fifo_name = f"{f['name'].upper()}";
             print(f"\t// {fifo_name} Registers")
-            print(f"\treg\t[{fifo_aw-1}:0]\t{fifo_name}_THRESHOLD_REG;")
+            print(f"\treg\t[{fifo_aw}-1:0]\t{fifo_name}_THRESHOLD_REG;")
             print(f"\tassign\t\t{f['threshold_port']} = {fifo_name}_THRESHOLD_REG;")
-            print(f"\t`{bus_type}_REG({fifo_name}_THRESHOLD_REG, 0, 1)")
-            print(f"\twire\t[{fifo_aw-1}:0]\t{fifo_name}_LEVEL_REG;")
+            print(f"\t`{bus_type}_REG({fifo_name}_THRESHOLD_REG, 0, {fifo_aw})")
+            print(f"\twire\t[{fifo_aw}-1:0]\t{fifo_name}_LEVEL_REG;")
             print(f"\tassign\t\t{fifo_name}_LEVEL_REG = {f['level_port']};")
             if f["flush_enable"] == True:
                 flush_reg_name = f"{fifo_name}_FLUSH_REG";
@@ -533,6 +534,9 @@ def print_rdata(bus_type):
     if "fifos" in IP:
         for f in IP["fifos"]:
             print(f"\t\t\t({prefix}ADDR[`{bus_type}_AW-1:0] == {f['name'].upper()}_LEVEL_REG_OFFSET)\t? {f['name'].upper()}_LEVEL_REG :")
+            print(f"\t\t\t({prefix}ADDR[`{bus_type}_AW-1:0] == {f['name'].upper()}_THRESHOLD_REG_OFFSET)\t? {f['name'].upper()}_THRESHOLD_REG :")
+            print(f"\t\t\t({prefix}ADDR[`{bus_type}_AW-1:0] == {f['name'].upper()}_FLUSH_REG_OFFSET)\t? {f['name'].upper()}_FLUSH_REG :")
+
 
     
     print("\t\t\t32'hDEADBEEF;")
