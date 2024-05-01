@@ -23,9 +23,9 @@ Generates a YAML template of the IP given its Verilog RTL source file.
 
 ## A Typical Workflow
 
-1. Describe the IP in YAML or JSON format. The format is outlined in the following section. To make things easier, ```v2yaml.py``` may be used to generate a template YAML file from the IP RTL Verilog file with some of the sections filled aautomatically for you.
+1. Describe the IP in YAML or JSON format. The format is outlined in the following section. To make things easier, ```v2yaml.py``` may be used to generate a template YAML file from the IP RTL Verilog file with some of the sections filled automatically for you.
 
-2. [Optional] Convert the YAML file into JSON using tools such as [this one](https://onlineyamltools.com/convert-yaml-to-json).
+2. [**Optional**] Convert the YAML file into JSON using tools such as [this one](https://onlineyamltools.com/convert-yaml-to-json). *Perform this step if you prefer dealing with JSON instead of YAML format.*
 
 3. Generate the wrapper RTL by invoking: 
 
@@ -51,7 +51,7 @@ Generates a YAML template of the IP given its Verilog RTL source file.
 
 A YAML file is used to capture the IP information for the sake of generating the RTL bus wrappers including I/O registers. This includes:
 
-Note: The key/property ``port`` always means a port in the IP to wrap.
+> *Note:* The key/property ``port`` always means a port in the IP to wrap.
 
 ### General Information
 
@@ -124,7 +124,7 @@ ports:
     description: "The output data"
 ```
 
-Note: The CLock, Rest and External Interfaces must not be listed here. 
+> *Note:* The CLock, Rest and External Interfaces must not be listed here. 
 
 ### External Interface Definitions
 IP External Interfaces to other sub-systems. In other words, the IP ports that pass through the bus wrapper to outside the wrapper; typically, the IP ports connected to I/Os. For example:
@@ -153,7 +153,7 @@ external_interface:
     description: The input serial data 
 ```
 
-Note: If you need to drive an external interface using an I/O register field, just create passthrough ports in the wrapped IP. One of these ports is input and the other port is output. Connect the two ports inside the wrapped IP (e.e., using ``assign`` statement in Verilog). Set the ``port`` property in the field to the input port and the ``external_interface`` port to the output port.
+> *Note:* If you need to drive an external interface using an I/O register field, just create passthrough ports in the wrapped IP. One of these ports is input and the other port is output. Connect the two ports inside the wrapped IP (e.e., using ``assign`` statement in Verilog). Set the ``port`` property in the field to the input port and the ``external_interface`` port to the output port.
 
 ### Clock and Reset Definitions
 
@@ -206,7 +206,7 @@ registers:
   - ``r`` for registers that are meant for reading only; hence they cannot be written. 
   - ``rw`` for registers that are read and written differently; for example, the data register of a GPIO peripheral. Reading this register returns the data provided on input GPIO pins and writing the register sets the values of output GPIO pins.
 
-- The ``bit_access`` property is used to enable bit-level access (Not implemented functionality).
+- The ``bit_access`` property is used to enable bit-level access (**Not Implemented**).
 - The ``fifo`` property is used to specify whether this register is used to access a FIFO. If it is set to ``yes`` the FIFO has to be defined.
 - The ``auto_clear`` property is used to clear the field to 0 after writing to it 1.
 
@@ -220,7 +220,6 @@ This section is used if the IP has internal data FIFOs. This is typically the ca
 - The `flush_enable` and `flush_port` are used to enable the FIFO flush feature and set the port if enabled.
 - The `threshold_port` is used to specify the level threshold port
 - The `level_port` is used to specify the level port
-
 
 ```yaml
 fifos:
@@ -248,7 +247,16 @@ fifos:
     level_port: tx_level
 ```
 
-### Event Flags Definitions
+> *Note:* In this example, `MDW` is a module parameter.
+
+The bus wrapper generator automatically generates the following registers for the fifo:
+|Register | Mode | Function  |
+|---|---|---
+|```LEVEL_REG```| R| The FIFO current level (Number of data words in the FIFO).|
+|```THRESHOLD_REG```| W| The level above which the FIFO generates an interrupt.|
+|```FLUSH_REG```| W| Writing any value to this register flushes the FIFO. This register is auto-cleared.|
+
+### Event Flags Definition
 Event flags are used for generating interrupts. For an example:
 
 ```yaml
@@ -264,8 +272,8 @@ The bus wrapper generator generates four different registers to manage interrupt
 
 |Register | Mode | Function  |
 |---|---|---
-|RIS | Read-only  | Has the interrupt flags before masking  |
-|IM  | Read/Write  | Interrupt Masking, clearing a bit disables the corresponding interrupt  |
-|MIS | Read-only | Masked Interrupt status, the outcome of bitwise-ANDing RIS and IM |
-|IC | Read/Write | Interrupt Flag Clear, setting a bit clears the corresponding interrupt flag |
+|```RIS``` | Read-only (R)| Has the interrupt flags before masking  |
+|```IM```  | Writable (W)| Interrupt Masking, clearing a bit disables the corresponding interrupt  |
+|```MIS``` | Read-only (R)| Masked Interrupt status, the outcome of bitwise-ANDing RIS and IM |
+|```IC``` | Writable (W)| Interrupt Flag Clear, setting a bit clears the corresponding interrupt flag |
 
