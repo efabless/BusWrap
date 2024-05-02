@@ -19,8 +19,13 @@
 `define		AHBL_BLOCK(name, init)		always @(posedge HCLK or negedge HRESETn) if(~HRESETn) name <= init;
 
 `define     AHBL_CTRL_SIGNALS           reg  last_HSEL, last_HWRITE; reg [31:0] last_HADDR; reg [1:0] last_HTRANS;\
-                                        always@ (posedge HCLK) begin \
-                                            if(HREADY) begin\
+                                        always@ (posedge HCLK or negedge HRESETn) begin \
+					   if(~HRESETn) begin \
+					       last_HSEL       <= 1'b0;\
+					       last_HADDR      <= 1'b0;\
+					       last_HWRITE     <= 1'b0;\
+					       last_HTRANS     <= 1'b0;\
+				            end else if(HREADY) begin \
                                                 last_HSEL       <= HSEL;\
                                                 last_HADDR      <= HADDR;\
                                                 last_HWRITE     <= HWRITE;\
