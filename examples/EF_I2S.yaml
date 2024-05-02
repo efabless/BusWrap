@@ -33,8 +33,11 @@ parameters:
   - name: AW
     default: 4
     description: "FIFO Address width; Depth=2^AW"
-
 ports:
+  - name: fifo_en
+    width: 1
+    direction: input
+    description: FIFO enable
   - name: fifo_rd
     width: 1
     direction: input
@@ -43,6 +46,10 @@ ports:
     width: AW
     direction: input
     description: FIFO Threshold
+  - name: fifo_flush
+    width: 1
+    direction: input
+    description: FIFO Flush
   - name: fifo_full
     width: 1
     direction: output
@@ -55,9 +62,6 @@ ports:
     width: AW
     direction: output
     description: The current FIFO level
-  - name: fifo_flush
-    width: 1
-    description: FIFO flushing control
   - name: fifo_level_above
     width: 1
     direction: output
@@ -82,6 +86,18 @@ ports:
     width: 8
     direction: input
     description: The clock prescaler
+  - name: avg_threshold
+    width: 32
+    direction: input
+    description: The samples average threshold
+  - name: avg_flag
+    width: 1
+    direction: output
+    description: Flag raised when the samples average is above a threshold 
+  - name: avg_en
+    width: 1
+    direction: input
+    description: Enable average feature 
   - name: channels
     width: 2
     direction: input
@@ -133,22 +149,46 @@ registers:
     bit_access: no
     write_port: sck_prescaler
     description: The Prescaler register; used to determine the sck signal frequency . $Prescaler = clk_freq/(2 x sck_freq) - 1$.
+  - name: AVGT
+    size: 32
+    mode: w
+    fifo: no
+    offset: 8
+    bit_access: no
+    write_port: avg_threshold
+    description: The Average threshold
   - name: CTRL
-    size: 1
+    size: 3
+    mode: w
+    fifo: no
+    offset: 12
+    bit_access: no
+    init: "'h0"
+    description: "Control Register; 0:Enable, 1:FIFO Enable."
+    fields:
+      - name: en
+        bit_offset: 0
+        bit_width: 1
+        write_port: en
+        description: "Enable"
+      - name: fifo_en
+        bit_offset: 1
+        bit_width: 1
+        write_port: fifo_en
+        description: "Fifo Enable"
+      - name: avg_en
+        bit_offset: 2
+        bit_width: 1
+        write_port: avg_en
+        description: "Averaging enable"
+  - name: CFG
+    size: 10
     mode: w
     fifo: no
     offset: 16
     bit_access: no
-    write_port: en
-    description: Enable 
-  - name: CFG
-    size: 9
-    mode: w
-    fifo: no
-    offset: 20
-    bit_access: no
     init: "'h3F08"
-    description: "0-1: Channels to read, '01': right, '10': left, '11': Both (stereo) 2: Sign Extend 3: Left Justify 4-8: Sample Size (0-31)"
+    description: "Configuration Register, 0-1: Channels to read, '01': right, '10': left, '11': Both (stereo) 2: Sign Extend 3: Left Justify 4-8: Sample Size (0-31)"
     fields:
       - name: channels
         bit_offset: 0
@@ -181,12 +221,15 @@ flags:
   - name: FIFOF
     port: fifo_full
     description: Receive FIFO is Full.
+  - name: AVGF
+    port: avg_flag
+    description: The avg is above the threshold.
 
 fifos:
-  - name: "rx_fifo"
+  - name: RX_FIFO
     type: read  
-    width: 8
-    depth: 32 
+    width: DW
+    address_width: AW 
     register: RXDATA
     data_port: fifo_rdata
     control_port: fifo_rd

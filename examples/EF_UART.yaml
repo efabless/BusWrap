@@ -323,7 +323,7 @@ fifos:
   - name: RX_FIFO
     type: read  
     width: MDW
-    depth: 16 
+    address_width: FAW
     register: RXDATA
     data_port: rdata
     control_port: rd
@@ -334,7 +334,7 @@ fifos:
   - name: TX_FIFO
     type: write
     width: MDW
-    depth: 16
+    address_width: FAW
     register: TXDATA
     data_port: wdata
     control_port: wr
