@@ -564,6 +564,9 @@ def print_wb_dat_o(bus_type):
     if "fifos" in IP:
         for f in IP["fifos"]:
             print(f"\t\t\t(adr_i[`{bus_type}_AW-1:0] == {f['name'].upper()}_LEVEL_REG_OFFSET)\t? {f['name'].upper()}_LEVEL_REG :")
+            print(f"\t\t\t(adr_i[`{bus_type}_AW-1:0] == {f['name'].upper()}_THRESHOLD_REG_OFFSET)\t? {f['name'].upper()}_THRESHOLD_REG :")
+            print(f"\t\t\t(adr_i[`{bus_type}_AW-1:0] == {f['name'].upper()}_FLUSH_REG_OFFSET)\t? {f['name'].upper()}_FLUSH_REG :")
+
 
     print("\t\t\t32'hDEADBEEF;")
 
