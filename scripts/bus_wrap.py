@@ -297,6 +297,7 @@ def print_registers(bus_type):
         None
     """
 
+    """
     if "fifos" in IP:
         print("\t// FIFO Registers")
         for f in IP['fifos']:
@@ -316,7 +317,7 @@ def print_registers(bus_type):
                 print(f"\tassign\t\t{f['flush_port']} = {flush_reg_name};")
             print("")
     print("")
-
+    """
     if "registers" not in IP:
         return
 
@@ -354,8 +355,10 @@ def print_registers(bus_type):
                                 to = f"({f['bit_width']} + {f['bit_offset'] - 1})"
                         print(f"\tassign\t{f['write_port']}\t=\t{r['name']}_REG[{to} : {f['bit_offset']}];")
                         if "auto_clear" in f:
+                            #print(f["auto_clear"])
                             if f["auto_clear"] == True:
                                 update_pattern = update_pattern | (1 << f_indx)
+                                #print(update_pattern)
                         f_indx = f_indx + 1
                     #print(f"{(~update_pattern & (1<<r['size'])-1):x}")
                 else:
@@ -501,6 +504,7 @@ def print_registers_offsets(bus_type):
         print(f"\tlocalparam\tRIS_REG_OFFSET = `{bus_type}_AW'd{RIS_OFF};")
         print(f"\tlocalparam\tIC_REG_OFFSET = `{bus_type}_AW'd{IC_OFF};")
 
+    """
     # Fifo Registers
     if "fifos" in IP:
         f_indx = 0
@@ -511,7 +515,7 @@ def print_registers_offsets(bus_type):
             f_indx = f_indx + 1
                
     print("")
-
+    """
 def print_rdata(bus_type):
     IRQ_REGS = ["IM", "MIS", "RIS", "IC"]
     prefix = "last_H"
@@ -530,14 +534,14 @@ def print_rdata(bus_type):
     if "flags" in IP:
         for r in IRQ_REGS:
             print(f"\t\t\t({prefix}ADDR[`{bus_type}_AW-1:0] == {r}_REG_OFFSET)\t? {r}_REG :")
-
+    """
     if "fifos" in IP:
         for f in IP["fifos"]:
             print(f"\t\t\t({prefix}ADDR[`{bus_type}_AW-1:0] == {f['name'].upper()}_LEVEL_REG_OFFSET)\t? {f['name'].upper()}_LEVEL_REG :")
             print(f"\t\t\t({prefix}ADDR[`{bus_type}_AW-1:0] == {f['name'].upper()}_THRESHOLD_REG_OFFSET)\t? {f['name'].upper()}_THRESHOLD_REG :")
             print(f"\t\t\t({prefix}ADDR[`{bus_type}_AW-1:0] == {f['name'].upper()}_FLUSH_REG_OFFSET)\t? {f['name'].upper()}_FLUSH_REG :")
 
-
+    """
     
     print("\t\t\t32'hDEADBEEF;")
     
@@ -560,13 +564,13 @@ def print_wb_dat_o(bus_type):
     if "flags" in IP:
         for r in IRQ_REGS:
             print(f"\t\t\t(adr_i[`{bus_type}_AW-1:0] == {r}_REG_OFFSET)\t? {r}_REG :")
-
+    """
     if "fifos" in IP:
         for f in IP["fifos"]:
             print(f"\t\t\t(adr_i[`{bus_type}_AW-1:0] == {f['name'].upper()}_LEVEL_REG_OFFSET)\t? {f['name'].upper()}_LEVEL_REG :")
             print(f"\t\t\t(adr_i[`{bus_type}_AW-1:0] == {f['name'].upper()}_THRESHOLD_REG_OFFSET)\t? {f['name'].upper()}_THRESHOLD_REG :")
             print(f"\t\t\t(adr_i[`{bus_type}_AW-1:0] == {f['name'].upper()}_FLUSH_REG_OFFSET)\t? {f['name'].upper()}_FLUSH_REG :")
-
+    """
 
     print("\t\t\t32'hDEADBEEF;")
 
@@ -726,67 +730,64 @@ def print_tb(bus_type):
 
 
 def print_reg_def():
-   ip_name = IP['info']['name'].upper()
-   off = 0
-   print_license()
-   print(f"#ifndef {ip_name}REGS_H")
-   print(f"#define {ip_name}REGS_H\n")
-   print("#ifndef IO_TYPES")
-   print("#define IO_TYPES")
-   print("#define   __R     volatile const unsigned int")
-   print("#define   __W     volatile       unsigned int")
-   print("#define   __RW    volatile       unsigned int")
-   print("#endif\n")
-  
-   for r in IP["registers"]:
-       if "fields" in r:
-           for f in r["fields"]:
-               if not isinstance(f['bit_width'], int):
-                   width = get_param_default(f['bit_width'])
-               else:
-                   width = f['bit_width']
-               print(f"#define {ip_name}_{r['name'].upper()}_REG_{f['name'].upper()}_BIT\t{f['bit_offset']}")
-               mask = hex((2**width - 1) << f['bit_offset'])
-               print(f"#define {ip_name}_{r['name'].upper()}_REG_{f['name'].upper()}_MASK\t{mask}")
+    ip_name = IP['info']['name'].upper()
+    off = 0
+    print_license()
+    print(f"#ifndef {ip_name}REGS_H")
+    print(f"#define {ip_name}REGS_H\n")
+    print("#ifndef IO_TYPES")
+    print("#define IO_TYPES")
+    print("#define   __R     volatile const unsigned int")
+    print("#define   __W     volatile       unsigned int")
+    print("#define   __RW    volatile       unsigned int")
+    print("#endif\n")
 
+    for r in IP["registers"]:
+        if "fields" in r:
+            for f in r["fields"]:
+                if not isinstance(f['bit_width'], int):
+                    width = get_param_default(f['bit_width'])
+                else:
+                    width = f['bit_width']
+                print(f"#define {ip_name}_{r['name'].upper()}_REG_{f['name'].upper()}_BIT\t{f['bit_offset']}")
+                mask = hex((2**width - 1) << f['bit_offset'])
+                print(f"#define {ip_name}_{r['name'].upper()}_REG_{f['name'].upper()}_MASK\t{mask}")
+    print()   
+    
+    # Add Int Registers fields
+    if "flags" in IP:
+        c = 0;
+        #fcnt = len(self.ip.data["flags"])
+        for flag in IP["flags"]:
+            w = get_port_width(flag["port"])
+            if isinstance(w, int):
+                width = w
+            else:
+                width = get_param_default(w)
+            pattern = (2**width - 1) << c
+            print(f"#define {ip_name}_{flag['name'].upper()}_FLAG\t{hex(pattern)}")
+            c = c + width
 
-   print()   
-   # add Int Registers fields
-   if "flags" in IP:
-       c = 0;
-       #fcnt = len(self.ip.data["flags"])
-       for flag in IP["flags"]:
-           w = get_port_width(flag["port"])
-           if isinstance(w, int):
-               width = w
-           else:
-               width = get_param_default(w)
-           pattern = (2**width - 1) << c
-           print(f"#define {ip_name}_{flag['name'].upper()}_FLAG\t{hex(pattern)}")
-           c = c + width
+    print()
 
-
-   print()
-
-
-   print(f"typedef struct _{ip_name}_TYPE_ "+"{")
-   for index, r in enumerate(IP["registers"]):
-       reg_type = "__RW"
-       if r["mode"] == "r":
-           reg_type = "__R "
-       elif r["mode"] == "w":
-           reg_type = "__W "
-       print(f"\t{reg_type}\t{r['name']};")
-       off = off + 4
-   reserved_size = int((INT_REG_OFF - off)/4)
-   print(f"\t__R \treserved[{(reserved_size)}];")
-   print("\t__RW\tim;")
-   print("\t__R \tmis;")
-   print("\t__R \tris;")
-   print("\t__W \ticr;")
-   print("}", end="")
-   print(f" {ip_name}_TYPE;")
-   print("\n#endif\n")
+    print(f"typedef struct _{ip_name}_TYPE_ "+"{")
+    for index, r in enumerate(IP["registers"]):
+        reg_type = "__RW"
+        if r["mode"] == "r":
+            reg_type = "__R "
+        elif r["mode"] == "w":
+            reg_type = "__W "
+        print(f"\t{reg_type}\t{r['name']};")
+        off = off + 4
+    reserved_size = int((INT_REG_OFF - off)/4)
+    print(f"\t__R \treserved[{(reserved_size)}];")
+    print("\t__RW\tim;")
+    print("\t__R \tmis;")
+    print("\t__R \tris;")
+    print("\t__W \ticr;")
+    print("}", end="")
+    print(f" {ip_name}_TYPE;")
+    print("\n#endif\n")
 
 
 """
@@ -939,7 +940,7 @@ def print_md_tables():
             else:
                 reset_value = "0x00000000"
             print("|{0}|{1}|{2}|{3}|{4}|".format(r["name"], hex(r["offset"])[2:].zfill(4), reset_value, r["mode"], r["description"]))
-    
+    """
     if "fifos" in IP:
         f_indx = 0
         for f in IP["fifos"]:
@@ -947,7 +948,7 @@ def print_md_tables():
             print("|{0}|{1}|{2}|{3}|{4}|".format(f"{f['name'].upper()}_THRESHOLD", hex(THRESHOLD_OFF + 0x10 * f_indx)[2:].zfill(4), "0x00000000", "w", f"{f['name'].upper()} level threshold register."))
             print("|{0}|{1}|{2}|{3}|{4}|".format(f"{f['name'].upper()}_FLUSH", hex(FLUSH_OFF + 0x10 * f_indx)[2:].zfill(4),f"{f['name'].upper()}_FLUSH", "0x00000000", "w", f"{f['name'].upper()} flush register."))
             f_indx = f_indx + 1
-
+    """
     if "flags" in IP:
         print("|{0}|{1}|{2}|{3}|{4}|".format("IM", hex(IM_OFF)[2:].zfill(4), "0x00000000", "w", "Interrupt Mask Register; write 1/0 to enable/disable interrupts; check the interrupt flags table for more details"))
         print("|{0}|{1}|{2}|{3}|{4}|".format("RIS", hex(RIS_OFF)[2:].zfill(4), "0x00000000", "w", "Raw Interrupt Status; reflects the current interrupts status;check the interrupt flags table for more details"))
@@ -969,7 +970,7 @@ def print_md_tables():
                         width = get_param_default(f["bit_width"])
                     print("|{0}|{1}|{2}|{3}|".format(f["bit_offset"], f["name"], width, f["description"]))
             print()
-        
+    """"    
     if "fifos" in IP:
         f_indx = 0
         fields = [{'name':"", 'bit_offset':0, 'description':"", 'bit_width':0}]
@@ -999,7 +1000,7 @@ def print_md_tables():
             fifo_reg['fields'] = fields
             print_reg_bf(fifo_reg)
             f_indx = f_indx + 1
-
+    """
     if "flags" in IP:
         c = 0;
         print("\n### Interrupt Flags\n")
@@ -1100,6 +1101,61 @@ def exit_with_message(msg):
    print(msg)
    sys.exit(f"Usage: {sys.argv[0]} ip.yml|ip.json -apb|-ahbl|-wb -tb|-ch|-md")   
 
+def process_fifos():
+    level_fields = [{'name':"level", 'bit_offset':0, 'description':"FIFO Level", 'bit_width':0, 'bit_access':"no"}]
+    fifo_level_reg = {"name":"level", "size":0, 'description': "", 'fifo':"no", 'read_port':"", 'fields':level_fields}
+
+    threshold_fields = [{'name':"threshold", 'bit_offset':0, 'description':"FIFO Level Threshold", 'bit_width':0, 'bit_access':"no"}]
+    fifo_threshold_reg = {"name":"threshold", "size":0, 'description': "", 'fifo':"no", "fields":threshold_fields}
+
+    flush_fields = [{'name':"flush", 'bit_offset':0, 'description':"FIFO Flush", 'bit_width':0, 'bit_access':"no"}]
+    fifo_flush_reg = {"name":"flush", "size":0, 'fifo':"no", "fields":flush_fields}
+
+    f_indx = 0
+        
+    if "fifos" in IP:
+        for f in IP["fifos"]:
+            fifo_level_reg['name'] = f"{f['name'].upper()}_LEVEL"
+            fifo_level_reg['size'] = f['address_width']
+            fifo_level_reg['mode'] = "r"
+            fifo_level_reg['bit_access'] = "no"
+            fifo_level_reg['offset'] = LEVEL_OFF + 0x10 * f_indx
+            fifo_level_reg['description'] = f"{f['name'].upper()} Level Register"
+            level_fields[0]['name'] = "level"
+            level_fields[0]['bit_offset'] = 0
+            level_fields[0]['bit_width'] = f['address_width']
+            level_fields[0]['description'] = "FIFO data level"
+            level_fields[0]['read_port'] = f['level_port'] 
+            fifo_level_reg['fields'] = level_fields
+            print(type(IP['registers']))
+            IP['registers'].append(fifo_level_reg)
+
+            fifo_threshold_reg['name'] = f"{f['name'].upper()}_THRESHOLD"
+            fifo_threshold_reg['size'] = 1
+            fifo_threshold_reg['mode'] = "w"
+            #fifo_threshold_reg['write_port'] = f['threshold_port'] 
+            fifo_threshold_reg['offset'] = THRESHOLD_OFF + 0x10 * f_indx
+            fifo_threshold_reg['description'] = f"{f['name'].upper()} Level Threshold Register"
+            threshold_fields[0]['bit_width'] = 1
+            threshold_fields[0]['description'] = "FIFO level threshold value"
+            threshold_fields[0]['write_port'] = f['threshold_port'] 
+            fifo_threshold_reg['fields'] = threshold_fields
+            IP['registers'].append(fifo_threshold_reg)
+
+            fifo_flush_reg['name'] = f"{f['name'].upper()}_FLUSH"
+            fifo_flush_reg['size'] = 1
+            fifo_flush_reg['mode'] = "w"
+            #fifo_flush_reg['write_port'] = f['flush_port']
+            fifo_flush_reg['offset'] = FLUSH_OFF + + 0x10 * f_indx
+            fifo_flush_reg['description'] = f"{f['name'].upper()} Flush Register"
+            flush_fields[0]['bit_width'] = 1
+            flush_fields[0]['description'] = "FIFO flush"
+            flush_fields[0]['auto_clear'] = True
+            flush_fields[0]['write_port'] = f['flush_port']
+            fifo_flush_reg['fields'] = flush_fields
+            IP['registers'].append(fifo_flush_reg)
+            
+            f_indx = f_indx + 1
 
 def main():
     global IP
@@ -1136,6 +1192,8 @@ def main():
                 IP=yaml.safe_load(stream)
             except Exception:
                 raise sys.exit("Error loading the YAML file! Please check the file for syntax errors; you may use yamllint for this.")
+
+    process_fifos()
 
     if "-tb" in opts:
         print_tb(bus_type)
