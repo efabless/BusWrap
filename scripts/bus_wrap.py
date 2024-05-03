@@ -29,13 +29,14 @@ import sys
 import math
 import yaml
 import json
+import copy
 
 IP  =   None
 
 # Configurations to be loaded from a configuration file
 BUS_AW          = 16
-INT_REG_OFF     = 0x0F00
-FIFO_REG_OFF    = 0x1000
+INT_REG_OFF     = 0xFF00
+FIFO_REG_OFF    = 0xFE00
 
 # Interrupt registers offsets
 IC_OFF          = 0x0C + INT_REG_OFF
@@ -44,9 +45,9 @@ IM_OFF          = 0x00 + INT_REG_OFF
 MIS_OFF         = 0x04 + INT_REG_OFF
 
 # FIFO register offsets
-FLUSH_OFF       = 0x0 + FIFO_REG_OFF
+FLUSH_OFF       = 0x8 + FIFO_REG_OFF
 THRESHOLD_OFF   = 0x4 + FIFO_REG_OFF
-LEVEL_OFF       = 0x8 + FIFO_REG_OFF
+LEVEL_OFF       = 0x0 + FIFO_REG_OFF
 
 def print_license():
    print(f"/*\n\tCopyright {IP['info']['date'].split('-')[2]} {IP['info']['owner']}\n")
@@ -731,7 +732,6 @@ def print_tb(bus_type):
 
 def print_reg_def():
     ip_name = IP['info']['name'].upper()
-    off = 0
     print_license()
     print(f"#ifndef {ip_name}REGS_H")
     print(f"#define {ip_name}REGS_H\n")
@@ -771,7 +771,15 @@ def print_reg_def():
     print()
 
     print(f"typedef struct _{ip_name}_TYPE_ "+"{")
+    off = 0
+    g = 0
     for index, r in enumerate(IP["registers"]):
+        #print(f"{off} - {r['offset']}")
+        if r['offset'] != off:
+            gap_size = int((r['offset'] - off)/4)
+            off = r['offset'] 
+            print(f"\t__R \tgap_{g}[{gap_size}];")
+            g = g + 1
         reg_type = "__RW"
         if r["mode"] == "r":
             reg_type = "__R "
@@ -779,6 +787,8 @@ def print_reg_def():
             reg_type = "__W "
         print(f"\t{reg_type}\t{r['name']};")
         off = off + 4
+
+    #print(f"{off} - {INT_REG_OFF}")
     reserved_size = int((INT_REG_OFF - off)/4)
     print(f"\t__R \treserved[{(reserved_size)}];")
     print("\t__RW\tim;")
@@ -1127,8 +1137,10 @@ def process_fifos():
             level_fields[0]['description'] = "FIFO data level"
             level_fields[0]['read_port'] = f['level_port'] 
             fifo_level_reg['fields'] = level_fields
-            print(type(IP['registers']))
-            IP['registers'].append(fifo_level_reg)
+            #print(type(IP['registers']))
+            x = dict()
+            x = copy.deepcopy(fifo_level_reg)
+            IP['registers'].append(x)
 
             fifo_threshold_reg['name'] = f"{f['name'].upper()}_THRESHOLD"
             fifo_threshold_reg['size'] = 1
@@ -1140,7 +1152,9 @@ def process_fifos():
             threshold_fields[0]['description'] = "FIFO level threshold value"
             threshold_fields[0]['write_port'] = f['threshold_port'] 
             fifo_threshold_reg['fields'] = threshold_fields
-            IP['registers'].append(fifo_threshold_reg)
+            x = dict()
+            x = copy.deepcopy(fifo_threshold_reg)
+            IP['registers'].append(x)
 
             fifo_flush_reg['name'] = f"{f['name'].upper()}_FLUSH"
             fifo_flush_reg['size'] = 1
@@ -1153,8 +1167,12 @@ def process_fifos():
             flush_fields[0]['auto_clear'] = True
             flush_fields[0]['write_port'] = f['flush_port']
             fifo_flush_reg['fields'] = flush_fields
-            IP['registers'].append(fifo_flush_reg)
+            x = dict()
+            x = copy.deepcopy(fifo_flush_reg)
+            IP['registers'].append(x)
             
+            print(fifo_flush_reg['offset'])
+
             f_indx = f_indx + 1
 
 def main():
