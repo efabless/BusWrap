@@ -496,14 +496,14 @@ def print_registers_offsets(bus_type):
     # user defined registers
     if "registers" in IP:
         for r in IP['registers']:
-            print(f"\tlocalparam\t{r['name']}_REG_OFFSET = `{bus_type}_AW'd{r['offset']};")
+            print(f"\tlocalparam\t{r['name']}_REG_OFFSET = `{bus_type}_AW'h{hex(r['offset'])[2:].zfill(4).upper()};")
 
     # Interrupt registers
     if "flags" in IP:
-        print(f"\tlocalparam\tIM_REG_OFFSET = `{bus_type}_AW'd{IM_OFF};")
-        print(f"\tlocalparam\tMIS_REG_OFFSET = `{bus_type}_AW'd{MIS_OFF};")
-        print(f"\tlocalparam\tRIS_REG_OFFSET = `{bus_type}_AW'd{RIS_OFF};")
-        print(f"\tlocalparam\tIC_REG_OFFSET = `{bus_type}_AW'd{IC_OFF};")
+        print(f"\tlocalparam\tIM_REG_OFFSET = `{bus_type}_AW'h{hex(IM_OFF)[2:].zfill(4).upper()};")
+        print(f"\tlocalparam\tMIS_REG_OFFSET = `{bus_type}_AW'h{hex(MIS_OFF)[2:].zfill(4).upper()};")
+        print(f"\tlocalparam\tRIS_REG_OFFSET = `{bus_type}_AW'h{hex(RIS_OFF)[2:].zfill(4).upper()};")
+        print(f"\tlocalparam\tIC_REG_OFFSET = `{bus_type}_AW'h{hex(IC_OFF)[2:].zfill(4).upper()};")
 
     """
     # Fifo Registers
@@ -778,7 +778,7 @@ def print_reg_def():
         if r['offset'] != off:
             gap_size = int((r['offset'] - off)/4)
             off = r['offset'] 
-            print(f"\t__R \tgap_{g}[{gap_size}];")
+            print(f"\t__R \treserved_{g}[{gap_size}];")
             g = g + 1
         reg_type = "__RW"
         if r["mode"] == "r":
@@ -790,11 +790,11 @@ def print_reg_def():
 
     #print(f"{off} - {INT_REG_OFF}")
     reserved_size = int((INT_REG_OFF - off)/4)
-    print(f"\t__R \treserved[{(reserved_size)}];")
-    print("\t__RW\tim;")
-    print("\t__R \tmis;")
-    print("\t__R \tris;")
-    print("\t__W \ticr;")
+    print(f"\t__R \treserved_{g}[{(reserved_size)}];")
+    print("\t__RW\tIM;")
+    print("\t__R \tMIS;")
+    print("\t__R \tRIS;")
+    print("\t__W \tIC;")
     print("}", end="")
     print(f" {ip_name}_TYPE;")
     print("\n#endif\n")
@@ -1171,7 +1171,7 @@ def process_fifos():
             x = copy.deepcopy(fifo_flush_reg)
             IP['registers'].append(x)
             
-            print(fifo_flush_reg['offset'])
+            #print(fifo_flush_reg['offset'])
 
             f_indx = f_indx + 1
 
@@ -1212,6 +1212,8 @@ def main():
                 raise sys.exit("Error loading the YAML file! Please check the file for syntax errors; you may use yamllint for this.")
 
     process_fifos()
+    IP['registers'].sort(key=lambda reg: reg['offset'], reverse=False)
+    #orig_list.sort(key=lmbda x: x.count, reverse=false)
 
     if "-tb" in opts:
         print_tb(bus_type)
@@ -1224,4 +1226,4 @@ def main():
         print_bus_wrapper(bus_type)
   
 if __name__ == '__main__':
-   main()
+    main()
