@@ -939,12 +939,7 @@ def print_md_tables():
             else:
                 reset_value = "0x00000000"
             print("|{0}|{1}|{2}|{3}|{4}|".format(r["name"], hex(r["offset"])[2:].zfill(4), reset_value, r["mode"], r["description"]))
-    if "flags" in IP:
-        print("|{0}|{1}|{2}|{3}|{4}|".format("IM", hex(IM_OFF)[2:].zfill(4), "0x00000000", "w", "Interrupt Mask Register; write 1/0 to enable/disable interrupts; check the interrupt flags table for more details"))
-        print("|{0}|{1}|{2}|{3}|{4}|".format("RIS", hex(RIS_OFF)[2:].zfill(4), "0x00000000", "w", "Raw Interrupt Status; reflects the current interrupts status;check the interrupt flags table for more details"))
-        print("|{0}|{1}|{2}|{3}|{4}|".format("MIS", hex(MIS_OFF)[2:].zfill(4), "0x00000000", "w", "Masked Interrupt Status; On a read, this register gives the current masked status value of the corresponding interrupt. A write has no effect; check the interrupt flags table for more details"))
-        print("|{0}|{1}|{2}|{3}|{4}|".format("IC", hex(IC_OFF)[2:].zfill(4), "0x00000000", "w", "Interrupt Clear Register; On a write of 1, the corresponding interrupt (both raw interrupt and masked interrupt, if enabled) is cleared; check the interrupt flags table for more details"))
-
+    
     if "fifos" in IP:
         f_indx = 0
         for f in IP["fifos"]:
@@ -952,7 +947,13 @@ def print_md_tables():
             print("|{0}|{1}|{2}|{3}|{4}|".format(f"{f['name'].upper()}_THRESHOLD", hex(THRESHOLD_OFF + 0x10 * f_indx)[2:].zfill(4), "0x00000000", "w", f"{f['name'].upper()} level threshold register."))
             print("|{0}|{1}|{2}|{3}|{4}|".format(f"{f['name'].upper()}_FLUSH", hex(FLUSH_OFF + 0x10 * f_indx)[2:].zfill(4),f"{f['name'].upper()}_FLUSH", "0x00000000", "w", f"{f['name'].upper()} flush register."))
             f_indx = f_indx + 1
-            
+
+    if "flags" in IP:
+        print("|{0}|{1}|{2}|{3}|{4}|".format("IM", hex(IM_OFF)[2:].zfill(4), "0x00000000", "w", "Interrupt Mask Register; write 1/0 to enable/disable interrupts; check the interrupt flags table for more details"))
+        print("|{0}|{1}|{2}|{3}|{4}|".format("RIS", hex(RIS_OFF)[2:].zfill(4), "0x00000000", "w", "Raw Interrupt Status; reflects the current interrupts status;check the interrupt flags table for more details"))
+        print("|{0}|{1}|{2}|{3}|{4}|".format("MIS", hex(MIS_OFF)[2:].zfill(4), "0x00000000", "w", "Masked Interrupt Status; On a read, this register gives the current masked status value of the corresponding interrupt. A write has no effect; check the interrupt flags table for more details"))
+        print("|{0}|{1}|{2}|{3}|{4}|".format("IC", hex(IC_OFF)[2:].zfill(4), "0x00000000", "w", "Interrupt Clear Register; On a write of 1, the corresponding interrupt (both raw interrupt and masked interrupt, if enabled) is cleared; check the interrupt flags table for more details"))
+ 
     if "registers" in IP:
         for r in IP["registers"]:
             print(f"\n### {r['name']} Register [Offset: {hex(r['offset'])}, mode: {r['mode']}]")
@@ -969,6 +970,36 @@ def print_md_tables():
                     print("|{0}|{1}|{2}|{3}|".format(f["bit_offset"], f["name"], width, f["description"]))
             print()
         
+    if "fifos" in IP:
+        f_indx = 0
+        fields = [{'name':"", 'bit_offset':0, 'description':"", 'bit_width':0}]
+        fifo_reg = {"name":"", "size":0, "fields":fields}
+        for f in IP["fifos"]:
+            print(f"\n### {f['name'].upper()}_LEVEL Register [Offset: {hex(LEVEL_OFF + + 0x10 * f_indx)}, mode: r]")
+            fifo_reg['name'] = "{f['name'].upper()}_LEVEL}"
+            fifo_reg['size'] = f['address_width']
+            fields[0]['name'] = "level"
+            fields[0]['bit_offset'] = 0
+            fields[0]['bit_width'] = f['address_width']
+            fields[0]['description'] = "FIFO data level"
+            fifo_reg['fields'] = fields
+            print_reg_bf(fifo_reg)
+            print(f"\n### {f['name'].upper()}_THRESHOLD Register [Offset: {hex(THRESHOLD_OFF + + 0x10 * f_indx)}, mode: w]")
+            fifo_reg['name'] = "{f['name'].upper()}_THRESHOLD}"
+            fifo_reg['size'] = 1
+            fields[0]['bit_width'] = 1
+            fields[0]['description'] = "FIFO level threshold value"
+            fifo_reg['fields'] = fields
+            print_reg_bf(fifo_reg)
+            print(f"\n### {f['name'].upper()}_FLUSH Register [Offset: {hex(FLUSH_OFF + + 0x10 * f_indx)}, mode: w]")
+            fifo_reg['name'] = "{f['name'].upper()}_FLUSH}"
+            fifo_reg['size'] = 1
+            fields[0]['bit_width'] = 1
+            fields[0]['description'] = "FIFO flush"
+            fifo_reg['fields'] = fields
+            print_reg_bf(fifo_reg)
+            f_indx = f_indx + 1
+
     if "flags" in IP:
         c = 0;
         print("\n### Interrupt Flags\n")
@@ -988,6 +1019,7 @@ def print_md_tables():
                 w = get_param_default(width)
             print(f"|{c}|{flag['name'].upper()}|{w}|{flag['description']}|")
             c += w
+
 
 
     print("\n### The Interface \n")
