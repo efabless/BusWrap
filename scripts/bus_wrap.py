@@ -1042,13 +1042,14 @@ def print_md_tables():
         for parameter in IP["parameters"]:
             print(f"|{parameter['name']}|{parameter['description']}|{parameter['default']}|")
 
-    print("\n#### Ports \n")
-    print("|Port|Direction|Width|Description|")
-    print("|---|---|---|---|")
-    for port in IP["external_interface"]:
-        print(f"|{port['name']}|{port['direction']}|{port['width']}|{port['description']}|")      
-    for port in IP["ports"]:
-        print(f"|{port['name']}|{port['direction']}|{port['width']}|{port['description']}|")
+    if "ports" in IP:
+        print("\n#### Ports \n")
+        print("|Port|Direction|Width|Description|")
+        print("|---|---|---|---|")
+        for port in IP["external_interface"]:
+            print(f"|{port['name']}|{port['direction']}|{port['width']}|{port['description']}|")      
+        for port in IP["ports"]:
+            print(f"|{port['name']}|{port['direction']}|{port['width']}|{port['description']}|")
 
     print ("## F/W Usage Guidelines:")
 
