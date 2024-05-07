@@ -92,6 +92,8 @@ info:
   analog_supply_voltage: "n/a"
   static_power: 0.0,
   dynamic_power: 0.0
+  irq_reg_offset: 0xFF00
+  fifo_reg_offset: 0xFE00
   ```
 
 ### Parameter Definitions

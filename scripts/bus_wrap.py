@@ -1192,9 +1192,8 @@ def main():
         bus_type = "AHBL"
     elif "-wb" in opts:   
         bus_type = "WB"
-        
     else:
-        exit_with_message("You must specify a bus type using -apb or -ahbl option.")
+        exit_with_message("You must specify a bus type using -wb, -apb or -ahbl option.")
 
     if ".yaml" not in args[0] and ".yml" not in args[0] and ".json" not in args[0]:
         exit_with_message("First argument must be an IP description file in YAML or JSON format.")
@@ -1212,8 +1211,22 @@ def main():
             except Exception:
                 raise sys.exit("Error loading the YAML file! Please check the file for syntax errors; you may use yamllint for this.")
 
+    # set the offset for the irq and fifo registers
+    if "irq_reg_offset" in IP['info']:
+        INT_REG_OFF = IP['info']['irq_reg_offset']
+        IC_OFF          = 0x0C + INT_REG_OFF
+        RIS_OFF         = 0x08 + INT_REG_OFF
+        IM_OFF          = 0x00 + INT_REG_OFF
+        MIS_OFF         = 0x04 + INT_REG_OFF
+    if "irq_reg_offset" in IP['info']:
+        FIFO_REG_OFF = IP['info']['fifo_reg_offset']
+        FLUSH_OFF       = 0x8 + FIFO_REG_OFF
+        THRESHOLD_OFF   = 0x4 + FIFO_REG_OFF
+        LEVEL_OFF       = 0x0 + FIFO_REG_OFF    
+
     process_fifos()
     IP['registers'].sort(key=lambda reg: reg['offset'], reverse=False)
+    
     #orig_list.sort(key=lmbda x: x.count, reverse=false)
 
     if "-tb" in opts:
