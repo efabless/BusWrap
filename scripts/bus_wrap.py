@@ -1046,8 +1046,9 @@ def print_md_tables():
         print("\n#### Ports \n")
         print("|Port|Direction|Width|Description|")
         print("|---|---|---|---|")
-        for port in IP["external_interface"]:
-            print(f"|{port['name']}|{port['direction']}|{port['width']}|{port['description']}|")      
+        if "external_interface" in IP:
+            for port in IP["external_interface"]:
+                print(f"|{port['name']}|{port['direction']}|{port['width']}|{port['description']}|")      
         for port in IP["ports"]:
             print(f"|{port['name']}|{port['direction']}|{port['width']}|{port['description']}|")
 
