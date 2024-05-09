@@ -1146,12 +1146,12 @@ def process_fifos():
             IP['registers'].append(x)
 
             fifo_threshold_reg['name'] = f"{f['name'].upper()}_THRESHOLD"
-            fifo_threshold_reg['size'] = 1
+            fifo_threshold_reg['size'] = f['address_width']
             fifo_threshold_reg['mode'] = "w"
             #fifo_threshold_reg['write_port'] = f['threshold_port'] 
             fifo_threshold_reg['offset'] = THRESHOLD_OFF + 0x10 * f_indx
             fifo_threshold_reg['description'] = f"{f['name'].upper()} Level Threshold Register"
-            threshold_fields[0]['bit_width'] = 1
+            threshold_fields[0]['bit_width'] = f['address_width']
             threshold_fields[0]['description'] = "FIFO level threshold value"
             threshold_fields[0]['write_port'] = f['threshold_port'] 
             fifo_threshold_reg['fields'] = threshold_fields
