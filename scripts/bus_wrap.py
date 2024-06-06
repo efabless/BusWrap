@@ -150,10 +150,10 @@ def print_module_header(bus_type):
         for index, ifc in enumerate(IP['external_interface']):
             if index != len(IP['external_interface']) - 1:
                 # Print interface details with comma
-                print(f"\t{ifc['direction']}\t[{ifc['width']}-1:0]\t{ifc['name']},")
+                print(f"\t{ifc['direction']}\twire\t[{ifc['width']}-1:0]\t{ifc['name']},")
             else:
                 # Print interface details without comma
-                print(f"\t{ifc['direction']}\t[{ifc['width']}-1:0]\t{ifc['name']}")
+                print(f"\t{ifc['direction']}\twire\t[{ifc['width']}-1:0]\t{ifc['name']}")
     else:
         # Print only {bus_type}_SLAVE_PORTS
         print("\t`{bus_type}_SLAVE_PORTS")
@@ -1058,13 +1058,16 @@ def print_md_tables():
         for parameter in IP["parameters"]:
             print(f"|{parameter['name']}|{parameter['description']}|{parameter['default']}|")
 
-    print("\n#### Ports \n")
-    print("|Port|Direction|Width|Description|")
-    print("|---|---|---|---|")
-    for port in IP["external_interface"]:
-        print(f"|{port['name']}|{port['direction']}|{port['width']}|{port['description']}|")      
-    for port in IP["ports"]:
-        print(f"|{port['name']}|{port['direction']}|{port['width']}|{port['description']}|")
+    if "ports" or "external_interface" in IP:
+        print("\n#### Ports \n")
+        print("|Port|Direction|Width|Description|")
+        print("|---|---|---|---|")
+        if "external_interface" in IP:
+            for port in IP["external_interface"]:
+                print(f"|{port['name']}|{port['direction']}|{port['width']}|{port['description']}|")      
+        if "ports" in IP:
+            for port in IP["ports"]:
+                print(f"|{port['name']}|{port['direction']}|{port['width']}|{port['description']}|")
 
     print ("## F/W Usage Guidelines:")
 
@@ -1159,12 +1162,12 @@ def process_fifos():
             IP['registers'].append(x)
 
             fifo_threshold_reg['name'] = f"{f['name'].upper()}_THRESHOLD"
-            fifo_threshold_reg['size'] = 1
+            fifo_threshold_reg['size'] = f['address_width']
             fifo_threshold_reg['mode'] = "w"
             #fifo_threshold_reg['write_port'] = f['threshold_port'] 
             fifo_threshold_reg['offset'] = THRESHOLD_OFF + 0x10 * f_indx
             fifo_threshold_reg['description'] = f"{f['name'].upper()} Level Threshold Register"
-            threshold_fields[0]['bit_width'] = 1
+            threshold_fields[0]['bit_width'] = f['address_width']
             threshold_fields[0]['description'] = "FIFO level threshold value"
             threshold_fields[0]['write_port'] = f['threshold_port'] 
             fifo_threshold_reg['fields'] = threshold_fields
