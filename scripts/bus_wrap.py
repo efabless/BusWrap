@@ -37,6 +37,8 @@ IP  =   None
 BUS_AW          = 16
 INT_REG_OFF     = 0xFF00
 FIFO_REG_OFF    = 0xFE00
+BIT_BAND_OFF    = 0xE000
+BYTE_BAND_OFF   = 0xD000
 
 # Interrupt registers offsets
 IC_OFF          = 0x0C + INT_REG_OFF
@@ -323,7 +325,17 @@ def print_registers(bus_type):
         return
 
     print("\t// Register Definitions")
-    for r in IP['registers']:    
+    
+    for r in IP['registers']:
+        byte_access = 0
+        if "byte_access" in r:
+            if r['byte_access'] == 1:
+                byte_access = 1
+                if r['size'] != 32:
+                    exit_with_message("Byte addressing is available only for 32-bit registers!")
+                elif bus_type != "APB":
+                    exit_with_message("Byte addressing is available only for APB wrappers!")
+
         if r['fifo'] is True:
             print(f"\twire\t[{r['size']}-1:0]\t{r['name']}_WIRE;")
         else:
@@ -368,7 +380,11 @@ def print_registers(bus_type):
                     pat = f"{r['size']}'h{(~update_pattern & (1<<r['size'])-1):x}"
                     print(f"\t`{bus_type}_REG_AC({r['name']}_REG, {r['init'] if 'init' in r else 0}, {r['size']}, {pat})")
                 else:
-                    print(f"\t`{bus_type}_REG({r['name']}_REG, {r['init'] if 'init' in r else 0}, {r['size']})")
+                    if byte_access == 0:
+                        print(f"\t`{bus_type}_REG({r['name']}_REG, {r['init'] if 'init' in r else 0}, {r['size']})")
+                    else:
+                        print(f"\t`{bus_type}_REG_BYTE({r['name']}_REG, {r['init'] if 'init' in r else 0}, {r['size']})")
+
             elif r['mode'] == 'r':
                 print(f"\twire [{r['size']}-1:0]\t{r['name']}_WIRE;")
                 if "fields" in r:

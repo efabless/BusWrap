@@ -210,11 +210,12 @@ registers:
     read_port: bus_in
     description: Data In Register; Reading from this register returns the pins status (8 pins); one bit per pin
   - name: DATAO
-    size: 8
+    size: 32
     mode: w
     fifo: no
     offset: 4
     bit_access: no
+    byte_access: yes
     write_port: bus_out
     description: Data Out Register; Writing to this register change the status of the port pins (8 pins); one bit per pin
   - name: DIR
