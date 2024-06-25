@@ -1,0 +1,3181 @@
+---
+info:
+  name: GPIO_CONTROL
+  description: Configuration control for cheetah
+  repo: 
+  owner: Efabless Corp.
+  license: APACHE 2.0
+  author: Mohamed Shalan
+  email: mshalan@efabless.com
+  version: v1.0.0
+  date: 8-28-2023
+  category: digital
+  tags:
+  bus:
+    - generic
+  type: soft
+  status: verified
+  cell_count: 
+    - IP: 72
+    - APB: 476
+    - AHBL: 493
+  width": "0.0"
+  height": "0.0"
+  technology: n/a
+  clock_freq_mhz: 
+    - IP: 1666
+    - APB: 1250
+    - AHBL: 294
+  digital_supply_voltage: n/a
+  analog_supply_voltage: n/a
+  irq_reg_offset: 0xFF00
+  fifo_reg_offset: 0xFE00
+
+ports:
+  - name: bus_hld_ovr
+    port: bus_hld_ovr
+    direction: input
+    width: 48
+    description: 
+  - name: bus_inp_dis
+    port: bus_inp_dis
+    direction: input
+    width: 48
+    description: 
+  - name: bus_ib_mode_sel
+    port: bus_ib_mode_sel
+    direction: input
+    width: 48
+    description : 
+  - name: bus_analog_en
+    port: bus_analog_en
+    direction: input
+    width: 48
+    description : 
+  - name: bus_analog_sel
+    port: bus_analog_sel
+    direction: input
+    width: 48
+    description : 
+  - name: bus_analog_pol
+    port: bus_analog_pol
+    direction: input
+    width: 48
+    description : 
+  - name: bus_slow
+    port: bus_slow
+    direction: input
+    width: 48
+    description : 
+  - name: bus_vtrip_sel
+    port: bus_vtrip_sel
+    direction: input
+    width: 48
+    description : 
+  - name: bus_dm_0
+    port: bus_dm_0
+    direction: input
+    width: 48
+    description : 
+  - name: bus_dm_1
+    port: bus_dm_1
+    direction: input
+    width: 48
+    description : 
+  - name: bus_dm_2
+    port: bus_dm_2
+    direction: input
+    width: 48
+    description : 
+
+
+external_interface:
+  - name: gpios_hld_ovr
+    port: gpios_hld_ovr
+    direction: output
+    width: 48
+    description: 
+  - name: gpios_inp_dis
+    port: gpios_inp_dis
+    direction: output
+    width: 48
+    description: 
+  - name: gpios_ib_mode_sel
+    port: gpios_ib_mode_sel
+    direction: output
+    width: 48
+    description : 
+  - name: gpios_analog_en
+    port: gpios_analog_en
+    direction: output
+    width: 48
+    description : 
+  - name: gpios_analog_sel
+    port: gpios_analog_sel
+    direction: output
+    width: 48
+    description : 
+  - name: gpios_analog_pol
+    port: gpios_analog_pol
+    direction: output
+    width: 48
+    description : 
+  - name: gpios_slow
+    port: gpios_slow
+    direction: output
+    width: 48
+    description : 
+  - name: gpios_vtrip_sel
+    port: gpios_vtrip_sel
+    direction: output
+    width: 48
+    description : 
+  - name: gpios_dm_0
+    port: gpios_dm_0
+    direction: output
+    width: 48
+    description : 
+  - name: gpios_dm_1
+    port: gpios_dm_1
+    direction: output
+    width: 48
+    description : 
+  - name: gpios_dm_2
+    port: gpios_dm_2
+    direction: output
+    width: 48
+    description : 
+
+
+clock:
+  name: clk
+
+reset:
+  name: rst_n
+  level: 0
+
+registers:
+    - name: GPIO0_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[0]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[0]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[0]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[0]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[0]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[0]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[0]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[0]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[0]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[0]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[0]
+          description: 
+    - name: GPIO1_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[1]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[1]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[1]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[1]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[1]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[1]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[1]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[1]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[1]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[1]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[1]
+          description: 
+    - name: GPIO2_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[2]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[2]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[2]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[2]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[2]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[2]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[2]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[2]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[2]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[2]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[2]
+          description: 
+    - name: GPIO3_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[3]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[3]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[3]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[3]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[3]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[3]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[3]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[3]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[3]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[3]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[3]
+          description: 
+    - name: GPIO4_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[4]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[4]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[4]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[4]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[4]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[4]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[4]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[4]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[4]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[4]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[4]
+          description: 
+    - name: GPIO5_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[5]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[5]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[5]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[5]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[5]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[5]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[5]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[5]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[5]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[5]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[5]
+          description: 
+    - name: GPIO6_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[6]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[6]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[6]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[6]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[6]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[6]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[6]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[6]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[6]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[6]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[6]
+          description: 
+    - name: GPIO7_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[7]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[7]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[7]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[7]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[7]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[7]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[7]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[7]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[7]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[7]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[7]
+          description: 
+    - name: GPIO8_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[8]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[8]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[8]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[8]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[8]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[8]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[8]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[8]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[8]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[8]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[8]
+          description: 
+    - name: GPIO9_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[9]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[9]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[9]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[9]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[9]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[9]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[9]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[9]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[9]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[9]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[9]
+          description: 
+    - name: GPIO10_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[10]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[10]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[10]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[10]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[10]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[10]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[10]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[10]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[10]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[10]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[10]
+          description: 
+    - name: GPIO11_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[11]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[11]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[11]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[11]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[11]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[11]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[11]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[11]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[11]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[11]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[11]
+          description: 
+    - name: GPIO12_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[12]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[12]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[12]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[12]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[12]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[12]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[12]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[12]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[12]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[12]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[12]
+          description: 
+    - name: GPIO13_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[13]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[13]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[13]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[13]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[13]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[13]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[13]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[13]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[13]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[13]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[13]
+          description: 
+    - name: GPIO14_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[14]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[14]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[14]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[14]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[14]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[14]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[14]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[14]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[14]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[14]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[14]
+          description: 
+    - name: GPIO15_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[15]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[15]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[15]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[15]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[15]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[15]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[15]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[15]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[15]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[15]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[15]
+          description: 
+    - name: GPIO16_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[16]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[16]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[16]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[16]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[16]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[16]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[16]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[16]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[16]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[16]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[16]
+          description: 
+    - name: GPIO17_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[17]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[17]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[17]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[17]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[17]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[17]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[17]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[17]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[17]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[17]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[17]
+          description: 
+    - name: GPIO18_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[18]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[18]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[18]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[18]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[18]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[18]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[18]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[18]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[18]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[18]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[18]
+          description: 
+    - name: GPIO19_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[19]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[19]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[19]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[19]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[19]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[19]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[19]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[19]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[19]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[19]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[19]
+          description: 
+    - name: GPIO20_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[20]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[20]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[20]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[20]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[20]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[20]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[20]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[20]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[20]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[20]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[20]
+          description: 
+    - name: GPIO21_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[21]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[21]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[21]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[21]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[21]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[21]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[21]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[21]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[21]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[21]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[21]
+          description: 
+    - name: GPIO22_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[22]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[22]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[22]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[22]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[22]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[22]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[22]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[22]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[22]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[22]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[22]
+          description: 
+    - name: GPIO23_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[23]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[23]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[23]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[23]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[23]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[23]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[23]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[23]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[23]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[23]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[23]
+          description: 
+    - name: GPIO24_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[24]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[24]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[24]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[24]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[24]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[24]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[24]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[24]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[24]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[24]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[24]
+          description: 
+    - name: GPIO25_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[25]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[25]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[25]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[25]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[25]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[25]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[25]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[25]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[25]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[25]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[25]
+          description: 
+    - name: GPIO26_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[26]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[26]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[26]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[26]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[26]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[26]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[26]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[26]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[26]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[26]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[26]
+          description: 
+    - name: GPIO27_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[27]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[27]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[27]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[27]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[27]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[27]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[27]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[27]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[27]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[27]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[27]
+          description: 
+    - name: GPIO28_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[28]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[28]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[28]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[28]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[28]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[28]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[28]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[28]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[28]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[28]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[28]
+          description: 
+    - name: GPIO29_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[29]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[29]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[29]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[29]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[29]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[29]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[29]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[29]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[29]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[29]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[29]
+          description: 
+    - name: GPIO30_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[30]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[30]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[30]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[30]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[30]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[30]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[30]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[30]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[30]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[30]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[30]
+          description: 
+    - name: GPIO31_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[31]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[31]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[31]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[31]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[31]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[31]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[31]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[31]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[31]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[31]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[31]
+          description: 
+    - name: GPIO32_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[32]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[32]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[32]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[32]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[32]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[32]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[32]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[32]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[32]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[32]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[32]
+          description: 
+    - name: GPIO33_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[33]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[33]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[33]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[33]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[33]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[33]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[33]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[33]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[33]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[33]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[33]
+          description: 
+    - name: GPIO34_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[34]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[34]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[34]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[34]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[34]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[34]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[34]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[34]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[34]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[34]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[34]
+          description: 
+    - name: GPIO35_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[35]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[35]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[35]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[35]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[35]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[35]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[35]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[35]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[35]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[35]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[35]
+          description: 
+    - name: GPIO36_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[36]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[36]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[36]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[36]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[36]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[36]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[36]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[36]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[36]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[36]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[36]
+          description: 
+    - name: GPIO37_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[37]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[37]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[37]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[37]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[37]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[37]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[37]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[37]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[37]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[37]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[37]
+          description: 
+    - name: GPIO38_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[38]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[38]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[38]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[38]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[38]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[38]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[38]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[38]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[38]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[38]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[38]
+          description: 
+    - name: GPIO39_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[39]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[39]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[39]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[39]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[39]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[39]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[39]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[39]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[39]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[39]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[39]
+          description: 
+    - name: GPIO40_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[40]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[40]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[40]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[40]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[40]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[40]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[40]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[40]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[40]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[40]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[40]
+          description: 
+    - name: GPIO41_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[41]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[41]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[41]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[41]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[41]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[41]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[41]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[41]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[41]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[41]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[41]
+          description: 
+    - name: GPIO42_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[42]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[42]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[42]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[42]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[42]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[42]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[42]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[42]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[42]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[42]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[42]
+          description: 
+    - name: GPIO43_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[43]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[43]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[43]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[43]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[43]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[43]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[43]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[43]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[43]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[43]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[43]
+          description: 
+    - name: GPIO44_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[44]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[44]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[44]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[44]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[44]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[44]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[44]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[44]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[44]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[44]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[44]
+          description: 
+    - name: GPIO45_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[45]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[45]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[45]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[45]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[45]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[45]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[45]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[45]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[45]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[45]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[45]
+          description: 
+    - name: GPIO46_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[46]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[46]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[46]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[46]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[46]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[46]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[46]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[46]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[46]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[46]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[46]
+          description: 
+    - name: GPIO47_CFG
+      size: 11
+      mode: w
+      fifo: no
+      offset: 0
+      bit_access: no
+      description: GPIO1 configuration register
+      fields:
+        - name: hld_ovr
+          bit_offset: 0
+          bit_width: 1
+          write_port: bus_hld_ovr[47]
+          description: hold override value (value is the value during hold mode)
+        - name: inp_dis
+          bit_offset: 1
+          bit_width: 1
+          write_port: bus_inp_dis[47]
+          description: input disable (0 - input enabled, 1 - input disabled)
+        - name: ib_mode_sel
+          bit_offset: 2
+          bit_width: 1
+          write_port: bus_ib_mode_sel[47]
+          description: IB mode select
+        - name: analog_en
+          bit_offset: 3
+          bit_width: 1
+          write_port: bus_analog_en[47]
+          description: analog bus enable (0 - disabled, 1 - enabled)
+        - name: analog_sel
+          bit_offset: 4
+          bit_width: 1
+          write_port: bus_analog_sel[47]
+          description: analog bus select
+        - name: analog_pol
+          bit_offset: 5
+          bit_width: 1
+          write_port: bus_analog_pol[47]
+          description: analog bus polarity
+        - name: slow
+          bit_offset: 6
+          bit_width: 1
+          write_port: bus_slow[47]
+          description: slow slew (0 - fast slew, 1 - slow slew)
+        - name: vtrip_sel
+          bit_offset: 7
+          bit_width: 1
+          write_port: bus_vtrip_sel[47]
+          description: 
+        - name: _dm_0
+          bit_offset: 8
+          bit_width: 1
+          write_port: bus_dm_0[47]
+          description: 
+        - name: _dm_1
+          bit_offset: 9
+          bit_width: 1
+          write_port: bus_dm_1[47]
+          description: 
+        - name: _dm_2
+          bit_offset: 10
+          bit_width: 1
+          write_port: bus_dm_2[47]
+          description: 

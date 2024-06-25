@@ -1,0 +1,168 @@
+info:
+  name: IIC_AUDIODAC
+  description: "Delta-sigma audio DAC (16b, 48kHz)"
+  repo: https://github.com/iic-jku/iic-audiodac-v1
+  owner: Efabless Corp.
+  license: APACHE 2.0
+  author: Harald Pretl
+  email: 
+  version: v1.0.0
+  date: '--2022'
+  category: digital
+  tags:
+    - audio
+    - dac
+    - dsmod
+  bus:
+    - generic
+  type": soft
+  status: n/a
+  qualification: n/a
+  cell_count: 
+    - IP: 797
+    - APB: 1435
+    - AHBL: 1501
+  width": 0.0
+  height": 0.0
+  technology: n/a
+  clock_freq_mhz:
+    - IP: 163
+    - APB: 135
+    - AHBL: 128
+  digital_supply_voltage: n/a
+  analog_supply_voltage: n/a
+  irq_reg_offset: 0xFF00
+  fifo_reg_offset: 0xFE00
+
+ports:
+- name: fifo_i
+  width: 16
+  direction: input
+  description: 
+- name: fifo_rdy_i
+  width: 1
+  direction: input
+  description: 
+- name: fifo_ack_o
+  width: 1
+  direction: output
+  description: 
+- name: fifo_full_o
+  width: 1
+  direction: output
+  description: 
+- name: fifo_empty_o
+  width: 1
+  direction: output
+  description: 
+- name: mode_i
+  width: 1
+  direction: input
+  description: 
+- name: volume_i
+  width: 4
+  direction: input
+  description: 
+- name: osr_i
+  width: 2
+  direction: input
+  description: 
+- name: tst_fifo_loop_i
+  width: 1
+  direction: input
+  description: 
+
+clock:
+ name: clk_i
+
+reset:
+ name: rst_n_i
+ level: 0
+
+external_interface:
+- name: vccd1
+  port: vccd1
+  width: 1
+  direction: inout
+  description: 
+- name: vssd1
+  port: vssd1
+  width: 1
+  direction: inout
+  description: 
+- name: ds_o
+  port: ds_o
+  direction: output
+  width: 1
+  description: single-bit SD-modulator output
+- name: ds_n_o
+  port: ds_n_o
+  direction: output
+  width: 1
+  description: single-bit SD-modulator inverted output
+
+registers:
+- name: DATA
+  size: 16
+  mode: w
+  fifo: no
+  offset: 0
+  bit_access: no
+  write_port: fifo_i
+  description: 16-bit audio data.
+- name: FRDY
+  size: 1
+  mode: w
+  fifo: no
+  offset: 4
+  bit_access: no
+  write_port: fifo_rdy_i
+  description: 
+- name: FACK
+  size: 1
+  mode: r
+  fifo: no
+  offset: 8
+  bit_access: no
+  read_port: fifo_ack_o
+  description: 
+
+- name: CFG
+  size: 7
+  mode: w
+  fifo: no
+  offset: 12
+  bit_access: no
+  description: Configuration Register.
+  fields:
+  - name: MODE
+    bit_offset: 0
+    bit_width: 1
+    write_port: mode_i
+    description: "0 = 1st, 1 = 2nd order SD-mod"
+  - name: VOLUME
+    bit_offset: 1
+    bit_width: 4
+    write_port: volume_i
+    description: "0 = off, 1 = min volume, 15 = max volume"
+  - name: OSR
+    bit_offset: 5
+    bit_width: 2
+    write_port: osr_i
+    description: "0 = 32; 1 = 64, 2 = 128, 3 = 256"
+- name: TST_FIFO_LOOP
+  size: 1
+  mode: w
+  fifo: no
+  offset: 16
+  bit_access: no
+  write_port: tst_fifo_loop_i
+  description:
+
+flags:
+- name: FE
+  port: fifo_empty_o
+  description: FIFO is Empty
+- name: FF
+  port: fifo_full_o
+  description: FIFO is full

@@ -1,0 +1,472 @@
+---
+info:
+  name: SYSTEM_REGS
+  description: system registers for cheetah V3
+  repo: 
+  owner: Efabless Corp.
+  license: APACHE 2.0
+  author: Mohamed Shalan
+  email: mshalan@efabless.com
+  version: v1.0.0
+  date: 8-28-2023
+  category: digital
+  tags:
+  bus:
+    - generic
+  type: soft
+  status: verified
+  cell_count: 
+    - IP: 
+    - APB: 
+    - AHBL: 
+    - WB: 
+  width": "0.0"
+  height": "0.0"
+  technology: n/a
+  clock_freq_mhz: 
+    - IP: 
+    - APB: 
+    - AHBL: 
+    - WB: 
+  digital_supply_voltage: n/a
+  analog_supply_voltage: n/a
+  irq_reg_offset: 0xFF00
+  fifo_reg_offset: 0xFE00
+
+
+ports:
+  - name: bus_muxsplit_se_switch_aa_sl
+    port: bus_muxsplit_se_switch_aa_sl
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_muxsplit_se_switch_aa_s0
+    port: bus_muxsplit_se_switch_aa_s0
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_muxsplit_se_switch_bb_s0
+    port: bus_muxsplit_se_switch_bb_s0
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_muxsplit_se_switch_bb_sl
+    port: bus_muxsplit_se_switch_bb_sl
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_muxsplit_se_switch_bb_sr
+    port: bus_muxsplit_se_switch_bb_sr
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_muxsplit_se_switch_aa_sr
+    port: bus_muxsplit_se_switch_aa_sr
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_muxsplit_sw_switch_aa_sl
+    port: bus_muxsplit_sw_switch_aa_sl
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_muxsplit_sw_switch_aa_s0
+    port: bus_muxsplit_sw_switch_aa_s0
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_muxsplit_sw_switch_bb_s0
+    port: bus_muxsplit_sw_switch_bb_s0
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_muxsplit_sw_switch_bb_sl
+    port: bus_muxsplit_sw_switch_bb_sl
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_muxsplit_sw_switch_bb_sr
+    port: bus_muxsplit_sw_switch_bb_sr
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_muxsplit_sw_switch_aa_sr
+    port: bus_muxsplit_sw_switch_aa_sr
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_muxsplit_ne_switch_aa_sl
+    port: bus_muxsplit_ne_switch_aa_sl
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_muxsplit_ne_switch_aa_s0
+    port: bus_muxsplit_ne_switch_aa_s0
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_muxsplit_ne_switch_bb_s0
+    port: bus_muxsplit_ne_switch_bb_s0
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_muxsplit_ne_switch_bb_sl
+    port: bus_muxsplit_ne_switch_bb_sl
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_muxsplit_ne_switch_bb_sr
+    port: bus_muxsplit_ne_switch_bb_sr
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_muxsplit_ne_switch_aa_sr
+    port: bus_muxsplit_ne_switch_aa_sr
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_muxsplit_nw_switch_aa_sl
+    port: bus_muxsplit_nw_switch_aa_sl
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_muxsplit_nw_switch_aa_s0
+    port: bus_muxsplit_nw_switch_aa_s0
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_muxsplit_nw_switch_bb_s0
+    port: bus_muxsplit_nw_switch_bb_s0
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_muxsplit_nw_switch_bb_sl
+    port: bus_muxsplit_nw_switch_bb_sl
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_muxsplit_nw_switch_bb_sr
+    port: bus_muxsplit_nw_switch_bb_sr
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_muxsplit_nw_switch_aa_sr
+    port: bus_muxsplit_nw_switch_aa_sr
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_user_ahb_enable
+    port: bus_user_ahb_enable
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_user_irqs_enable
+    port: bus_user_irqs_enable
+    direction: input
+    width: 16
+    description: ''
+  - name: bus_sio_cfg
+    port: bus_sio_cfg
+    direction: input
+    width: 5
+    description: ''
+
+
+external_interface:
+  - name: muxsplit_se_switch_aa_sl
+    port: muxsplit_se_switch_aa_sl
+    direction: output
+    width: 1
+    description: ''
+  - name: muxsplit_se_switch_aa_s0
+    port: muxsplit_se_switch_aa_s0
+    direction: output
+    width: 1
+    description: ''
+  - name: muxsplit_se_switch_bb_s0
+    port: muxsplit_se_switch_bb_s0
+    direction: output
+    width: 1
+    description: ''
+  - name: muxsplit_se_switch_bb_sl
+    port: muxsplit_se_switch_bb_sl
+    direction: output
+    width: 1
+    description: ''
+  - name: muxsplit_se_switch_bb_sr
+    port: muxsplit_se_switch_bb_sr
+    direction: output
+    width: 1
+    description: ''
+  - name: muxsplit_se_switch_aa_sr
+    port: muxsplit_se_switch_aa_sr
+    direction: output
+    width: 1
+    description: ''
+  - name: muxsplit_sw_switch_aa_sl
+    port: muxsplit_sw_switch_aa_sl
+    direction: output
+    width: 1
+    description: ''
+  - name: muxsplit_sw_switch_aa_s0
+    port: muxsplit_sw_switch_aa_s0
+    direction: output
+    width: 1
+    description: ''
+  - name: muxsplit_sw_switch_bb_s0
+    port: muxsplit_sw_switch_bb_s0
+    direction: output
+    width: 1
+    description: ''
+  - name: muxsplit_sw_switch_bb_sl
+    port: muxsplit_sw_switch_bb_sl
+    direction: output
+    width: 1
+    description: ''
+  - name: muxsplit_sw_switch_bb_sr
+    port: muxsplit_sw_switch_bb_sr
+    direction: output
+    width: 1
+    description: ''
+  - name: muxsplit_sw_switch_aa_sr
+    port: muxsplit_sw_switch_aa_sr
+    direction: output
+    width: 1
+    description: ''
+  - name: muxsplit_ne_switch_aa_sl
+    port: muxsplit_ne_switch_aa_sl
+    direction: output
+    width: 1
+    description: ''
+  - name: muxsplit_ne_switch_aa_s0
+    port: muxsplit_ne_switch_aa_s0
+    direction: output
+    width: 1
+    description: ''
+  - name: muxsplit_ne_switch_bb_s0
+    port: muxsplit_ne_switch_bb_s0
+    direction: output
+    width: 1
+    description: ''
+  - name: muxsplit_ne_switch_bb_sl
+    port: muxsplit_ne_switch_bb_sl
+    direction: output
+    width: 1
+    description: ''
+  - name: muxsplit_ne_switch_bb_sr
+    port: muxsplit_ne_switch_bb_sr
+    direction: output
+    width: 1
+    description: ''
+  - name: muxsplit_ne_switch_aa_sr
+    port: muxsplit_ne_switch_aa_sr
+    direction: output
+    width: 1
+    description: ''
+  - name: muxsplit_nw_switch_aa_sl
+    port: muxsplit_nw_switch_aa_sl
+    direction: output
+    width: 1
+    description: ''
+  - name: muxsplit_nw_switch_aa_s0
+    port: muxsplit_nw_switch_aa_s0
+    direction: output
+    width: 1
+    description: ''
+  - name: muxsplit_nw_switch_bb_s0
+    port: muxsplit_nw_switch_bb_s0
+    direction: output
+    width: 1
+    description: ''
+  - name: muxsplit_nw_switch_bb_sl
+    port: muxsplit_nw_switch_bb_sl
+    direction: output
+    width: 1
+    description: ''
+  - name: muxsplit_nw_switch_bb_sr
+    port: muxsplit_nw_switch_bb_sr
+    direction: output
+    width: 1
+    description: ''
+  - name: muxsplit_nw_switch_aa_sr
+    port: muxsplit_nw_switch_aa_sr
+    direction: output
+    width: 1
+    description: ''
+  - name: user_ahb_enable
+    port: user_ahb_enable
+    direction: output
+    width: 1
+    description: ''
+  - name: user_irqs_enable
+    port: user_irqs_enable
+    direction: output
+    width: 16
+    description: ''
+  - name: sio_cfg
+    port: sio_cfg
+    direction: output
+    width: 5
+    description: ''
+
+
+clock:
+  name: clk
+
+reset:
+  name: rst_n
+  level: 0
+
+registers:
+  - name: muxsplit_control
+    size: 28
+    mode: w
+    fifo: no
+    offset: 0
+    bit_access: no
+    description: 'switch control inputs for a break-before-make set of switches that can independently connect or disconnect the amuxbusA and amuxbusB buses inside the padframe'
+    fields:
+      - name: muxsplit_se_switch_aa_sl
+        write_port: bus_muxsplit_se_switch_aa_sl
+        bit_offset: 0
+        bit_width: 1
+        description: "switches the 'aa' side of south east mux splitter in the padframe to the left side"
+      - name: muxsplit_se_switch_aa_s0
+        write_port: bus_muxsplit_se_switch_aa_s0
+        bit_offset: 1
+        bit_width: 1
+        description: "switches the 'aa' side of south east mux splitter in the padframe to the ground"
+      - name: muxsplit_se_switch_bb_s0
+        write_port: bus_muxsplit_se_switch_bb_s0
+        bit_offset: 2
+        bit_width: 1
+        description: "switches the 'bb' side of south east mux splitter in the padframe to the ground"
+      - name: muxsplit_se_switch_bb_sl
+        write_port: bus_muxsplit_se_switch_bb_sl
+        bit_offset: 3
+        bit_width: 1
+        description: "switches the 'bb' side of south east mux splitter in the padframe to the left side"
+      - name: muxsplit_se_switch_bb_sr
+        write_port: bus_muxsplit_se_switch_bb_sr
+        bit_offset: 4
+        bit_width: 1
+        description: "switches the 'bb' side of south east mux splitter in the padframe to the right side"
+      - name: muxsplit_se_switch_aa_sr
+        write_port: bus_muxsplit_se_switch_aa_sr
+        bit_offset: 5
+        bit_width: 1
+        description: "switches the 'aa' side of south east mux splitter in the padframe to the right side"
+      - name: muxsplit_sw_switch_aa_sl
+        write_port: bus_muxsplit_sw_switch_aa_sl
+        bit_offset: 8
+        bit_width: 1
+        description: "switches the 'aa' side of south west mux splitter in the padframe to the left side"
+      - name: muxsplit_sw_switch_aa_s0
+        write_port: bus_muxsplit_sw_switch_aa_s0
+        bit_offset: 9
+        bit_width: 1
+        description: "switches the 'aa' side of south west mux splitter in the padframe to the ground"
+      - name: muxsplit_sw_switch_bb_s0
+        write_port: bus_muxsplit_sw_switch_bb_s0
+        bit_offset: 10
+        bit_width: 1
+        description: "switches the 'bb' side of south west mux splitter in the padframe to the ground"
+      - name: muxsplit_sw_switch_bb_sl
+        write_port: bus_muxsplit_sw_switch_bb_sl
+        bit_offset: 11
+        bit_width: 1
+        description: "switches the 'bb' side of south west mux splitter in the padframe to the left side"
+      - name: muxsplit_sw_switch_bb_sr
+        write_port: bus_muxsplit_sw_switch_bb_sr
+        bit_offset: 12
+        bit_width: 1
+        description: "switches the 'bb' side of south west mux splitter in the padframe to the right side"
+      - name: muxsplit_sw_switch_aa_sr
+        write_port: bus_muxsplit_sw_switch_aa_sr
+        bit_offset: 13
+        bit_width: 1
+        description: "switches the 'aa' side of south west mux splitter in the padframe to the right side"
+      - name: muxsplit_ne_switch_aa_sl
+        write_port: bus_muxsplit_ne_switch_aa_sl
+        bit_offset: 16
+        bit_width: 1
+        description: "switches the 'aa' side of north east mux splitter in the padframe to the left side"
+      - name: muxsplit_ne_switch_aa_s0
+        write_port: bus_muxsplit_ne_switch_aa_s0
+        bit_offset: 17
+        bit_width: 1
+        description: "switches the 'aa' side of north east mux splitter in the padframe to the ground side"
+      - name: muxsplit_ne_switch_bb_s0
+        write_port: bus_muxsplit_ne_switch_bb_s0
+        bit_offset: 18
+        bit_width: 1
+        description: "switches the 'bb' side of north east mux splitter in the padframe to the ground side"
+      - name: muxsplit_ne_switch_bb_sl
+        write_port: bus_muxsplit_ne_switch_bb_sl
+        bit_offset: 19
+        bit_width: 1
+        description: "switches the 'bb' side of north east mux splitter in the padframe to the left side"
+      - name: muxsplit_ne_switch_bb_sr
+        write_port: bus_muxsplit_ne_switch_bb_sr
+        bit_offset: 20
+        bit_width: 1
+        description: "switches the 'bb' side of north east mux splitter in the padframe to the right side"
+      - name: muxsplit_ne_switch_aa_sr
+        write_port: bus_muxsplit_ne_switch_aa_sr
+        bit_offset: 21
+        bit_width: 1
+        description: "switches the 'aa' side of north east mux splitter in the padframe to the right side"
+      - name: muxsplit_nw_switch_aa_sl
+        write_port: bus_muxsplit_nw_switch_aa_sl
+        bit_offset: 22
+        bit_width: 1
+        description: "switches the 'aa' side of north west mux splitter in the padframe to the left side"
+      - name: muxsplit_nw_switch_aa_s0
+        write_port: bus_muxsplit_nw_switch_aa_s0
+        bit_offset: 23
+        bit_width: 1
+        description: "switches the 'aa' side of north west mux splitter in the padframe to the ground"
+      - name: muxsplit_nw_switch_bb_s0
+        write_port: bus_muxsplit_nw_switch_bb_s0
+        bit_offset: 24
+        bit_width: 1
+        description: "switches the 'bb' side of north west mux splitter in the padframe to ground"
+      - name: muxsplit_nw_switch_bb_sl
+        write_port: bus_muxsplit_nw_switch_bb_sl
+        bit_offset: 25
+        bit_width: 1
+        description: "switches the 'bb' side of north west mux splitter in the padframe to the left side"
+      - name: muxsplit_nw_switch_bb_sr
+        write_port: bus_muxsplit_nw_switch_bb_sr
+        bit_offset: 26
+        bit_width: 1
+        description: "switches the 'bb' side of north west mux splitter in the padframe to the right side"
+      - name: muxsplit_nw_switch_aa_sr
+        write_port: bus_muxsplit_nw_switch_aa_sr
+        bit_offset: 27
+        bit_width: 1
+        description: "switches the 'aa' side of north west mux splitter in the padframe to the right side"
+  - name: user_ahb_enable
+    size: 1
+    mode: w
+    fifo: no
+    offset: 4
+    bit_access: no
+    write_port: bus_user_ahb_enable
+    description: 'enable user ahb'
+  - name: user_irqs_enable
+    size: 16
+    mode: w
+    fifo: no
+    offset: 8
+    bit_access: no
+    write_port: bus_user_irqs_enable
+    description: 'enable user irqs'
+  - name: sio_cfg
+    size: 5
+    mode: w
+    fifo: no
+    offset: 12
+    bit_access: no
+    write_port: bus_sio_cfg
+    description: 'control sio configuration in padframe'

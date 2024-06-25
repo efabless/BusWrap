@@ -1,0 +1,4539 @@
+---
+info:
+  name: ANALOG_CTRL_REGS
+  description: Analog control registers 
+  repo: 
+  owner: Efabless Corp.
+  license: APACHE 2.0
+  author: Mohamed Shalan
+  email: mshalan@efabless.com
+  version: v1.0.0
+  date: 8-28-2023
+  category: digital
+  tags:
+  bus:
+    - generic
+  type: soft
+  status: verified
+  cell_count: 
+    - IP: 
+    - APB: 
+    - AHBL: 
+    - WB:
+  width": "0.0"
+  height": "0.0"
+  technology: n/a
+  clock_freq_mhz: 
+    - IP: 
+    - APB: 
+    - AHBL: 
+    - WB:
+  digital_supply_voltage: n/a
+  analog_supply_voltage: n/a
+  irq_reg_offset: 0xFF00
+  fifo_reg_offset: 0xFE00
+
+
+ports:
+  - name: bus_ibias_test_to_gpio1_2
+    port: bus_ibias_test_to_gpio1_2
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_vbg_test_to_gpio1_1
+    port: bus_vbg_test_to_gpio1_1
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_idac_to_gpio1_3
+    port: bus_idac_to_gpio1_3
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_idac_to_gpio1_2
+    port: bus_idac_to_gpio1_2
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_adc_refh_to_gpio6_6
+    port: bus_adc_refh_to_gpio6_6
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_dac_refh_to_gpio1_1
+    port: bus_dac_refh_to_gpio1_1
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_adc_refl_to_gpio6_7
+    port: bus_adc_refl_to_gpio6_7
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_adc_refl_to_gpio1_0
+    port: bus_adc_refl_to_gpio1_0
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_right_lp_opamp_to_ulp_comp_p
+    port: bus_right_lp_opamp_to_ulp_comp_p
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_right_lp_opamp_to_comp_p
+    port: bus_right_lp_opamp_to_comp_p
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_right_lp_opamp_to_adc0
+    port: bus_right_lp_opamp_to_adc0
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_right_lp_opamp_to_gpio4_7
+    port: bus_right_lp_opamp_to_gpio4_7
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_right_lp_opamp_to_gpio4_3
+    port: bus_right_lp_opamp_to_gpio4_3
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_right_lp_opamp_to_analog1
+    port: bus_right_lp_opamp_to_analog1
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_right_lp_opamp_to_amuxbusB
+    port: bus_right_lp_opamp_to_amuxbusB
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_right_lp_opamp_to_gpio3_7
+    port: bus_right_lp_opamp_to_gpio3_7
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_right_lp_opamp_to_gpio3_3
+    port: bus_right_lp_opamp_to_gpio3_3
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_right_hgbw_opamp_to_ulp_comp_n
+    port: bus_right_hgbw_opamp_to_ulp_comp_n
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_right_hgbw_opamp_to_comp_n
+    port: bus_right_hgbw_opamp_to_comp_n
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_right_hgbw_opamp_to_adc1
+    port: bus_right_hgbw_opamp_to_adc1
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_right_hgbw_opamp_to_gpio4_6
+    port: bus_right_hgbw_opamp_to_gpio4_6
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_right_hgbw_opamp_to_gpio4_2
+    port: bus_right_hgbw_opamp_to_gpio4_2
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_right_hgbw_opamp_to_analog0
+    port: bus_right_hgbw_opamp_to_analog0
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_right_hgbw_opamp_to_amuxbusA
+    port: bus_right_hgbw_opamp_to_amuxbusA
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_right_hgbw_opamp_to_gpio3_6
+    port: bus_right_hgbw_opamp_to_gpio3_6
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_right_hgbw_opamp_to_gpio3_2
+    port: bus_right_hgbw_opamp_to_gpio3_2
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_left_hgbw_opamp_to_ulp_comp_p
+    port: bus_left_hgbw_opamp_to_ulp_comp_p
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_left_hgbw_opamp_to_comp_p
+    port: bus_left_hgbw_opamp_to_comp_p
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_left_hgbw_opamp_to_adc0
+    port: bus_left_hgbw_opamp_to_adc0
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_left_hgbw_opamp_to_gpio4_5
+    port: bus_left_hgbw_opamp_to_gpio4_5
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_left_hgbw_opamp_to_gpio4_1
+    port: bus_left_hgbw_opamp_to_gpio4_1
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_left_hgbw_opamp_to_analog1
+    port: bus_left_hgbw_opamp_to_analog1
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_left_hgbw_opamp_to_amuxbusB
+    port: bus_left_hgbw_opamp_to_amuxbusB
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_left_hgbw_opamp_to_gpio3_5
+    port: bus_left_hgbw_opamp_to_gpio3_5
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_left_hgbw_opamp_to_gpio3_1
+    port: bus_left_hgbw_opamp_to_gpio3_1
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_left_lp_opamp_to_ulp_comp_n
+    port: bus_left_lp_opamp_to_ulp_comp_n
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_left_lp_opamp_to_comp_n
+    port: bus_left_lp_opamp_to_comp_n
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_left_lp_opamp_to_adc1
+    port: bus_left_lp_opamp_to_adc1
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_left_lp_opamp_to_gpio4_4
+    port: bus_left_lp_opamp_to_gpio4_4
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_left_lp_opamp_to_gpio4_0
+    port: bus_left_lp_opamp_to_gpio4_0
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_left_lp_opamp_to_analog0
+    port: bus_left_lp_opamp_to_analog0
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_left_lp_opamp_to_amuxbusA
+    port: bus_left_lp_opamp_to_amuxbusA
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_left_lp_opamp_to_gpio3_4
+    port: bus_left_lp_opamp_to_gpio3_4
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_left_lp_opamp_to_gpio3_0
+    port: bus_left_lp_opamp_to_gpio3_0
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_right_lp_opamp_p_to_dac0
+    port: bus_right_lp_opamp_p_to_dac0
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_lp_opamp_p_to_analog0
+    port: bus_right_lp_opamp_p_to_analog0
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_lp_opamp_p_to_amuxbusA
+    port: bus_right_lp_opamp_p_to_amuxbusA
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_lp_opamp_p_to_rheostat_out
+    port: bus_right_lp_opamp_p_to_rheostat_out
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_lp_opamp_p_to_sio0
+    port: bus_right_lp_opamp_p_to_sio0
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_lp_opamp_p_to_tempsense
+    port: bus_right_lp_opamp_p_to_tempsense
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_lp_opamp_p_to_left_vref
+    port: bus_right_lp_opamp_p_to_left_vref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_lp_opamp_p_to_voutref
+    port: bus_right_lp_opamp_p_to_voutref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_lp_opamp_p_to_gpio2_5
+    port: bus_right_lp_opamp_p_to_gpio2_5
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_right_lp_opamp_n_to_dac1
+    port: bus_right_lp_opamp_n_to_dac1
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_lp_opamp_n_to_analog1
+    port: bus_right_lp_opamp_n_to_analog1
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_lp_opamp_n_to_amuxbusB
+    port: bus_right_lp_opamp_n_to_amuxbusB
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_lp_opamp_n_to_rheostat_out
+    port: bus_right_lp_opamp_n_to_rheostat_out
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_lp_opamp_n_to_rheostat_tap
+    port: bus_right_lp_opamp_n_to_rheostat_tap
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_lp_opamp_n_to_sio1
+    port: bus_right_lp_opamp_n_to_sio1
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_lp_opamp_n_to_vbgtc
+    port: bus_right_lp_opamp_n_to_vbgtc
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_lp_opamp_n_to_right_vref
+    port: bus_right_lp_opamp_n_to_right_vref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_lp_opamp_n_to_vinref
+    port: bus_right_lp_opamp_n_to_vinref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_lp_opamp_n_to_gpio2_4
+    port: bus_right_lp_opamp_n_to_gpio2_4
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_right_hgbw_opamp_p_to_gpio5_0
+    port: bus_right_hgbw_opamp_p_to_gpio5_0
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_right_hgbw_opamp_p_to_dac0
+    port: bus_right_hgbw_opamp_p_to_dac0
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_hgbw_opamp_p_to_analog0
+    port: bus_right_hgbw_opamp_p_to_analog0
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_hgbw_opamp_p_to_amuxbusA
+    port: bus_right_hgbw_opamp_p_to_amuxbusA
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_hgbw_opamp_p_to_rheostat_out
+    port: bus_right_hgbw_opamp_p_to_rheostat_out
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_hgbw_opamp_p_to_sio0
+    port: bus_right_hgbw_opamp_p_to_sio0
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_hgbw_opamp_p_to_left_vref
+    port: bus_right_hgbw_opamp_p_to_left_vref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_hgbw_opamp_p_to_voutref
+    port: bus_right_hgbw_opamp_p_to_voutref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_hgbw_opamp_p_to_gpio2_3
+    port: bus_right_hgbw_opamp_p_to_gpio2_3
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_right_hgbw_opamp_n_to_gpio5_1
+    port: bus_right_hgbw_opamp_n_to_gpio5_1
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_right_hgbw_opamp_n_to_dac1
+    port: bus_right_hgbw_opamp_n_to_dac1
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_hgbw_opamp_n_to_analog1
+    port: bus_right_hgbw_opamp_n_to_analog1
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_hgbw_opamp_n_to_amuxbusB
+    port: bus_right_hgbw_opamp_n_to_amuxbusB
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_hgbw_opamp_n_to_rheostat_out
+    port: bus_right_hgbw_opamp_n_to_rheostat_out
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_hgbw_opamp_n_to_rheostat_tap
+    port: bus_right_hgbw_opamp_n_to_rheostat_tap
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_hgbw_opamp_n_to_sio1
+    port: bus_right_hgbw_opamp_n_to_sio1
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_hgbw_opamp_n_to_vbgsc
+    port: bus_right_hgbw_opamp_n_to_vbgsc
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_hgbw_opamp_n_to_right_vref
+    port: bus_right_hgbw_opamp_n_to_right_vref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_hgbw_opamp_n_to_vinref
+    port: bus_right_hgbw_opamp_n_to_vinref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_hgbw_opamp_n_to_gpio2_2
+    port: bus_right_hgbw_opamp_n_to_gpio2_2
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_left_hgbw_opamp_p_to_gpio5_2
+    port: bus_left_hgbw_opamp_p_to_gpio5_2
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_left_hgbw_opamp_p_to_dac0
+    port: bus_left_hgbw_opamp_p_to_dac0
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_hgbw_opamp_p_to_analog0
+    port: bus_left_hgbw_opamp_p_to_analog0
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_hgbw_opamp_p_to_amuxbusA
+    port: bus_left_hgbw_opamp_p_to_amuxbusA
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_hgbw_opamp_p_to_rheostat_out
+    port: bus_left_hgbw_opamp_p_to_rheostat_out
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_hgbw_opamp_p_to_sio0
+    port: bus_left_hgbw_opamp_p_to_sio0
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_hgbw_opamp_p_to_tempsense
+    port: bus_left_hgbw_opamp_p_to_tempsense
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_hgbw_opamp_p_to_left_vref
+    port: bus_left_hgbw_opamp_p_to_left_vref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_hgbw_opamp_p_to_voutref
+    port: bus_left_hgbw_opamp_p_to_voutref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_hgbw_opamp_p_to_gpio2_1
+    port: bus_left_hgbw_opamp_p_to_gpio2_1
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_left_hgbw_opamp_n_to_gpio5_3
+    port: bus_left_hgbw_opamp_n_to_gpio5_3
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_left_hgbw_opamp_n_to_dac1
+    port: bus_left_hgbw_opamp_n_to_dac1
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_hgbw_opamp_n_to_analog1
+    port: bus_left_hgbw_opamp_n_to_analog1
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_hgbw_opamp_n_to_amuxbusB
+    port: bus_left_hgbw_opamp_n_to_amuxbusB
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_hgbw_opamp_n_to_rheostat_out
+    port: bus_left_hgbw_opamp_n_to_rheostat_out
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_hgbw_opamp_n_to_rheostat_tap
+    port: bus_left_hgbw_opamp_n_to_rheostat_tap
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_hgbw_opamp_n_to_sio1
+    port: bus_left_hgbw_opamp_n_to_sio1
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_hgbw_opamp_n_to_vbgtc
+    port: bus_left_hgbw_opamp_n_to_vbgtc
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_hgbw_opamp_n_to_right_vref
+    port: bus_left_hgbw_opamp_n_to_right_vref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_hgbw_opamp_n_to_vinref
+    port: bus_left_hgbw_opamp_n_to_vinref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_hgbw_opamp_n_to_gpio2_0
+    port: bus_left_hgbw_opamp_n_to_gpio2_0
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_left_lp_opamp_p_to_gpio5_4
+    port: bus_left_lp_opamp_p_to_gpio5_4
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_left_lp_opamp_p_to_dac0
+    port: bus_left_lp_opamp_p_to_dac0
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_lp_opamp_p_to_analog0
+    port: bus_left_lp_opamp_p_to_analog0
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_lp_opamp_p_to_amuxbusA
+    port: bus_left_lp_opamp_p_to_amuxbusA
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_lp_opamp_p_to_rheostat_out
+    port: bus_left_lp_opamp_p_to_rheostat_out
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_lp_opamp_p_to_sio0
+    port: bus_left_lp_opamp_p_to_sio0
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_lp_opamp_p_to_left_vref
+    port: bus_left_lp_opamp_p_to_left_vref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_lp_opamp_p_to_voutref
+    port: bus_left_lp_opamp_p_to_voutref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_lp_opamp_n_to_gpio5_5
+    port: bus_left_lp_opamp_n_to_gpio5_5
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_left_lp_opamp_n_to_dac1
+    port: bus_left_lp_opamp_n_to_dac1
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_lp_opamp_n_to_analog1
+    port: bus_left_lp_opamp_n_to_analog1
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_lp_opamp_n_to_amuxbusB
+    port: bus_left_lp_opamp_n_to_amuxbusB
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_lp_opamp_n_to_rheostat_out
+    port: bus_left_lp_opamp_n_to_rheostat_out
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_lp_opamp_n_to_rheostat_tap
+    port: bus_left_lp_opamp_n_to_rheostat_tap
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_lp_opamp_n_to_sio1
+    port: bus_left_lp_opamp_n_to_sio1
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_lp_opamp_n_to_vbgsc
+    port: bus_left_lp_opamp_n_to_vbgsc
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_lp_opamp_n_to_right_vref
+    port: bus_left_lp_opamp_n_to_right_vref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_lp_opamp_n_to_vinref
+    port: bus_left_lp_opamp_n_to_vinref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_instramp_to_ulpcomp_p
+    port: bus_left_instramp_to_ulpcomp_p
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_left_instramp_to_comp_p
+    port: bus_left_instramp_to_comp_p
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_left_instramp_to_adc0
+    port: bus_left_instramp_to_adc0
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_left_instramp_to_gpio4_4
+    port: bus_left_instramp_to_gpio4_4
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_left_instramp_to_analog1
+    port: bus_left_instramp_to_analog1
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_left_instramp_to_amuxbusB
+    port: bus_left_instramp_to_amuxbusB
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_right_instramp_to_ulpcomp_n
+    port: bus_right_instramp_to_ulpcomp_n
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_right_instramp_to_comp_n
+    port: bus_right_instramp_to_comp_n
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_right_instramp_to_adc1
+    port: bus_right_instramp_to_adc1
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_right_instramp_to_analog0
+    port: bus_right_instramp_to_analog0
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_right_instramp_to_amuxbusA
+    port: bus_right_instramp_to_amuxbusA
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_right_instramp_to_gpio3_0
+    port: bus_right_instramp_to_gpio3_0
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_left_instramp_n_to_gpio5_7
+    port: bus_left_instramp_n_to_gpio5_7
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_left_instramp_n_to_analog1
+    port: bus_left_instramp_n_to_analog1
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_instramp_n_to_amuxbusB
+    port: bus_left_instramp_n_to_amuxbusB
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_instramp_n_to_sio1
+    port: bus_left_instramp_n_to_sio1
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_instramp_n_to_right_vref
+    port: bus_left_instramp_n_to_right_vref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_instramp_n_to_vinref
+    port: bus_left_instramp_n_to_vinref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_instramp_p_to_gpio5_6
+    port: bus_left_instramp_p_to_gpio5_6
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_left_instramp_p_to_analog0
+    port: bus_left_instramp_p_to_analog0
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_instramp_p_to_amuxbusA
+    port: bus_left_instramp_p_to_amuxbusA
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_instramp_p_to_sio0
+    port: bus_left_instramp_p_to_sio0
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_instramp_p_to_tempsense
+    port: bus_left_instramp_p_to_tempsense
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_instramp_p_to_left_vref
+    port: bus_left_instramp_p_to_left_vref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_instramp_p_to_voutref
+    port: bus_left_instramp_p_to_voutref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_instramp_n_to_analog1
+    port: bus_right_instramp_n_to_analog1
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_instramp_n_to_amuxbusB
+    port: bus_right_instramp_n_to_amuxbusB
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_instramp_n_to_sio1
+    port: bus_right_instramp_n_to_sio1
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_instramp_n_to_right_vref
+    port: bus_right_instramp_n_to_right_vref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_instramp_n_to_vinref
+    port: bus_right_instramp_n_to_vinref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_instramp_n_to_gpio2_6
+    port: bus_right_instramp_n_to_gpio2_6
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_right_instramp_p_to_analog0
+    port: bus_right_instramp_p_to_analog0
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_instramp_p_to_amuxbusA
+    port: bus_right_instramp_p_to_amuxbusA
+    direction: input
+    width: 1
+    description: ''
+  - name : bus_right_instramp_p_to_sio0
+    port: bus_right_instramp_p_to_sio0
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_instramp_p_to_tempsense
+    port: bus_right_instramp_p_to_tempsense
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_instramp_p_to_left_vref
+    port: bus_right_instramp_p_to_left_vref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_instramp_p_to_voutref
+    port: bus_right_instramp_p_to_voutref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_instramp_p_to_gpio2_7
+    port: bus_right_instramp_p_to_gpio2_7
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_ulpcomp_p_to_dac0
+    port: bus_ulpcomp_p_to_dac0
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_ulpcomp_p_to_analog1
+    port: bus_ulpcomp_p_to_analog1
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_ulpcomp_p_to_sio0
+    port: bus_ulpcomp_p_to_sio0
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_ulpcomp_p_to_vbgtc
+    port: bus_ulpcomp_p_to_vbgtc
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_ulpcomp_p_to_tempsense
+    port: bus_ulpcomp_p_to_tempsense
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_ulpcomp_p_to_left_vref
+    port: bus_ulpcomp_p_to_left_vref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_ulpcomp_p_to_voutref
+    port: bus_ulpcomp_p_to_voutref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_ulpcomp_p_to_gpio6_0
+    port: bus_ulpcomp_p_to_gpio6_0
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_ulpcomp_p_to_gpio1_7
+    port: bus_ulpcomp_p_to_gpio1_7
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_ulpcomp_n_to_dac1
+    port: bus_ulpcomp_n_to_dac1
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_ulpcomp_n_to_analog0
+    port: bus_ulpcomp_n_to_analog0
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_ulpcomp_n_to_sio1
+    port: bus_ulpcomp_n_to_sio1
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_ulpcomp_n_to_vbgsc
+    port: bus_ulpcomp_n_to_vbgsc
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_ulpcomp_n_to_right_vref
+    port: bus_ulpcomp_n_to_right_vref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_ulpcomp_n_to_vinref
+    port: bus_ulpcomp_n_to_vinref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_ulpcomp_n_to_gpio6_1
+    port: bus_ulpcomp_n_to_gpio6_1
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_ulpcomp_n_to_gpio1_6
+    port: bus_ulpcomp_n_to_gpio1_6
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_comp_p_to_dac0
+    port: bus_comp_p_to_dac0
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_comp_p_to_analog1
+    port: bus_comp_p_to_analog1
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_comp_p_to_sio0
+    port: bus_comp_p_to_sio0
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_comp_p_to_vbgtc
+    port: bus_comp_p_to_vbgtc
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_comp_p_to_tempsense
+    port: bus_comp_p_to_tempsense
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_comp_p_to_left_vref
+    port: bus_comp_p_to_left_vref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_comp_p_to_voutref
+    port: bus_comp_p_to_voutref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_comp_p_to_gpio6_2
+    port: bus_comp_p_to_gpio6_2
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_comp_p_to_gpio1_5
+    port: bus_comp_p_to_gpio1_5
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_comp_n_to_dac1
+    port: bus_comp_n_to_dac1
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_comp_n_to_analog0
+    port: bus_comp_n_to_analog0
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_comp_n_to_sio1
+    port: bus_comp_n_to_sio1
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_comp_n_to_vbgsc
+    port: bus_comp_n_to_vbgsc
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_comp_n_to_right_vref
+    port: bus_comp_n_to_right_vref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_comp_n_to_vinref
+    port: bus_comp_n_to_vinref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_comp_n_to_gpio6_1
+    port: bus_comp_n_to_gpio6_1
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_comp_n_to_gpio1_4
+    port: bus_comp_n_to_gpio1_4
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_adc0_to_dac0
+    port: bus_adc0_to_dac0
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_adc0_to_analog1
+    port: bus_adc0_to_analog1
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_adc0_to_vbgtc
+    port: bus_adc0_to_vbgtc
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_adc0_to_tempsense
+    port: bus_adc0_to_tempsense
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_adc0_to_left_vref
+    port: bus_adc0_to_left_vref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_adc0_to_voutref
+    port: bus_adc0_to_voutref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_adc0_to_gpio6_4
+    port: bus_adc0_to_gpio6_4
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_adc0_to_gpio1_3
+    port: bus_adc0_to_gpio1_3
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_adc1_to_dac1
+    port: bus_adc1_to_dac1
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_adc1_to_analog0
+    port: bus_adc1_to_analog0
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_adc1_to_vbgsc
+    port: bus_adc1_to_vbgsc
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_adc1_to_right_vref
+    port: bus_adc1_to_right_vref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_adc1_to_vinref
+    port: bus_adc1_to_vinref
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_adc1_to_gpio6_5
+    port: bus_adc1_to_gpio6_5
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_adc1_to_gpio1_2
+    port: bus_adc1_to_gpio1_2
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_sio0_connect
+    port: bus_sio0_connect
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_sio1_connect
+    port: bus_sio1_connect
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_analog0_connect
+    port: bus_analog0_connect
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_analog1_connect
+    port: bus_analog1_connect
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_vbgtc_to_user
+    port: bus_vbgtc_to_user
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_vbgsc_to_user
+    port: bus_vbgsc_to_user
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_user_to_comp_n
+    port: bus_user_to_comp_n
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_user_to_comp_p
+    port: bus_user_to_comp_p
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_user_to_ulpcomp_n
+    port: bus_user_to_ulpcomp_n
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_user_to_ulpcomp_p
+    port: bus_user_to_ulpcomp_p
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_user_to_adc0
+    port: bus_user_to_adc0
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_user_to_adc1
+    port: bus_user_to_adc1
+    direction: input
+    width: 2
+    description: ''
+  - name: bus_dac0_to_user
+    port: bus_dac0_to_user
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_dac1_to_user
+    port: bus_dac1_to_user
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_tempsense_to_user
+    port: bus_tempsense_to_user
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_right_vref_to_user
+    port: bus_right_vref_to_user
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_left_vref_to_user
+    port: bus_left_vref_to_user
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_vinref_to_user
+    port: bus_vinref_to_user
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_voutref_to_user
+    port: bus_voutref_to_user
+    direction: input
+    width: 1
+    description: ''
+  - name: bus_dac0_to_analog1
+    port: bus_dac0_to_analog1
+    direction: input
+    width: 1
+    description: 
+  - name: bus_dac1_to_analog0
+    port: bus_dac1_to_analog0
+    direction: input
+    width: 1
+    description: 
+  - name: bus_audiodac_out_to_analog1
+    port: bus_audiodac_out_to_analog1
+    direction: input
+    width: 1
+    description: 
+  - name: bus_audiodac_outb_to_analog0
+    port: bus_audiodac_outb_to_analog0
+    direction: input
+    width: 1
+    description: 
+  - name: bus_left_instramp_ena
+    port: bus_left_instramp_ena
+    direction: input
+    width: 1
+    description: instrumentation amplifier enable
+  - name: bus_left_instramp_G1
+    port: bus_left_instramp_G1
+    direction: input
+    width: 5
+    description: instrumentation amp programmable gain
+  - name: bus_left_instramp_G2
+    port: bus_left_instramp_G2
+    direction: input
+    width: 5
+    description: instrumentation amp programmable gain
+  - name: bus_left_hgbw_opamp_ena
+    port: bus_left_hgbw_opamp_ena
+    direction: input
+    width: 1
+    description: high gain-bandwidth opamp enable
+  - name: bus_left_lp_opamp_ena
+    port: bus_left_lp_opamp_ena
+    direction: input
+    width: 1
+    description: low-power opamp enable
+  - name: bus_left_rheostat1_b
+    port: bus_left_rheostat1_b
+    direction: input
+    width: 8
+    description: rheostat programmable tap
+  - name: bus_left_rheostat2_b
+    port: bus_left_rheostat2_b
+    direction: input
+    width: 8
+    description: rheostat programmable tap
+  - name : bus_right_instramp_ena
+    port: bus_right_instramp_ena
+    direction: input
+    width: 1
+    description: instrumentation amplifier enable
+  - name : bus_right_instramp_G1
+    port: bus_right_instramp_G1
+    direction: input
+    width: 5
+    description: instrumentation amp programmable gain
+  - name : bus_right_instramp_G2
+    port: bus_right_instramp_G2
+    direction: input
+    width: 5
+    description: instrumentation amp programmable gain
+  - name : bus_right_hgbw_opamp_ena
+    port: bus_right_hgbw_opamp_ena
+    direction: input
+    width: 1
+    description: high gain-bandwidth opamp enable
+  - name : bus_right_lp_opamp_ena
+    port: bus_right_lp_opamp_ena
+    direction: input
+    width: 1
+    description: low-power opamp enable
+  - name : bus_right_rheostat1_b
+    port: bus_right_rheostat1_b
+    direction: input
+    width: 8
+    description: rheostat programmable tap
+  - name : bus_right_rheostat2_b
+    port: bus_right_rheostat2_b
+    direction: input
+    width: 8
+    description: rheostat programmable tap
+  - name : bus_comparator_0_ena
+    port: bus_comparator_0_ena
+    direction: input
+    width: 1
+    description: comparator enable
+  - name : bus_comparator_0_trim
+    port: bus_comparator_0_trim
+    direction: input
+    width: 6
+    description: comparator offset trim
+  - name : bus_comparator_0_hyst
+    port: bus_comparator_0_hyst
+    direction: input
+    width: 2
+    description: comparator hysteresis trim
+  - name : bus_comparator_1_ena
+    port: bus_comparator_1_ena
+    direction: input
+    width: 1
+    description: ULP comparator enable
+  - name : bus_bandgap_ena
+    port: bus_bandgap_ena
+    direction: input
+    width: 1
+    description: bandgap enable
+  - name : bus_bandgap_trim
+    port: bus_bandgap_trim
+    direction: input
+    width: 16
+    description: bandgap trim
+  - name : bus_bandgap_sel
+    port: bus_bandgap_sel
+    direction: input
+    width: 1
+    description: select bandgap source (default 0)
+  - name : bus_ldo_ena
+    port: bus_ldo_ena
+    direction: input
+    width: 1
+    description: bandgap trim
+  - name : bus_overvoltage_ena
+    port: bus_overvoltage_ena
+    direction: input
+    width: 1
+    description: overvoltage detector enable
+  - name : bus_overvoltage_trim
+    port: bus_overvoltage_trim
+    direction: input
+    width: 4
+    description: overvoltage detector trip point set
+  - name : bus_ldo_ref_sel
+    port: bus_ldo_ref_sel
+    direction: input
+    width: 1
+    description: select bandgap reference (default 0)
+  - name : bus_ibias_ena
+    port: bus_ibias_ena
+    direction: input
+    width: 1
+    description: biasgen master enable
+  - name : bus_ibias_src_enb
+    port: bus_ibias_src_enb
+    direction: input
+    width: 24
+    description: biasgen source disables
+  - name : bus_ibias_snk_ena
+    port: bus_ibias_snk_ena
+    direction: input
+    width: 4
+    description: sink current test enables
+  - name : bus_ibias_ref_select
+    port: bus_ibias_ref_select
+    direction: input
+    width: 1
+    description: select internal or bandgap reference
+  - name : bus_idac_value
+    port: bus_idac_value
+    direction: input
+    width: 12
+    description: current DAC value
+  - name : bus_idac_ena
+    port: bus_idac_ena
+    direction: input
+    width: 1
+    description: current DAC enable
+  - name : bus_tempsense_ena
+    port: bus_tempsense_ena
+    direction: input
+    width: 1
+    description: temperature sensor enable
+  - name : bus_tempsense_sel
+    port: bus_tempsense_sel
+    direction: input
+    width: 1
+    description: select temperature sensor output (default 0)
+  - name : bus_rdac0_ena
+    port: bus_rdac0_ena
+    direction: input
+    width: 1
+    description: voltage DAC enable
+  - name : bus_rdac0_value
+    port: bus_rdac0_value
+    direction: input
+    width: 12
+    description: voltage DAC value
+  - name : bus_rdac1_ena
+    port: bus_rdac1_ena
+    direction: input
+    width: 1
+    description: voltage DAC enable
+  - name : bus_rdac1_value
+    port: bus_rdac1_value
+    direction: input
+    width: 12
+    description: voltage DAC value
+  - name : bus_comparator_0_out
+    port: bus_comparator_0_out
+    direction: output
+    width: 1
+    description: comparator_0_out
+  - name : bus_comparator_1_out
+    port: bus_comparator_1_out
+    direction: output
+    width: 1
+    description: ULP comparator output
+  - name : bus_overvoltage_out
+    port: bus_overvoltage_out
+    direction: output
+    width: 1
+    description: overvoltage output
+  - name : bus_vdda1_pwr_good
+    port: bus_vdda1_pwr_good
+    direction: output
+    width: 1
+    description: power-good detect, right side 3.3V domain
+  - name : bus_vccd1_pwr_good
+    port: bus_vccd1_pwr_good
+    direction: output
+    width: 1
+    description: power-good detect, right side 1.8V domain
+  - name : bus_vdda2_pwr_good
+    port: bus_vdda2_pwr_good
+    direction: output
+    width: 1
+    description: power-good detect, left side 3.3V domain
+  - name : bus_vccd2_pwr_good
+    port: bus_vccd2_pwr_good
+    direction: output
+    width: 1
+    description: power-good detect, left side 1.8V domain
+
+
+external_interface:
+  - name: ibias_test_to_gpio1_2
+    port: ibias_test_to_gpio1_2
+    direction: output
+    width: 2
+    description: ''
+  - name: vbg_test_to_gpio1_1
+    port: vbg_test_to_gpio1_1
+    direction: output
+    width: 2
+    description: ''
+  - name: idac_to_gpio1_3
+    port: idac_to_gpio1_3
+    direction: output
+    width: 2
+    description: ''
+  - name: idac_to_gpio1_2
+    port: idac_to_gpio1_2
+    direction: output
+    width: 2
+    description: ''
+  - name: adc_refh_to_gpio6_6
+    port: adc_refh_to_gpio6_6
+    direction: output
+    width: 2
+    description: ''
+  - name: dac_refh_to_gpio1_1
+    port: dac_refh_to_gpio1_1
+    direction: output
+    width: 2
+    description: ''
+  - name: adc_refl_to_gpio6_7
+    port: adc_refl_to_gpio6_7
+    direction: output
+    width: 2
+    description: ''
+  - name: adc_refl_to_gpio1_0
+    port: adc_refl_to_gpio1_0
+    direction: output
+    width: 2
+    description: ''
+  - name: right_lp_opamp_to_ulp_comp_p
+    port: right_lp_opamp_to_ulp_comp_p
+    direction: output
+    width: 2
+    description: ''
+  - name: right_lp_opamp_to_comp_p
+    port: right_lp_opamp_to_comp_p
+    direction: output
+    width: 2
+    description: ''
+  - name: right_lp_opamp_to_adc0
+    port: right_lp_opamp_to_adc0
+    direction: output
+    width: 2
+    description: ''
+  - name: right_lp_opamp_to_gpio4_7
+    port: right_lp_opamp_to_gpio4_7
+    direction: output
+    width: 2
+    description: ''
+  - name: right_lp_opamp_to_gpio4_3
+    port: right_lp_opamp_to_gpio4_3
+    direction: output
+    width: 2
+    description: ''
+  - name: right_lp_opamp_to_analog1
+    port: right_lp_opamp_to_analog1
+    direction: output
+    width: 2
+    description: ''
+  - name: right_lp_opamp_to_amuxbusB
+    port: right_lp_opamp_to_amuxbusB
+    direction: output
+    width: 2
+    description: ''
+  - name: right_lp_opamp_to_gpio3_7
+    port: right_lp_opamp_to_gpio3_7
+    direction: output
+    width: 2
+    description: ''
+  - name: right_lp_opamp_to_gpio3_3
+    port: right_lp_opamp_to_gpio3_3
+    direction: output
+    width: 2
+    description: ''
+  - name: right_hgbw_opamp_to_ulp_comp_n
+    port: right_hgbw_opamp_to_ulp_comp_n
+    direction: output
+    width: 2
+    description: ''
+  - name: right_hgbw_opamp_to_comp_n
+    port: right_hgbw_opamp_to_comp_n
+    direction: output
+    width: 2
+    description: ''
+  - name: right_hgbw_opamp_to_adc1
+    port: right_hgbw_opamp_to_adc1
+    direction: output
+    width: 2
+    description: ''
+  - name: right_hgbw_opamp_to_gpio4_6
+    port: right_hgbw_opamp_to_gpio4_6
+    direction: output
+    width: 2
+    description: ''
+  - name: right_hgbw_opamp_to_gpio4_2
+    port: right_hgbw_opamp_to_gpio4_2
+    direction: output
+    width: 2
+    description: ''
+  - name: right_hgbw_opamp_to_analog0
+    port: right_hgbw_opamp_to_analog0
+    direction: output
+    width: 2
+    description: ''
+  - name: right_hgbw_opamp_to_amuxbusA
+    port: right_hgbw_opamp_to_amuxbusA
+    direction: output
+    width: 2
+    description: ''
+  - name: right_hgbw_opamp_to_gpio3_6
+    port: right_hgbw_opamp_to_gpio3_6
+    direction: output
+    width: 2
+    description: ''
+  - name: right_hgbw_opamp_to_gpio3_2
+    port: right_hgbw_opamp_to_gpio3_2
+    direction: output
+    width: 2
+    description: ''
+  - name: left_hgbw_opamp_to_ulp_comp_p
+    port: left_hgbw_opamp_to_ulp_comp_p
+    direction: output
+    width: 2
+    description: ''
+  - name: left_hgbw_opamp_to_comp_p
+    port: left_hgbw_opamp_to_comp_p
+    direction: output
+    width: 2
+    description: ''
+  - name: left_hgbw_opamp_to_adc0
+    port: left_hgbw_opamp_to_adc0
+    direction: output
+    width: 2
+    description: ''
+  - name: left_hgbw_opamp_to_gpio4_5
+    port: left_hgbw_opamp_to_gpio4_5
+    direction: output
+    width: 2
+    description: ''
+  - name: left_hgbw_opamp_to_gpio4_1
+    port: left_hgbw_opamp_to_gpio4_1
+    direction: output
+    width: 2
+    description: ''
+  - name: left_hgbw_opamp_to_analog1
+    port: left_hgbw_opamp_to_analog1
+    direction: output
+    width: 2
+    description: ''
+  - name: left_hgbw_opamp_to_amuxbusB
+    port: left_hgbw_opamp_to_amuxbusB
+    direction: output
+    width: 2
+    description: ''
+  - name: left_hgbw_opamp_to_gpio3_5
+    port: left_hgbw_opamp_to_gpio3_5
+    direction: output
+    width: 2
+    description: ''
+  - name: left_hgbw_opamp_to_gpio3_1
+    port: left_hgbw_opamp_to_gpio3_1
+    direction: output
+    width: 2
+    description: ''
+  - name: left_lp_opamp_to_ulp_comp_n
+    port: left_lp_opamp_to_ulp_comp_n
+    direction: output
+    width: 2
+    description: ''
+  - name: left_lp_opamp_to_comp_n
+    port: left_lp_opamp_to_comp_n
+    direction: output
+    width: 2
+    description: ''
+  - name: left_lp_opamp_to_adc1
+    port: left_lp_opamp_to_adc1
+    direction: output
+    width: 2
+    description: ''
+  - name: left_lp_opamp_to_gpio4_4
+    port: left_lp_opamp_to_gpio4_4
+    direction: output
+    width: 2
+    description: ''
+  - name: left_lp_opamp_to_gpio4_0
+    port: left_lp_opamp_to_gpio4_0
+    direction: output
+    width: 2
+    description: ''
+  - name: left_lp_opamp_to_analog0
+    port: left_lp_opamp_to_analog0
+    direction: output
+    width: 2
+    description: ''
+  - name: left_lp_opamp_to_amuxbusA
+    port: left_lp_opamp_to_amuxbusA
+    direction: output
+    width: 2
+    description: ''
+  - name: left_lp_opamp_to_gpio3_4
+    port: left_lp_opamp_to_gpio3_4
+    direction: output
+    width: 2
+    description: ''
+  - name: left_lp_opamp_to_gpio3_0
+    port: left_lp_opamp_to_gpio3_0
+    direction: output
+    width: 2
+    description: ''
+  - name: right_lp_opamp_p_to_dac0
+    port: right_lp_opamp_p_to_dac0
+    direction: output
+    width: 1
+    description: ''
+  - name: right_lp_opamp_p_to_analog0
+    port: right_lp_opamp_p_to_analog0
+    direction: output
+    width: 1
+    description: ''
+  - name: right_lp_opamp_p_to_amuxbusA
+    port: right_lp_opamp_p_to_amuxbusA
+    direction: output
+    width: 1
+    description: ''
+  - name: right_lp_opamp_p_to_rheostat_out
+    port: right_lp_opamp_p_to_rheostat_out
+    direction: output
+    width: 1
+    description: ''
+  - name: right_lp_opamp_p_to_sio0
+    port: right_lp_opamp_p_to_sio0
+    direction: output
+    width: 1
+    description: ''
+  - name: right_lp_opamp_p_to_tempsense
+    port: right_lp_opamp_p_to_tempsense
+    direction: output
+    width: 1
+    description: ''
+  - name: right_lp_opamp_p_to_left_vref
+    port: right_lp_opamp_p_to_left_vref
+    direction: output
+    width: 1
+    description: ''
+  - name: right_lp_opamp_p_to_voutref
+    port: right_lp_opamp_p_to_voutref
+    direction: output
+    width: 1
+    description: ''
+  - name: right_lp_opamp_p_to_gpio2_5
+    port: right_lp_opamp_p_to_gpio2_5
+    direction: output
+    width: 2
+    description: ''
+  - name: right_lp_opamp_n_to_dac1
+    port: right_lp_opamp_n_to_dac1
+    direction: output
+    width: 1
+    description: ''
+  - name: right_lp_opamp_n_to_analog1
+    port: right_lp_opamp_n_to_analog1
+    direction: output
+    width: 1
+    description: ''
+  - name: right_lp_opamp_n_to_amuxbusB
+    port: right_lp_opamp_n_to_amuxbusB
+    direction: output
+    width: 1
+    description: ''
+  - name: right_lp_opamp_n_to_rheostat_out
+    port: right_lp_opamp_n_to_rheostat_out
+    direction: output
+    width: 1
+    description: ''
+  - name: right_lp_opamp_n_to_rheostat_tap
+    port: right_lp_opamp_n_to_rheostat_tap
+    direction: output
+    width: 1
+    description: ''
+  - name: right_lp_opamp_n_to_sio1
+    port: right_lp_opamp_n_to_sio1
+    direction: output
+    width: 1
+    description: ''
+  - name: right_lp_opamp_n_to_vbgtc
+    port: right_lp_opamp_n_to_vbgtc
+    direction: output
+    width: 1
+    description: ''
+  - name: right_lp_opamp_n_to_right_vref
+    port: right_lp_opamp_n_to_right_vref
+    direction: output
+    width: 1
+    description: ''
+  - name: right_lp_opamp_n_to_vinref
+    port: right_lp_opamp_n_to_vinref
+    direction: output
+    width: 1
+    description: ''
+  - name: right_lp_opamp_n_to_gpio2_4
+    port: right_lp_opamp_n_to_gpio2_4
+    direction: output
+    width: 2
+    description: ''
+  - name: right_hgbw_opamp_p_to_gpio5_0
+    port: right_hgbw_opamp_p_to_gpio5_0
+    direction: output
+    width: 2
+    description: ''
+  - name: right_hgbw_opamp_p_to_dac0
+    port: right_hgbw_opamp_p_to_dac0
+    direction: output
+    width: 1
+    description: ''
+  - name: right_hgbw_opamp_p_to_analog0
+    port: right_hgbw_opamp_p_to_analog0
+    direction: output
+    width: 1
+    description: ''
+  - name: right_hgbw_opamp_p_to_amuxbusA
+    port: right_hgbw_opamp_p_to_amuxbusA
+    direction: output
+    width: 1
+    description: ''
+  - name: right_hgbw_opamp_p_to_rheostat_out
+    port: right_hgbw_opamp_p_to_rheostat_out
+    direction: output
+    width: 1
+    description: ''
+  - name: right_hgbw_opamp_p_to_sio0
+    port: right_hgbw_opamp_p_to_sio0
+    direction: output
+    width: 1
+    description: ''
+  - name: right_hgbw_opamp_p_to_left_vref
+    port: right_hgbw_opamp_p_to_left_vref
+    direction: output
+    width: 1
+    description: ''
+  - name: right_hgbw_opamp_p_to_voutref
+    port: right_hgbw_opamp_p_to_voutref
+    direction: output
+    width: 1
+    description: ''
+  - name: right_hgbw_opamp_p_to_gpio2_3
+    port: right_hgbw_opamp_p_to_gpio2_3
+    direction: output
+    width: 2
+    description: ''
+  - name: right_hgbw_opamp_n_to_gpio5_1
+    port: right_hgbw_opamp_n_to_gpio5_1
+    direction: output
+    width: 2
+    description: ''
+  - name: right_hgbw_opamp_n_to_dac1
+    port: right_hgbw_opamp_n_to_dac1
+    direction: output
+    width: 1
+    description: ''
+  - name: right_hgbw_opamp_n_to_analog1
+    port: right_hgbw_opamp_n_to_analog1
+    direction: output
+    width: 1
+    description: ''
+  - name: right_hgbw_opamp_n_to_amuxbusB
+    port: right_hgbw_opamp_n_to_amuxbusB
+    direction: output
+    width: 1
+    description: ''
+  - name: right_hgbw_opamp_n_to_rheostat_out
+    port: right_hgbw_opamp_n_to_rheostat_out
+    direction: output
+    width: 1
+    description: ''
+  - name: right_hgbw_opamp_n_to_rheostat_tap
+    port: right_hgbw_opamp_n_to_rheostat_tap
+    direction: output
+    width: 1
+    description: ''
+  - name: right_hgbw_opamp_n_to_sio1
+    port: right_hgbw_opamp_n_to_sio1
+    direction: output
+    width: 1
+    description: ''
+  - name: right_hgbw_opamp_n_to_vbgsc
+    port: right_hgbw_opamp_n_to_vbgsc
+    direction: output
+    width: 1
+    description: ''
+  - name: right_hgbw_opamp_n_to_right_vref
+    port: right_hgbw_opamp_n_to_right_vref
+    direction: output
+    width: 1
+    description: ''
+  - name: right_hgbw_opamp_n_to_vinref
+    port: right_hgbw_opamp_n_to_vinref
+    direction: output
+    width: 1
+    description: ''
+  - name: right_hgbw_opamp_n_to_gpio2_2
+    port: right_hgbw_opamp_n_to_gpio2_2
+    direction: output
+    width: 2
+    description: ''
+  - name: left_hgbw_opamp_p_to_gpio5_2
+    port: left_hgbw_opamp_p_to_gpio5_2
+    direction: output
+    width: 2
+    description: ''
+  - name: left_hgbw_opamp_p_to_dac0
+    port: left_hgbw_opamp_p_to_dac0
+    direction: output
+    width: 1
+    description: ''
+  - name: left_hgbw_opamp_p_to_analog0
+    port: left_hgbw_opamp_p_to_analog0
+    direction: output
+    width: 1
+    description: ''
+  - name: left_hgbw_opamp_p_to_amuxbusA
+    port: left_hgbw_opamp_p_to_amuxbusA
+    direction: output
+    width: 1
+    description: ''
+  - name: left_hgbw_opamp_p_to_rheostat_out
+    port: left_hgbw_opamp_p_to_rheostat_out
+    direction: output
+    width: 1
+    description: ''
+  - name: left_hgbw_opamp_p_to_sio0
+    port: left_hgbw_opamp_p_to_sio0
+    direction: output
+    width: 1
+    description: ''
+  - name: left_hgbw_opamp_p_to_tempsense
+    port: left_hgbw_opamp_p_to_tempsense
+    direction: output
+    width: 1
+    description: ''
+  - name: left_hgbw_opamp_p_to_left_vref
+    port: left_hgbw_opamp_p_to_left_vref
+    direction: output
+    width: 1
+    description: ''
+  - name: left_hgbw_opamp_p_to_voutref
+    port: left_hgbw_opamp_p_to_voutref
+    direction: output
+    width: 1
+    description: ''
+  - name: left_hgbw_opamp_p_to_gpio2_1
+    port: left_hgbw_opamp_p_to_gpio2_1
+    direction: output
+    width: 2
+    description: ''
+  - name: left_hgbw_opamp_n_to_gpio5_3
+    port: left_hgbw_opamp_n_to_gpio5_3
+    direction: output
+    width: 2
+    description: ''
+  - name: left_hgbw_opamp_n_to_dac1
+    port: left_hgbw_opamp_n_to_dac1
+    direction: output
+    width: 1
+    description: ''
+  - name: left_hgbw_opamp_n_to_analog1
+    port: left_hgbw_opamp_n_to_analog1
+    direction: output
+    width: 1
+    description: ''
+  - name: left_hgbw_opamp_n_to_amuxbusB
+    port: left_hgbw_opamp_n_to_amuxbusB
+    direction: output
+    width: 1
+    description: ''
+  - name: left_hgbw_opamp_n_to_rheostat_out
+    port: left_hgbw_opamp_n_to_rheostat_out
+    direction: output
+    width: 1
+    description: ''
+  - name: left_hgbw_opamp_n_to_rheostat_tap
+    port: left_hgbw_opamp_n_to_rheostat_tap
+    direction: output
+    width: 1
+    description: ''
+  - name: left_hgbw_opamp_n_to_sio1
+    port: left_hgbw_opamp_n_to_sio1
+    direction: output
+    width: 1
+    description: ''
+  - name: left_hgbw_opamp_n_to_vbgtc
+    port: left_hgbw_opamp_n_to_vbgtc
+    direction: output
+    width: 1
+    description: ''
+  - name: left_hgbw_opamp_n_to_right_vref
+    port: left_hgbw_opamp_n_to_right_vref
+    direction: output
+    width: 1
+    description: ''
+  - name: left_hgbw_opamp_n_to_vinref
+    port: left_hgbw_opamp_n_to_vinref
+    direction: output
+    width: 1
+    description: ''
+  - name: left_hgbw_opamp_n_to_gpio2_0
+    port: left_hgbw_opamp_n_to_gpio2_0
+    direction: output
+    width: 2
+    description: ''
+  - name: left_lp_opamp_p_to_gpio5_4
+    port: left_lp_opamp_p_to_gpio5_4
+    direction: output
+    width: 2
+    description: ''
+  - name: left_lp_opamp_p_to_dac0
+    port: left_lp_opamp_p_to_dac0
+    direction: output
+    width: 1
+    description: ''
+  - name: left_lp_opamp_p_to_analog0
+    port: left_lp_opamp_p_to_analog0
+    direction: output
+    width: 1
+    description: ''
+  - name: left_lp_opamp_p_to_amuxbusA
+    port: left_lp_opamp_p_to_amuxbusA
+    direction: output
+    width: 1
+    description: ''
+  - name: left_lp_opamp_p_to_rheostat_out
+    port: left_lp_opamp_p_to_rheostat_out
+    direction: output
+    width: 1
+    description: ''
+  - name: left_lp_opamp_p_to_sio0
+    port: left_lp_opamp_p_to_sio0
+    direction: output
+    width: 1
+    description: ''
+  - name: left_lp_opamp_p_to_left_vref
+    port: left_lp_opamp_p_to_left_vref
+    direction: output
+    width: 1
+    description: ''
+  - name: left_lp_opamp_p_to_voutref
+    port: left_lp_opamp_p_to_voutref
+    direction: output
+    width: 1
+    description: ''
+  - name: left_lp_opamp_n_to_gpio5_5
+    port: left_lp_opamp_n_to_gpio5_5
+    direction: output
+    width: 2
+    description: ''
+  - name: left_lp_opamp_n_to_dac1
+    port: left_lp_opamp_n_to_dac1
+    direction: output
+    width: 1
+    description: ''
+  - name: left_lp_opamp_n_to_analog1
+    port: left_lp_opamp_n_to_analog1
+    direction: output
+    width: 1
+    description: ''
+  - name: left_lp_opamp_n_to_amuxbusB
+    port: left_lp_opamp_n_to_amuxbusB
+    direction: output
+    width: 1
+    description: ''
+  - name: left_lp_opamp_n_to_rheostat_out
+    port: left_lp_opamp_n_to_rheostat_out
+    direction: output
+    width: 1
+    description: ''
+  - name: left_lp_opamp_n_to_rheostat_tap
+    port: left_lp_opamp_n_to_rheostat_tap
+    direction: output
+    width: 1
+    description: ''
+  - name: left_lp_opamp_n_to_sio1
+    port: left_lp_opamp_n_to_sio1
+    direction: output
+    width: 1
+    description: ''
+  - name: left_lp_opamp_n_to_vbgsc
+    port: left_lp_opamp_n_to_vbgsc
+    direction: output
+    width: 1
+    description: ''
+  - name: left_lp_opamp_n_to_right_vref
+    port: left_lp_opamp_n_to_right_vref
+    direction: output
+    width: 1
+    description: ''
+  - name: left_lp_opamp_n_to_vinref
+    port: left_lp_opamp_n_to_vinref
+    direction: output
+    width: 1
+    description: ''
+  - name: left_instramp_to_ulpcomp_p
+    port: left_instramp_to_ulpcomp_p
+    direction: output
+    width: 2
+    description: ''
+  - name: left_instramp_to_comp_p
+    port: left_instramp_to_comp_p
+    direction: output
+    width: 2
+    description: ''
+  - name: left_instramp_to_adc0
+    port: left_instramp_to_adc0
+    direction: output
+    width: 2
+    description: ''
+  - name: left_instramp_to_gpio4_4
+    port: left_instramp_to_gpio4_4
+    direction: output
+    width: 2
+    description: ''
+  - name: left_instramp_to_analog1
+    port: left_instramp_to_analog1
+    direction: output
+    width: 2
+    description: ''
+  - name: left_instramp_to_amuxbusB
+    port: left_instramp_to_amuxbusB
+    direction: output
+    width: 2
+    description: ''
+  - name: right_instramp_to_ulpcomp_n
+    port: right_instramp_to_ulpcomp_n
+    direction: output
+    width: 2
+    description: ''
+  - name: right_instramp_to_comp_n
+    port: right_instramp_to_comp_n
+    direction: output
+    width: 2
+    description: ''
+  - name: right_instramp_to_adc1
+    port: right_instramp_to_adc1
+    direction: output
+    width: 2
+    description: ''
+  - name: right_instramp_to_analog0
+    port: right_instramp_to_analog0
+    direction: output
+    width: 2
+    description: ''
+  - name: right_instramp_to_amuxbusA
+    port: right_instramp_to_amuxbusA
+    direction: output
+    width: 2
+    description: ''
+  - name: right_instramp_to_gpio3_0
+    port: right_instramp_to_gpio3_0
+    direction: output
+    width: 2
+    description: ''
+  - name: left_instramp_n_to_gpio5_7
+    port: left_instramp_n_to_gpio5_7
+    direction: output
+    width: 2
+    description: ''
+  - name: left_instramp_n_to_analog1
+    port: left_instramp_n_to_analog1
+    direction: output
+    width: 1
+    description: ''
+  - name: left_instramp_n_to_amuxbusB
+    port: left_instramp_n_to_amuxbusB
+    direction: output
+    width: 1
+    description: ''
+  - name: left_instramp_n_to_sio1
+    port: left_instramp_n_to_sio1
+    direction: output
+    width: 1
+    description: ''
+  - name: left_instramp_n_to_right_vref
+    port: left_instramp_n_to_right_vref
+    direction: output
+    width: 1
+    description: ''
+  - name: left_instramp_n_to_vinref
+    port: left_instramp_n_to_vinref
+    direction: output
+    width: 1
+    description: ''
+  - name: left_instramp_p_to_gpio5_6
+    port: left_instramp_p_to_gpio5_6
+    direction: output
+    width: 2
+    description: ''
+  - name: left_instramp_p_to_analog0
+    port: left_instramp_p_to_analog0
+    direction: output
+    width: 1
+    description: ''
+  - name: left_instramp_p_to_amuxbusA
+    port: left_instramp_p_to_amuxbusA
+    direction: output
+    width: 1
+    description: ''
+  - name: left_instramp_p_to_sio0
+    port: left_instramp_p_to_sio0
+    direction: output
+    width: 1
+    description: ''
+  - name: left_instramp_p_to_tempsense
+    port: left_instramp_p_to_tempsense
+    direction: output
+    width: 1
+    description: ''
+  - name: left_instramp_p_to_left_vref
+    port: left_instramp_p_to_left_vref
+    direction: output
+    width: 1
+    description: ''
+  - name: left_instramp_p_to_voutref
+    port: left_instramp_p_to_voutref
+    direction: output
+    width: 1
+    description: ''
+  - name: right_instramp_n_to_analog1
+    port: right_instramp_n_to_analog1
+    direction: output
+    width: 1
+    description: ''
+  - name: right_instramp_n_to_amuxbusB
+    port: right_instramp_n_to_amuxbusB
+    direction: output
+    width: 1
+    description: ''
+  - name: right_instramp_n_to_sio1
+    port: right_instramp_n_to_sio1
+    direction: output
+    width: 1
+    description: ''
+  - name: right_instramp_n_to_right_vref
+    port: right_instramp_n_to_right_vref
+    direction: output
+    width: 1
+    description: ''
+  - name: right_instramp_n_to_vinref
+    port: right_instramp_n_to_vinref
+    direction: output
+    width: 1
+    description: ''
+  - name: right_instramp_n_to_gpio2_6
+    port: right_instramp_n_to_gpio2_6
+    direction: output
+    width: 2
+    description: ''
+  - name: right_instramp_p_to_analog0
+    port: right_instramp_p_to_analog0
+    direction: output
+    width: 1
+    description: ''
+  - name: right_instramp_p_to_amuxbusA
+    port: right_instramp_p_to_amuxbusA
+    direction: output
+    width: 1
+    description: ''
+  - name : right_instramp_p_to_sio0
+    port: right_instramp_p_to_sio0
+    direction: output
+    width: 1
+    description: ''
+  - name: right_instramp_p_to_tempsense
+    port: right_instramp_p_to_tempsense
+    direction: output
+    width: 1
+    description: ''
+  - name: right_instramp_p_to_left_vref
+    port: right_instramp_p_to_left_vref
+    direction: output
+    width: 1
+    description: ''
+  - name: right_instramp_p_to_voutref
+    port: right_instramp_p_to_voutref
+    direction: output
+    width: 1
+    description: ''
+  - name: right_instramp_p_to_gpio2_7
+    port: right_instramp_p_to_gpio2_7
+    direction: output
+    width: 2
+    description: ''
+  - name: ulpcomp_p_to_dac0
+    port: ulpcomp_p_to_dac0
+    direction: output
+    width: 1
+    description: ''
+  - name: ulpcomp_p_to_analog1
+    port: ulpcomp_p_to_analog1
+    direction: output
+    width: 1
+    description: ''
+  - name: ulpcomp_p_to_sio0
+    port: ulpcomp_p_to_sio0
+    direction: output
+    width: 1
+    description: ''
+  - name: ulpcomp_p_to_vbgtc
+    port: ulpcomp_p_to_vbgtc
+    direction: output
+    width: 1
+    description: ''
+  - name: ulpcomp_p_to_tempsense
+    port: ulpcomp_p_to_tempsense
+    direction: output
+    width: 1
+    description: ''
+  - name: ulpcomp_p_to_left_vref
+    port: ulpcomp_p_to_left_vref
+    direction: output
+    width: 1
+    description: ''
+  - name: ulpcomp_p_to_voutref
+    port: ulpcomp_p_to_voutref
+    direction: output
+    width: 1
+    description: ''
+  - name: ulpcomp_p_to_gpio6_0
+    port: ulpcomp_p_to_gpio6_0
+    direction: output
+    width: 2
+    description: ''
+  - name: ulpcomp_p_to_gpio1_7
+    port: ulpcomp_p_to_gpio1_7
+    direction: output
+    width: 2
+    description: ''
+  - name: ulpcomp_n_to_dac1
+    port: ulpcomp_n_to_dac1
+    direction: output
+    width: 1
+    description: ''
+  - name: ulpcomp_n_to_analog0
+    port: ulpcomp_n_to_analog0
+    direction: output
+    width: 1
+    description: ''
+  - name: ulpcomp_n_to_sio1
+    port: ulpcomp_n_to_sio1
+    direction: output
+    width: 1
+    description: ''
+  - name: ulpcomp_n_to_vbgsc
+    port: ulpcomp_n_to_vbgsc
+    direction: output
+    width: 1
+    description: ''
+  - name: ulpcomp_n_to_right_vref
+    port: ulpcomp_n_to_right_vref
+    direction: output
+    width: 1
+    description: ''
+  - name: ulpcomp_n_to_vinref
+    port: ulpcomp_n_to_vinref
+    direction: output
+    width: 1
+    description: ''
+  - name: ulpcomp_n_to_gpio6_1
+    port: ulpcomp_n_to_gpio6_1
+    direction: output
+    width: 2
+    description: ''
+  - name: ulpcomp_n_to_gpio1_6
+    port: ulpcomp_n_to_gpio1_6
+    direction: output
+    width: 2
+    description: ''
+  - name: comp_p_to_dac0
+    port: comp_p_to_dac0
+    direction: output
+    width: 1
+    description: ''
+  - name: comp_p_to_analog1
+    port: comp_p_to_analog1
+    direction: output
+    width: 1
+    description: ''
+  - name: comp_p_to_sio0
+    port: comp_p_to_sio0
+    direction: output
+    width: 1
+    description: ''
+  - name: comp_p_to_vbgtc
+    port: comp_p_to_vbgtc
+    direction: output
+    width: 1
+    description: ''
+  - name: comp_p_to_tempsense
+    port: comp_p_to_tempsense
+    direction: output
+    width: 1
+    description: ''
+  - name: comp_p_to_left_vref
+    port: comp_p_to_left_vref
+    direction: output
+    width: 1
+    description: ''
+  - name: comp_p_to_voutref
+    port: comp_p_to_voutref
+    direction: output
+    width: 1
+    description: ''
+  - name: comp_p_to_gpio6_2
+    port: comp_p_to_gpio6_2
+    direction: output
+    width: 2
+    description: ''
+  - name: comp_p_to_gpio1_5
+    port: comp_p_to_gpio1_5
+    direction: output
+    width: 2
+    description: ''
+  - name: comp_n_to_dac1
+    port: comp_n_to_dac1
+    direction: output
+    width: 1
+    description: ''
+  - name: comp_n_to_analog0
+    port: comp_n_to_analog0
+    direction: output
+    width: 1
+    description: ''
+  - name: comp_n_to_sio1
+    port: comp_n_to_sio1
+    direction: output
+    width: 1
+    description: ''
+  - name: comp_n_to_vbgsc
+    port: comp_n_to_vbgsc
+    direction: output
+    width: 1
+    description: ''
+  - name: comp_n_to_right_vref
+    port: comp_n_to_right_vref
+    direction: output
+    width: 1
+    description: ''
+  - name: comp_n_to_vinref
+    port: comp_n_to_vinref
+    direction: output
+    width: 1
+    description: ''
+  - name: comp_n_to_gpio6_1
+    port: comp_n_to_gpio6_1
+    direction: output
+    width: 2
+    description: ''
+  - name: comp_n_to_gpio1_4
+    port: comp_n_to_gpio1_4
+    direction: output
+    width: 2
+    description: ''
+  - name: adc0_to_dac0
+    port: adc0_to_dac0
+    direction: output
+    width: 1
+    description: ''
+  - name: adc0_to_analog1
+    port: adc0_to_analog1
+    direction: output
+    width: 1
+    description: ''
+  - name: adc0_to_vbgtc
+    port: adc0_to_vbgtc
+    direction: output
+    width: 1
+    description: ''
+  - name: adc0_to_tempsense
+    port: adc0_to_tempsense
+    direction: output
+    width: 1
+    description: ''
+  - name: adc0_to_left_vref
+    port: adc0_to_left_vref
+    direction: output
+    width: 1
+    description: ''
+  - name: adc0_to_voutref
+    port: adc0_to_voutref
+    direction: output
+    width: 1
+    description: ''
+  - name: adc0_to_gpio6_4
+    port: adc0_to_gpio6_4
+    direction: output
+    width: 2
+    description: ''
+  - name: adc0_to_gpio1_3
+    port: adc0_to_gpio1_3
+    direction: output
+    width: 2
+    description: ''
+  - name: adc1_to_dac1
+    port: adc1_to_dac1
+    direction: output
+    width: 1
+    description: ''
+  - name: adc1_to_analog0
+    port: adc1_to_analog0
+    direction: output
+    width: 1
+    description: ''
+  - name: adc1_to_vbgsc
+    port: adc1_to_vbgsc
+    direction: output
+    width: 1
+    description: ''
+  - name: adc1_to_right_vref
+    port: adc1_to_right_vref
+    direction: output
+    width: 1
+    description: ''
+  - name: adc1_to_vinref
+    port: adc1_to_vinref
+    direction: output
+    width: 1
+    description: ''
+  - name: adc1_to_gpio6_5
+    port: adc1_to_gpio6_5
+    direction: output
+    width: 2
+    description: ''
+  - name: adc1_to_gpio1_2
+    port: adc1_to_gpio1_2
+    direction: output
+    width: 2
+    description: ''
+  - name: sio0_connect
+    port: sio0_connect
+    direction: output
+    width: 2
+    description: ''
+  - name: sio1_connect
+    port: sio1_connect
+    direction: output
+    width: 2
+    description: ''
+  - name: analog0_connect
+    port: analog0_connect
+    direction: output
+    width: 2
+    description: ''
+  - name: analog1_connect
+    port: analog1_connect
+    direction: output
+    width: 2
+    description: ''
+  - name: vbgtc_to_user
+    port: vbgtc_to_user
+    direction: output
+    width: 1
+    description: ''
+  - name: vbgsc_to_user
+    port: vbgsc_to_user
+    direction: output
+    width: 1
+    description: ''
+  - name: user_to_comp_n
+    port: user_to_comp_n
+    direction: output
+    width: 2
+    description: ''
+  - name: user_to_comp_p
+    port: user_to_comp_p
+    direction: output
+    width: 2
+    description: ''
+  - name: user_to_ulpcomp_n
+    port: user_to_ulpcomp_n
+    direction: output
+    width: 2
+    description: ''
+  - name: user_to_ulpcomp_p
+    port: user_to_ulpcomp_p
+    direction: output
+    width: 2
+    description: ''
+  - name: user_to_adc0
+    port: user_to_adc0
+    direction: output
+    width: 2
+    description: ''
+  - name: user_to_adc1
+    port: user_to_adc1
+    direction: output
+    width: 2
+    description: ''
+  - name: dac0_to_user
+    port: dac0_to_user
+    direction: output
+    width: 1
+    description: ''
+  - name: dac1_to_user
+    port: dac1_to_user
+    direction: output
+    width: 1
+    description: ''
+  - name: tempsense_to_user
+    port: tempsense_to_user
+    direction: output
+    width: 1
+    description: ''
+  - name: right_vref_to_user
+    port: right_vref_to_user
+    direction: output
+    width: 1
+    description: ''
+  - name: left_vref_to_user
+    port: left_vref_to_user
+    direction: output
+    width: 1
+    description: ''
+  - name: vinref_to_user
+    port: vinref_to_user
+    direction: output
+    width: 1
+    description: ''
+  - name: voutref_to_user
+    port: voutref_to_user
+    direction: output
+    width: 1
+    description: ''
+  - name: dac0_to_analog1
+    port: dac0_to_analog1
+    direction: output
+    width: 1
+    description: 
+  - name: dac1_to_analog0
+    port: dac1_to_analog0
+    direction: output
+    width: 1
+    description: 
+  - name: audiodac_out_to_analog1
+    port: audiodac_out_to_analog1
+    direction: output
+    width: 1
+    description: 
+  - name: audiodac_outb_to_analog0
+    port: audiodac_outb_to_analog0
+    direction: output
+    width: 1
+    description: 
+  - name :  left_instramp_ena
+    port:   left_instramp_ena
+    direction: output
+    width: 1
+    description: instrumentation amplifier enable
+  - name : left_instramp_G1
+    port:  left_instramp_G1
+    direction: output
+    width: 5
+    description: instrumentation amp programmable gain
+  - name : left_instramp_G2
+    port:  left_instramp_G2
+    direction: output
+    width: 5
+    description: instrumentation amp programmable gain
+  - name : left_hgbw_opamp_ena
+    port:  left_hgbw_opamp_ena
+    direction: output
+    width: 1
+    description: high gain-bandwidth opamp enable
+  - name : left_lp_opamp_ena
+    port:  left_lp_opamp_ena
+    direction: output
+    width: 1
+    description: low-power opamp enable
+  - name : left_rheostat1_b
+    port:  left_rheostat1_b
+    direction: output
+    width: 8
+    description: rheostat programmable tap
+  - name : left_rheostat2_b
+    port:  left_rheostat2_b
+    direction: output
+    width: 8
+    description: rheostat programmable tap
+  - name : right_instramp_ena
+    port: right_instramp_ena
+    direction: output
+    width: 1
+    description: instrumentation amplifier enable
+  - name : right_instramp_G1
+    port: right_instramp_G1
+    direction: output
+    width: 5
+    description: instrumentation amp programmable gain
+  - name : right_instramp_G2
+    port: right_instramp_G2
+    direction: output
+    width: 5
+    description: instrumentation amp programmable gain
+  - name : right_hgbw_opamp_ena
+    port: right_hgbw_opamp_ena
+    direction: output
+    width: 1
+    description: high gain-bandwidth opamp enable
+  - name : right_lp_opamp_ena
+    port: right_lp_opamp_ena
+    direction: output
+    width: 1
+    description: low-power opamp enable
+  - name : right_rheostat1_b
+    port: right_rheostat1_b
+    direction: output
+    width: 8
+    description: rheostat programmable tap
+  - name : right_rheostat2_b
+    port: right_rheostat2_b
+    direction: output
+    width: 8
+    description: rheostat programmable tap
+  - name :  comparator_0_ena
+    port:  comparator_0_ena
+    direction: output
+    width: 1
+    description: comparator enable
+  - name :  comparator_0_trim
+    port:  comparator_0_trim
+    direction: output
+    width: 6
+    description: comparator offset trim
+  - name :  comparator_0_hyst
+    port:  comparator_0_hyst
+    direction: output
+    width: 2
+    description: comparator hysteresis trim
+  - name :  comparator_1_ena
+    port:  comparator_1_ena
+    direction: output
+    width: 1
+    description: ULP comparator enable
+  - name :  bandgap_ena
+    port:  bandgap_ena
+    direction: output
+    width: 1
+    description: bandgap enable
+  - name :  bandgap_trim
+    port:  bandgap_trim
+    direction: output
+    width: 16
+    description: bandgap trim
+  - name : bandgap_sel
+    port: bandgap_sel
+    direction: output
+    width: 1
+    description: select bandgap source (default 0)
+  - name :  ldo_ena
+    port:  ldo_ena
+    direction: output
+    width: 1
+    description: bandgap trim
+  - name :  overvoltage_ena
+    port:  overvoltage_ena
+    direction: output
+    width: 1
+    description: overvoltage detector enable
+  - name :  overvoltage_trim
+    port:  overvoltage_trim
+    direction: output
+    width: 4
+    description: overvoltage detector trip point set
+  - name : ldo_ref_sel
+    port: ldo_ref_sel
+    direction: output
+    width: 1
+    description: select bandgap reference (default 0)
+  - name :  ibias_ena
+    port:  ibias_ena
+    direction: output
+    width: 1
+    description: biasgen master enable
+  - name :  ibias_src_enb
+    port:  ibias_src_enb
+    direction: output
+    width: 24
+    description: biasgen source disables
+  - name :  ibias_snk_ena
+    port:  ibias_snk_ena
+    direction: output
+    width: 4
+    description: sink current test enables
+  - name :  ibias_ref_select
+    port:  ibias_ref_select
+    direction: output
+    width: 1
+    description: select internal or bandgap reference
+  - name :  idac_value
+    port:  idac_value
+    direction: output
+    width: 12
+    description: current DAC value
+  - name :  idac_ena
+    port:  idac_ena
+    direction: output
+    width: 1
+    description: current DAC enable
+  - name :  tempsense_ena
+    port:  tempsense_ena
+    direction: output
+    width: 1
+    description: temperature sensor enable
+  - name :  tempsense_sel
+    port:  tempsense_sel
+    direction: output
+    width: 1
+    description: select temperature sensor output (default 0)
+  - name :  rdac0_ena
+    port:  rdac0_ena
+    direction: output
+    width: 1
+    description: voltage DAC enable
+  - name :  rdac0_value
+    port:  rdac0_value
+    direction: output
+    width: 12
+    description: voltage DAC value
+  - name :  rdac1_ena
+    port:  rdac1_ena
+    direction: output
+    width: 1
+    description: voltage DAC enable
+  - name :  rdac1_value
+    port:  rdac1_value
+    direction: output
+    width: 12
+    description: voltage DAC value
+  - name :  comparator_0_out
+    port:  comparator_0_out
+    direction: input
+    width: 1
+    description: comparator_0_out
+  - name :  comparator_1_out
+    port:  comparator_1_out
+    direction: input
+    width: 1
+    description: ULP comparator output
+  - name :  overvoltage_out
+    port:  overvoltage_out
+    direction: input
+    width: 1
+    description: overvoltage output
+  - name :  vdda1_pwr_good
+    port:  vdda1_pwr_good
+    direction: input
+    width: 1
+    description: power-good detect, right side 3.3V domain
+  - name :  vccd1_pwr_good
+    port:  vccd1_pwr_good
+    direction: input
+    width: 1
+    description: power-good detect, right side 1.8V domain
+  - name :  vdda2_pwr_good
+    port:  vdda2_pwr_good
+    direction: input
+    width: 1
+    description: power-good detect, left side 3.3V domain
+  - name :  vccd2_pwr_good
+    port:  vccd2_pwr_good
+    direction: input
+    width: 1
+    description: power-good detect, left side 1.8V domain
+
+
+clock:
+  name: clk
+
+reset:
+  name: rst_n
+  level: 0
+
+registers:
+  - name: reg_ana_test
+    size: 4
+    mode: w
+    fifo: no
+    offset: 0
+    bit_access: no
+    description: ''
+    fields:
+      - name : ibias_test_to_gpio1_2
+        bit_offset: 0
+        bit_width: 2
+        write_port: bus_ibias_test_to_gpio1_2
+        description: ''
+      - name : vbg_test_to_gpio1_1
+        bit_offset: 2
+        bit_width: 2
+        write_port: bus_vbg_test_to_gpio1_1
+        description: ''
+  - name: reg_ana_idac
+    size: 4
+    mode: w
+    fifo: no
+    offset: 4
+    bit_access: no
+    description: ''
+    fields:
+      - name : idac_to_gpio1_3
+        bit_offset: 0
+        bit_width: 2
+        write_port: bus_idac_to_gpio1_3
+        description: ''
+      - name : idac_to_gpio1_2
+        bit_offset: 2
+        bit_width: 2
+        write_port: bus_idac_to_gpio1_2
+        description: ''
+  - name: reg_ana_ref
+    size: 8
+    mode: w
+    fifo: no
+    offset: 8
+    bit_access: no
+    description: ''
+    fields:
+      - name : adc_refh_to_gpio6_6
+        bit_offset: 0
+        bit_width: 2
+        write_port: bus_adc_refh_to_gpio6_6
+        description: ''
+      - name : dac_refh_to_gpio1_1
+        bit_offset: 2
+        bit_width: 2
+        write_port: bus_dac_refh_to_gpio1_1
+        description: ''
+      - name : adc_refl_to_gpio6_7
+        bit_offset: 4
+        bit_width: 2
+        write_port: bus_adc_refl_to_gpio6_7
+        description: ''
+      - name : adc_refl_to_gpio1_0
+        bit_offset: 6
+        bit_width: 2
+        write_port: bus_adc_refl_to_gpio1_0
+        description: ''
+  - name: reg_ana_amp3_out
+    size: 18
+    mode: w
+    fifo: no
+    offset: 12
+    bit_access: no
+    description: ''
+    fields:
+      - name : right_lp_opamp_to_ulp_comp_p
+        bit_offset: 0
+        bit_width: 2
+        write_port: bus_right_lp_opamp_to_ulp_comp_p
+        description: ''
+      - name : right_lp_opamp_to_comp_p
+        bit_offset: 2
+        bit_width: 2
+        write_port: bus_right_lp_opamp_to_comp_p
+        description: ''
+      - name : right_lp_opamp_to_adc0
+        bit_offset: 4
+        bit_width: 2
+        write_port: bus_right_lp_opamp_to_adc0
+        description: ''
+      - name : right_lp_opamp_to_gpio4_7
+        bit_offset: 6
+        bit_width: 2
+        write_port: bus_right_lp_opamp_to_gpio4_7
+        description: ''
+      - name : right_lp_opamp_to_gpio4_3
+        bit_offset: 8
+        bit_width: 2
+        write_port: bus_right_lp_opamp_to_gpio4_3
+        description: ''
+      - name : right_lp_opamp_to_analog1
+        bit_offset: 10
+        bit_width: 2
+        write_port: bus_right_lp_opamp_to_analog1
+        description: ''
+      - name : right_lp_opamp_to_amuxbusB
+        bit_offset: 12
+        bit_width: 2
+        write_port: bus_right_lp_opamp_to_amuxbusB
+        description: ''
+      - name : right_lp_opamp_to_gpio3_7
+        bit_offset: 14
+        bit_width: 2
+        write_port: bus_right_lp_opamp_to_gpio3_7
+        description: ''
+      - name : right_lp_opamp_to_gpio3_3
+        bit_offset: 16
+        bit_width: 2
+        write_port: bus_right_lp_opamp_to_gpio3_3
+        description: ''
+  - name: reg_ana_amp2_out
+    size: 18
+    mode: w
+    fifo: no
+    offset: 16
+    bit_access: no
+    description: ''
+    fields:
+      - name : right_hgbw_opamp_to_ulp_comp_n
+        bit_offset: 0
+        bit_width: 2
+        write_port: bus_right_hgbw_opamp_to_ulp_comp_n
+        description: ''
+      - name : right_hgbw_opamp_to_comp_n
+        bit_offset: 2
+        bit_width: 2
+        write_port: bus_right_hgbw_opamp_to_comp_n
+        description: ''
+      - name : right_hgbw_opamp_to_adc1
+        bit_offset: 4
+        bit_width: 2
+        write_port: bus_right_hgbw_opamp_to_adc1
+        description: ''
+      - name : right_hgbw_opamp_to_gpio4_6
+        bit_offset: 6
+        bit_width: 2
+        write_port: bus_right_hgbw_opamp_to_gpio4_6
+        description: ''
+      - name : right_hgbw_opamp_to_gpio4_2
+        bit_offset: 8
+        bit_width: 2
+        write_port: bus_right_hgbw_opamp_to_gpio4_2
+        description: ''
+      - name : right_hgbw_opamp_to_analog0
+        bit_offset: 10
+        bit_width: 2
+        write_port: bus_right_hgbw_opamp_to_analog0
+        description: ''
+      - name : right_hgbw_opamp_to_amuxbusA
+        bit_offset: 12
+        bit_width: 2
+        write_port: bus_right_hgbw_opamp_to_amuxbusA
+        description: ''
+      - name : right_hgbw_opamp_to_gpio3_6
+        bit_offset: 14
+        bit_width: 2
+        write_port: bus_right_hgbw_opamp_to_gpio3_6
+        description: ''
+      - name : right_hgbw_opamp_to_gpio3_2
+        bit_offset: 16
+        bit_width: 2
+        write_port: bus_right_hgbw_opamp_to_gpio3_2
+        description: ''
+  - name: reg_ana_amp1_out
+    size: 18
+    mode: w
+    fifo: no
+    offset: 20
+    bit_access: no
+    description: ''
+    fields:
+      - name : left_hgbw_opamp_to_ulp_comp_p
+        bit_offset: 0
+        bit_width: 2
+        write_port: bus_left_hgbw_opamp_to_ulp_comp_p
+        description: ''
+      - name : left_hgbw_opamp_to_comp_p
+        bit_offset: 2
+        bit_width: 2
+        write_port: bus_left_hgbw_opamp_to_comp_p
+        description: ''
+      - name : left_hgbw_opamp_to_adc0
+        bit_offset: 4
+        bit_width: 2
+        write_port: bus_left_hgbw_opamp_to_adc0
+        description: ''
+      - name : left_hgbw_opamp_to_gpio4_5
+        bit_offset: 6
+        bit_width: 2
+        write_port: bus_left_hgbw_opamp_to_gpio4_5
+        description: ''
+      - name : left_hgbw_opamp_to_gpio4_1
+        bit_offset: 8
+        bit_width: 2
+        write_port: bus_left_hgbw_opamp_to_gpio4_1
+        description: ''
+      - name : left_hgbw_opamp_to_analog1
+        bit_offset: 10
+        bit_width: 2
+        write_port: bus_left_hgbw_opamp_to_analog1
+        description: ''
+      - name : left_hgbw_opamp_to_amuxbusB
+        bit_offset: 12
+        bit_width: 2
+        write_port: bus_left_hgbw_opamp_to_amuxbusB
+        description: ''
+      - name : left_hgbw_opamp_to_gpio3_5
+        bit_offset: 14
+        bit_width: 2
+        write_port: bus_left_hgbw_opamp_to_gpio3_5
+        description: ''
+      - name : left_hgbw_opamp_to_gpio3_1
+        bit_offset: 16
+        bit_width: 2
+        write_port: bus_left_hgbw_opamp_to_gpio3_1
+        description: ''
+  - name: reg_ana_amp0_out
+    size: 18
+    mode: w
+    fifo: no
+    offset: 24
+    bit_access: no
+    description: ''
+    fields:
+      - name : left_lp_opamp_to_ulp_comp_n
+        bit_offset: 0
+        bit_width: 2
+        write_port: bus_left_lp_opamp_to_ulp_comp_n
+        description: ''
+      - name : left_lp_opamp_to_comp_n
+        bit_offset: 2
+        bit_width: 2
+        write_port: bus_left_lp_opamp_to_comp_n
+        description: ''
+      - name : left_lp_opamp_to_adc1
+        bit_offset: 4
+        bit_width: 2
+        write_port: bus_left_lp_opamp_to_adc1
+        description: ''
+      - name : left_lp_opamp_to_gpio4_4
+        bit_offset: 6
+        bit_width: 2
+        write_port: bus_left_lp_opamp_to_gpio4_4
+        description: ''
+      - name : left_lp_opamp_to_gpio4_0
+        bit_offset: 8
+        bit_width: 2
+        write_port: bus_left_lp_opamp_to_gpio4_0
+        description: ''
+      - name : left_lp_opamp_to_analog0
+        bit_offset: 10
+        bit_width: 2
+        write_port: bus_left_lp_opamp_to_analog0
+        description: ''
+      - name : left_lp_opamp_to_amuxbusA
+        bit_offset: 12
+        bit_width: 2
+        write_port: bus_left_lp_opamp_to_amuxbusA
+        description: ''
+      - name : left_lp_opamp_to_gpio3_4
+        bit_offset: 14
+        bit_width: 2
+        write_port: bus_left_lp_opamp_to_gpio3_4
+        description: ''
+      - name : left_lp_opamp_to_gpio3_0
+        bit_offset: 16
+        bit_width: 2
+        write_port: bus_left_lp_opamp_to_gpio3_0
+        description: ''
+  - name: reg_ana_amp3_inp
+    size: 10
+    mode: w
+    fifo: no
+    offset: 28
+    bit_access: no
+    description: ''
+    fields:
+      - name : right_lp_opamp_p_to_dac0
+        bit_offset: 0
+        bit_width: 1
+        write_port: bus_right_lp_opamp_p_to_dac0
+        description: ''
+      - name : right_lp_opamp_p_to_analog0
+        bit_offset: 1
+        bit_width: 1
+        write_port: bus_right_lp_opamp_p_to_analog0
+        description: ''
+      - name : right_lp_opamp_p_to_amuxbusA
+        bit_offset: 2
+        bit_width: 1
+        write_port: bus_right_lp_opamp_p_to_amuxbusA
+        description: ''
+      - name : right_lp_opamp_p_to_rheostat_out
+        bit_offset: 3
+        bit_width: 1
+        write_port: bus_right_lp_opamp_p_to_rheostat_out
+        description: ''
+      - name : right_lp_opamp_p_to_sio0
+        bit_offset: 4
+        bit_width: 1
+        write_port: bus_right_lp_opamp_p_to_sio0
+        description: ''
+      - name : right_lp_opamp_p_to_tempsense
+        bit_offset: 5
+        bit_width: 1
+        write_port: bus_right_lp_opamp_p_to_tempsense
+        description: ''
+      - name : right_lp_opamp_p_to_left_vref
+        bit_offset: 6
+        bit_width: 1
+        write_port: bus_right_lp_opamp_p_to_left_vref
+        description: ''
+      - name : right_lp_opamp_p_to_voutref
+        bit_offset: 7
+        bit_width: 1
+        write_port: bus_right_lp_opamp_p_to_voutref
+        description: ''
+      - name : right_lp_opamp_p_to_gpio2_5
+        bit_offset: 8
+        bit_width: 2
+        write_port: bus_right_lp_opamp_p_to_gpio2_5
+        description: ''
+  - name: reg_ana_amp3_inn
+    size: 11
+    mode: w
+    fifo: no
+    offset: 32
+    bit_access: no
+    description: ''
+    fields:
+      - name : right_lp_opamp_n_to_dac1
+        bit_offset: 0
+        bit_width: 1
+        write_port: bus_right_lp_opamp_n_to_dac1
+        description: ''
+      - name : right_lp_opamp_n_to_analog1
+        bit_offset: 1
+        bit_width: 1
+        write_port: bus_right_lp_opamp_n_to_analog1
+        description: ''
+      - name : right_lp_opamp_n_to_amuxbusB
+        bit_offset: 2
+        bit_width: 1
+        write_port: bus_right_lp_opamp_n_to_amuxbusB
+        description: ''
+      - name : right_lp_opamp_n_to_rheostat_out
+        bit_offset: 3
+        bit_width: 1
+        write_port: bus_right_lp_opamp_n_to_rheostat_out
+        description: ''
+      - name : right_lp_opamp_n_to_rheostat_tap
+        bit_offset: 4
+        bit_width: 1
+        write_port: bus_right_lp_opamp_n_to_rheostat_tap
+        description: ''
+      - name : right_lp_opamp_n_to_sio1
+        bit_offset: 5
+        bit_width: 1
+        write_port: bus_right_lp_opamp_n_to_sio1
+        description: ''
+      - name : right_lp_opamp_n_to_vbgtc
+        bit_offset: 6
+        bit_width: 1
+        write_port: bus_right_lp_opamp_n_to_vbgtc
+        description: ''
+      - name : right_lp_opamp_n_to_right_vref
+        bit_offset: 7
+        bit_width: 1
+        write_port: bus_right_lp_opamp_n_to_right_vref
+        description: ''
+      - name : right_lp_opamp_n_to_vinref
+        bit_offset: 8
+        bit_width: 1
+        write_port: bus_right_lp_opamp_n_to_vinref
+        description: ''
+      - name : right_lp_opamp_n_to_gpio2_4
+        bit_offset: 9
+        bit_width: 2
+        write_port: bus_right_lp_opamp_n_to_gpio2_4
+        description: ''
+  - name: reg_ana_amp2_inp
+    size: 11
+    mode: w
+    fifo: no
+    offset: 36
+    bit_access: no
+    description: ''
+    fields:
+      - name : right_hgbw_opamp_p_to_gpio5_0
+        bit_offset: 0
+        bit_width: 2
+        write_port: bus_right_hgbw_opamp_p_to_gpio5_0
+        description: ''
+      - name : right_hgbw_opamp_p_to_dac0
+        bit_offset: 2
+        bit_width: 1
+        write_port: bus_right_hgbw_opamp_p_to_dac0
+        description: ''
+      - name : right_hgbw_opamp_p_to_analog0
+        bit_offset: 3
+        bit_width: 1
+        write_port: bus_right_hgbw_opamp_p_to_analog0
+        description: ''
+      - name : right_hgbw_opamp_p_to_amuxbusA
+        bit_offset: 4
+        bit_width: 1
+        write_port: bus_right_hgbw_opamp_p_to_amuxbusA
+        description: ''
+      - name : right_hgbw_opamp_p_to_rheostat_out
+        bit_offset: 5
+        bit_width: 1
+        write_port: bus_right_hgbw_opamp_p_to_rheostat_out
+        description: ''
+      - name : right_hgbw_opamp_p_to_sio0
+        bit_offset: 6
+        bit_width: 1
+        write_port: bus_right_hgbw_opamp_p_to_sio0
+        description: ''
+      - name : right_hgbw_opamp_p_to_left_vref
+        bit_offset: 7
+        bit_width: 1
+        write_port: bus_right_hgbw_opamp_p_to_left_vref
+        description: ''
+      - name : right_hgbw_opamp_p_to_voutref
+        bit_offset: 8
+        bit_width: 1
+        write_port: bus_right_hgbw_opamp_p_to_voutref
+        description: ''
+      - name : right_hgbw_opamp_p_to_gpio2_3
+        bit_offset: 9
+        bit_width: 2
+        write_port: bus_right_hgbw_opamp_p_to_gpio2_3
+        description: ''
+  - name: reg_ana_amp2_inn
+    size: 13
+    mode: w
+    fifo: no
+    offset: 40
+    bit_access: no
+    description: ''
+    fields:
+      - name : right_hgbw_opamp_n_to_gpio5_1
+        bit_offset: 0
+        bit_width: 2
+        write_port: bus_right_hgbw_opamp_n_to_gpio5_1
+        description: ''
+      - name : right_hgbw_opamp_n_to_dac1
+        bit_offset: 2
+        bit_width: 1
+        write_port: bus_right_hgbw_opamp_n_to_dac1
+        description: ''
+      - name : right_hgbw_opamp_n_to_analog1
+        bit_offset: 3
+        bit_width: 1
+        write_port: bus_right_hgbw_opamp_n_to_analog1
+        description: ''
+      - name : right_hgbw_opamp_n_to_amuxbusB
+        bit_offset: 4
+        bit_width: 1
+        write_port: bus_right_hgbw_opamp_n_to_amuxbusB
+        description: ''
+      - name : right_hgbw_opamp_n_to_rheostat_out
+        bit_offset: 5
+        bit_width: 1
+        write_port: bus_right_hgbw_opamp_n_to_rheostat_out
+        description: ''
+      - name : right_hgbw_opamp_n_to_rheostat_tap
+        bit_offset: 6
+        bit_width: 1
+        write_port: bus_right_hgbw_opamp_n_to_rheostat_tap
+        description: ''
+      - name : right_hgbw_opamp_n_to_sio1
+        bit_offset: 7
+        bit_width: 1
+        write_port: bus_right_hgbw_opamp_n_to_sio1
+        description: ''
+      - name : right_hgbw_opamp_n_to_vbgsc
+        bit_offset: 8
+        bit_width: 1
+        write_port: bus_right_hgbw_opamp_n_to_vbgsc
+        description: ''
+      - name : right_hgbw_opamp_n_to_right_vref
+        bit_offset: 9
+        bit_width: 1
+        write_port: bus_right_hgbw_opamp_n_to_right_vref
+        description: ''
+      - name : right_hgbw_opamp_n_to_vinref
+        bit_offset: 10
+        bit_width: 1
+        write_port: bus_right_hgbw_opamp_n_to_vinref
+        description: ''
+      - name : right_hgbw_opamp_n_to_gpio2_2
+        bit_offset: 11
+        bit_width: 2
+        write_port: bus_right_hgbw_opamp_n_to_gpio2_2
+        description: ''
+  - name: reg_ana_amp1_inp
+    size: 12
+    mode: w
+    fifo: no
+    offset: 44
+    bit_access: no
+    description: ''
+    fields:
+      - name : left_hgbw_opamp_p_to_gpio5_2
+        bit_offset: 0
+        bit_width: 2
+        write_port: bus_left_hgbw_opamp_p_to_gpio5_2
+        description: ''
+      - name : left_hgbw_opamp_p_to_dac0
+        bit_offset: 2
+        bit_width: 1
+        write_port: bus_left_hgbw_opamp_p_to_dac0
+        description: ''
+      - name : left_hgbw_opamp_p_to_analog0
+        bit_offset: 3
+        bit_width: 1
+        write_port: bus_left_hgbw_opamp_p_to_analog0
+        description: ''
+      - name : left_hgbw_opamp_p_to_amuxbusA
+        bit_offset: 4
+        bit_width: 1
+        write_port: bus_left_hgbw_opamp_p_to_amuxbusA
+        description: ''
+      - name : left_hgbw_opamp_p_to_rheostat_out
+        bit_offset: 5
+        bit_width: 1
+        write_port: bus_left_hgbw_opamp_p_to_rheostat_out
+        description: ''
+      - name : left_hgbw_opamp_p_to_sio0
+        bit_offset: 6
+        bit_width: 1
+        write_port: bus_left_hgbw_opamp_p_to_sio0
+        description: ''
+      - name : left_hgbw_opamp_p_to_tempsense
+        bit_offset: 7
+        bit_width: 1
+        write_port: bus_left_hgbw_opamp_p_to_tempsense
+        description: ''
+      - name : left_hgbw_opamp_p_to_left_vref
+        bit_offset: 8
+        bit_width: 1
+        write_port: bus_left_hgbw_opamp_p_to_left_vref
+        description: ''
+      - name : left_hgbw_opamp_p_to_voutref
+        bit_offset: 9
+        bit_width: 1
+        write_port: bus_left_hgbw_opamp_p_to_voutref
+        description: ''
+      - name : left_hgbw_opamp_p_to_gpio2_1
+        bit_offset: 10
+        bit_width: 2
+        write_port: bus_left_hgbw_opamp_p_to_gpio2_1
+        description: ''
+  - name: reg_ana_amp1_inn
+    size: 13
+    mode: w
+    fifo: no
+    offset: 48
+    bit_access: no
+    description: ''
+    fields:
+      - name : left_hgbw_opamp_n_to_gpio5_3
+        bit_offset: 0
+        bit_width: 2
+        write_port: bus_left_hgbw_opamp_n_to_gpio5_3
+        description: ''
+      - name : left_hgbw_opamp_n_to_dac1
+        bit_offset: 2
+        bit_width: 1
+        write_port: bus_left_hgbw_opamp_n_to_dac1
+        description: ''
+      - name : left_hgbw_opamp_n_to_analog1
+        bit_offset: 3
+        bit_width: 1
+        write_port: bus_left_hgbw_opamp_n_to_analog1
+        description: ''
+      - name : left_hgbw_opamp_n_to_amuxbusB
+        bit_offset: 4
+        bit_width: 1
+        write_port: bus_left_hgbw_opamp_n_to_amuxbusB
+        description: ''
+      - name : left_hgbw_opamp_n_to_rheostat_out
+        bit_offset: 5
+        bit_width: 1
+        write_port: bus_left_hgbw_opamp_n_to_rheostat_out
+        description: ''
+      - name : left_hgbw_opamp_n_to_rheostat_tap
+        bit_offset: 6
+        bit_width: 1
+        write_port: bus_left_hgbw_opamp_n_to_rheostat_tap
+        description: ''
+      - name : left_hgbw_opamp_n_to_sio1
+        bit_offset: 7
+        bit_width: 1
+        write_port: bus_left_hgbw_opamp_n_to_sio1
+        description: ''
+      - name : left_hgbw_opamp_n_to_vbgtc
+        bit_offset: 8
+        bit_width: 1
+        write_port: bus_left_hgbw_opamp_n_to_vbgtc
+        description: ''
+      - name : left_hgbw_opamp_n_to_right_vref
+        bit_offset: 9
+        bit_width: 1
+        write_port: bus_left_hgbw_opamp_n_to_right_vref
+        description: ''
+      - name : left_hgbw_opamp_n_to_vinref
+        bit_offset: 10
+        bit_width: 1
+        write_port: bus_left_hgbw_opamp_n_to_vinref
+        description: ''
+      - name : left_hgbw_opamp_n_to_gpio2_0
+        bit_offset: 11
+        bit_width: 2
+        write_port: bus_left_hgbw_opamp_n_to_gpio2_0
+        description: ''
+  - name: reg_ana_amp0_inp
+    size: 9
+    mode: w
+    fifo: no
+    offset: 52
+    bit_access: no
+    description: ''
+    fields:
+      - name : left_lp_opamp_p_to_gpio5_4
+        bit_offset: 0
+        bit_width: 2
+        write_port: bus_left_lp_opamp_p_to_gpio5_4
+        description: ''
+      - name : left_lp_opamp_p_to_dac0
+        bit_offset: 2
+        bit_width: 1
+        write_port: bus_left_lp_opamp_p_to_dac0
+        description: ''
+      - name : left_lp_opamp_p_to_analog0
+        bit_offset: 3
+        bit_width: 1
+        write_port: bus_left_lp_opamp_p_to_analog0
+        description: ''
+      - name : left_lp_opamp_p_to_amuxbusA
+        bit_offset: 4
+        bit_width: 1
+        write_port: bus_left_lp_opamp_p_to_amuxbusA
+        description: ''
+      - name : left_lp_opamp_p_to_rheostat_out
+        bit_offset: 5
+        bit_width: 1
+        write_port: bus_left_lp_opamp_p_to_rheostat_out
+        description: ''
+      - name : left_lp_opamp_p_to_sio0
+        bit_offset: 6
+        bit_width: 1
+        write_port: bus_left_lp_opamp_p_to_sio0
+        description: ''
+      - name : left_lp_opamp_p_to_left_vref
+        bit_offset: 7
+        bit_width: 1
+        write_port: bus_left_lp_opamp_p_to_left_vref
+        description: ''
+      - name : left_lp_opamp_p_to_voutref
+        bit_offset: 8
+        bit_width: 1
+        write_port: bus_left_lp_opamp_p_to_voutref
+        description: ''
+  - name: reg_ana_amp0_inn
+    size: 11
+    mode: w
+    fifo: no
+    offset: 56
+    bit_access: no
+    description: ''
+    fields:
+      - name : left_lp_opamp_n_to_gpio5_5
+        bit_offset: 0
+        bit_width: 2
+        write_port: bus_left_lp_opamp_n_to_gpio5_5
+        description: ''
+      - name : left_lp_opamp_n_to_dac1
+        bit_offset: 2
+        bit_width: 1
+        write_port: bus_left_lp_opamp_n_to_dac1
+        description: ''
+      - name : left_lp_opamp_n_to_analog1
+        bit_offset: 3
+        bit_width: 1
+        write_port: bus_left_lp_opamp_n_to_analog1
+        description: ''
+      - name : left_lp_opamp_n_to_amuxbusB
+        bit_offset: 4
+        bit_width: 1
+        write_port: bus_left_lp_opamp_n_to_amuxbusB
+        description: ''
+      - name : left_lp_opamp_n_to_rheostat_out
+        bit_offset: 5
+        bit_width: 1
+        write_port: bus_left_lp_opamp_n_to_rheostat_out
+        description: ''
+      - name : left_lp_opamp_n_to_rheostat_tap
+        bit_offset: 6
+        bit_width: 1
+        write_port: bus_left_lp_opamp_n_to_rheostat_tap
+        description: ''
+      - name : left_lp_opamp_n_to_sio1
+        bit_offset: 7
+        bit_width: 1
+        write_port: bus_left_lp_opamp_n_to_sio1
+        description: ''
+      - name : left_lp_opamp_n_to_vbgsc
+        bit_offset: 8
+        bit_width: 1
+        write_port: bus_left_lp_opamp_n_to_vbgsc
+        description: ''
+      - name : left_lp_opamp_n_to_right_vref
+        bit_offset: 9
+        bit_width: 1
+        write_port: bus_left_lp_opamp_n_to_right_vref
+        description: ''
+      - name : left_lp_opamp_n_to_vinref
+        bit_offset: 10
+        bit_width: 1
+        write_port: bus_left_lp_opamp_n_to_vinref
+        description: ''
+  - name: reg_ana_preamp0_out
+    size: 12
+    mode: w
+    fifo: no
+    offset: 60
+    bit_access: no
+    description: ''
+    fields:
+      - name : left_instramp_to_ulpcomp_p
+        bit_offset: 0
+        bit_width: 2
+        write_port: bus_left_instramp_to_ulpcomp_p
+        description: ''
+      - name : left_instramp_to_comp_p
+        bit_offset: 2
+        bit_width: 2
+        write_port: bus_left_instramp_to_comp_p
+        description: ''
+      - name : left_instramp_to_adc0
+        bit_offset: 4
+        bit_width: 2
+        write_port: bus_left_instramp_to_adc0
+        description: ''
+      - name : left_instramp_to_gpio4_4
+        bit_offset: 6
+        bit_width: 2
+        write_port: bus_left_instramp_to_gpio4_4
+        description: ''
+      - name : left_instramp_to_analog1
+        bit_offset: 8
+        bit_width: 2
+        write_port: bus_left_instramp_to_analog1
+        description: ''
+      - name : left_instramp_to_amuxbusB
+        bit_offset: 10
+        bit_width: 2
+        write_port: bus_left_instramp_to_amuxbusB
+        description: ''
+  - name: reg_ana_preamp1_out
+    size: 12
+    mode: w
+    fifo: no
+    offset: 64
+    bit_access: no
+    description: ''
+    fields:
+      - name : right_instramp_to_ulpcomp_n
+        bit_offset: 0
+        bit_width: 2
+        write_port: bus_right_instramp_to_ulpcomp_n
+        description: ''
+      - name : right_instramp_to_comp_n
+        bit_offset: 2
+        bit_width: 2
+        write_port: bus_right_instramp_to_comp_n
+        description: ''
+      - name : right_instramp_to_adc1
+        bit_offset: 4
+        bit_width: 2
+        write_port: bus_right_instramp_to_adc1
+        description: ''
+      - name : right_instramp_to_analog0
+        bit_offset: 6
+        bit_width: 2
+        write_port: bus_right_instramp_to_analog0
+        description: ''
+      - name : right_instramp_to_amuxbusA
+        bit_offset: 8
+        bit_width: 2
+        write_port: bus_right_instramp_to_amuxbusA
+        description: ''
+      - name : right_instramp_to_gpio3_0
+        bit_offset: 10
+        bit_width: 2
+        write_port: bus_right_instramp_to_gpio3_0
+        description: ''
+  - name: reg_ana_preamp0_inn
+    size: 7
+    mode: w
+    fifo: no
+    offset: 68
+    bit_access: no
+    description: ''
+    fields:
+      - name : left_instramp_n_to_gpio5_7
+        bit_offset: 0
+        bit_width: 2
+        write_port: bus_left_instramp_n_to_gpio5_7
+        description: ''
+      - name : left_instramp_n_to_analog1
+        bit_offset: 2
+        bit_width: 1
+        write_port: bus_left_instramp_n_to_analog1
+        description: ''
+      - name : left_instramp_n_to_amuxbusB
+        bit_offset: 3
+        bit_width: 1
+        write_port: bus_left_instramp_n_to_amuxbusB
+        description: ''
+      - name : left_instramp_n_to_sio1
+        bit_offset: 4
+        bit_width: 1
+        write_port: bus_left_instramp_n_to_sio1
+        description: ''
+      - name : left_instramp_n_to_right_vref
+        bit_offset: 5
+        bit_width: 1
+        write_port: bus_left_instramp_n_to_right_vref
+        description: ''
+      - name : left_instramp_n_to_vinref
+        bit_offset: 6
+        bit_width: 1
+        write_port: bus_left_instramp_n_to_vinref
+        description: ''
+  - name: reg_ana_preamp0_inp
+    size: 8
+    mode: w
+    fifo: no
+    offset: 72
+    bit_access: no
+    description: ''
+    fields:
+      - name : left_instramp_p_to_gpio5_6
+        bit_offset: 0
+        bit_width: 2
+        write_port: bus_left_instramp_p_to_gpio5_6
+        description: ''
+      - name : left_instramp_p_to_analog0
+        bit_offset: 2
+        bit_width: 1
+        write_port: bus_left_instramp_p_to_analog0
+        description: ''
+      - name : left_instramp_p_to_amuxbusA
+        bit_offset: 3
+        bit_width: 1
+        write_port: bus_left_instramp_p_to_amuxbusA
+        description: ''
+      - name : left_instramp_p_to_sio0
+        bit_offset: 4
+        bit_width: 1
+        write_port: bus_left_instramp_p_to_sio0
+        description: ''
+      - name : left_instramp_p_to_tempsense
+        bit_offset: 5
+        bit_width: 1
+        write_port: bus_left_instramp_p_to_tempsense
+        description: ''
+      - name : left_instramp_p_to_left_vref
+        bit_offset: 6
+        bit_width: 1
+        write_port: bus_left_instramp_p_to_left_vref
+        description: ''
+      - name : left_instramp_p_to_voutref
+        bit_offset: 7
+        bit_width: 1
+        write_port: bus_left_instramp_p_to_voutref
+        description: ''
+  - name: reg_ana_preamp1_inn
+    size: 7
+    mode: w
+    fifo: no
+    offset: 76
+    bit_access: no
+    description: ''
+    fields:
+      - name : right_instramp_n_to_analog1
+        bit_offset: 0
+        bit_width: 1
+        write_port: bus_right_instramp_n_to_analog1
+        description: ''
+      - name : right_instramp_n_to_amuxbusB
+        bit_offset: 1
+        bit_width: 1
+        write_port: bus_right_instramp_n_to_amuxbusB
+        description: ''
+      - name : right_instramp_n_to_sio1
+        bit_offset: 2
+        bit_width: 1
+        write_port: bus_right_instramp_n_to_sio1
+        description: ''
+      - name : right_instramp_n_to_right_vref
+        bit_offset: 3
+        bit_width: 1
+        write_port: bus_right_instramp_n_to_right_vref
+        description: ''
+      - name : right_instramp_n_to_vinref
+        bit_offset: 4
+        bit_width: 1
+        write_port: bus_right_instramp_n_to_vinref
+        description: ''
+      - name : right_instramp_n_to_gpio2_6
+        bit_offset: 5
+        bit_width: 2
+        write_port: bus_right_instramp_n_to_gpio2_6
+        description: ''
+  - name: reg_ana_preamp1_inp
+    size: 8
+    mode: w
+    fifo: no
+    offset: 80
+    bit_access: no
+    description: ''
+    fields:
+      - name : right_instramp_p_to_analog0
+        bit_offset: 0
+        bit_width: 1
+        write_port: bus_right_instramp_p_to_analog0
+        description: ''
+      - name : right_instramp_p_to_amuxbusA
+        bit_offset: 1
+        bit_width: 1
+        write_port: bus_right_instramp_p_to_amuxbusA
+        description: ''
+      - name : right_instramp_p_to_sio0
+        bit_offset: 2
+        bit_width: 1
+        write_port: bus_right_instramp_p_to_sio0
+        description: ''
+      - name : right_instramp_p_to_tempsense
+        bit_offset: 3
+        bit_width: 1
+        write_port: bus_right_instramp_p_to_tempsense
+        description: ''
+      - name : right_instramp_p_to_left_vref
+        bit_offset: 4
+        bit_width: 1
+        write_port: bus_right_instramp_p_to_left_vref
+        description: ''
+      - name : right_instramp_p_to_voutref
+        bit_offset: 5
+        bit_width: 1
+        write_port: bus_right_instramp_p_to_voutref
+        description: ''
+      - name : right_instramp_p_to_gpio2_7
+        bit_offset: 6
+        bit_width: 2
+        write_port: bus_right_instramp_p_to_gpio2_7
+        description: ''
+  - name: reg_ana_comp1_inp
+    size: 11
+    mode: w
+    fifo: no
+    offset: 84
+    bit_access: no
+    description: ''
+    fields:
+      - name : ulpcomp_p_to_dac0
+        bit_offset: 0
+        bit_width: 1
+        write_port: bus_ulpcomp_p_to_dac0
+        description: ''
+      - name : ulpcomp_p_to_analog1
+        bit_offset: 1
+        bit_width: 1
+        write_port: bus_ulpcomp_p_to_analog1
+        description: ''
+      - name : ulpcomp_p_to_sio0
+        bit_offset: 2
+        bit_width: 1
+        write_port: bus_ulpcomp_p_to_sio0
+        description: ''
+      - name : ulpcomp_p_to_vbgtc
+        bit_offset: 3
+        bit_width: 1
+        write_port: bus_ulpcomp_p_to_vbgtc
+        description: ''
+      - name : ulpcomp_p_to_tempsense
+        bit_offset: 4
+        bit_width: 1
+        write_port: bus_ulpcomp_p_to_tempsense
+        description: ''
+      - name : ulpcomp_p_to_left_vref
+        bit_offset: 5
+        bit_width: 1
+        write_port: bus_ulpcomp_p_to_left_vref
+        description: ''
+      - name : ulpcomp_p_to_voutref
+        bit_offset: 6
+        bit_width: 1
+        write_port: bus_ulpcomp_p_to_voutref
+        description: ''
+      - name : ulpcomp_p_to_gpio6_0
+        bit_offset: 7
+        bit_width: 2
+        write_port: bus_ulpcomp_p_to_gpio6_0
+        description: ''
+      - name : ulpcomp_p_to_gpio1_7
+        bit_offset: 9
+        bit_width: 2
+        write_port: bus_ulpcomp_p_to_gpio1_7
+        description: ''
+  - name: reg_ana_comp1_inn
+    size: 10
+    mode: w
+    fifo: no
+    offset: 88
+    bit_access: no
+    description: ''
+    fields:
+      - name : ulpcomp_n_to_dac1
+        bit_offset: 0
+        bit_width: 1
+        write_port: bus_ulpcomp_n_to_dac1
+        description: ''
+      - name : ulpcomp_n_to_analog0
+        bit_offset: 1
+        bit_width: 1
+        write_port: bus_ulpcomp_n_to_analog0
+        description: ''
+      - name : ulpcomp_n_to_sio1
+        bit_offset: 2
+        bit_width: 1
+        write_port: bus_ulpcomp_n_to_sio1
+        description: ''
+      - name : ulpcomp_n_to_vbgsc
+        bit_offset: 3
+        bit_width: 1
+        write_port: bus_ulpcomp_n_to_vbgsc
+        description: ''
+      - name : ulpcomp_n_to_right_vref
+        bit_offset: 4
+        bit_width: 1
+        write_port: bus_ulpcomp_n_to_right_vref
+        description: ''
+      - name : ulpcomp_n_to_vinref
+        bit_offset: 5
+        bit_width: 1
+        write_port: bus_ulpcomp_n_to_vinref
+        description: ''
+      - name : ulpcomp_n_to_gpio6_1
+        bit_offset: 6
+        bit_width: 2
+        write_port: bus_ulpcomp_n_to_gpio6_1
+        description: ''
+      - name : ulpcomp_n_to_gpio1_6
+        bit_offset: 8
+        bit_width: 2
+        write_port: bus_ulpcomp_n_to_gpio1_6
+        description: ''
+  - name: reg_ana_comp0_inp
+    size: 11
+    mode: w
+    fifo: no
+    offset: 92
+    bit_access: no
+    description: ''
+    fields:
+      - name : comp_p_to_dac0
+        bit_offset: 0
+        bit_width: 1
+        write_port: bus_comp_p_to_dac0
+        description: ''
+      - name : comp_p_to_analog1
+        bit_offset: 1
+        bit_width: 1
+        write_port: bus_comp_p_to_analog1
+        description: ''
+      - name : comp_p_to_sio0
+        bit_offset: 2
+        bit_width: 1
+        write_port: bus_comp_p_to_sio0
+        description: ''
+      - name : comp_p_to_vbgtc
+        bit_offset: 3
+        bit_width: 1
+        write_port: bus_comp_p_to_vbgtc
+        description: ''
+      - name : comp_p_to_tempsense
+        bit_offset: 4
+        bit_width: 1
+        write_port: bus_comp_p_to_tempsense
+        description: ''
+      - name : comp_p_to_left_vref
+        bit_offset: 5
+        bit_width: 1
+        write_port: bus_comp_p_to_left_vref
+        description: ''
+      - name : comp_p_to_voutref
+        bit_offset: 6
+        bit_width: 1
+        write_port: bus_comp_p_to_voutref
+        description: ''
+      - name : comp_p_to_gpio6_2
+        bit_offset: 7
+        bit_width: 2
+        write_port: bus_comp_p_to_gpio6_2
+        description: ''
+      - name : comp_p_to_gpio1_5
+        bit_offset: 9
+        bit_width: 2
+        write_port: bus_comp_p_to_gpio1_5
+        description: ''
+  - name: reg_ana_comp0_inn
+    size: 10
+    mode: w
+    fifo: no
+    offset: 96
+    bit_access: no
+    description: ''
+    fields:
+      - name : comp_n_to_dac1
+        bit_offset: 0
+        bit_width: 1
+        write_port: bus_comp_n_to_dac1
+        description: ''
+      - name : comp_n_to_analog0
+        bit_offset: 1
+        bit_width: 1
+        write_port: bus_comp_n_to_analog0
+        description: ''
+      - name : comp_n_to_sio1
+        bit_offset: 2
+        bit_width: 1
+        write_port: bus_comp_n_to_sio1
+        description: ''
+      - name : comp_n_to_vbgsc
+        bit_offset: 3
+        bit_width: 1
+        write_port: bus_comp_n_to_vbgsc
+        description: ''
+      - name : comp_n_to_right_vref
+        bit_offset: 4
+        bit_width: 1
+        write_port: bus_comp_n_to_right_vref
+        description: ''
+      - name : comp_n_to_vinref
+        bit_offset: 5
+        bit_width: 1
+        write_port: bus_comp_n_to_vinref
+        description: ''
+      - name : comp_n_to_gpio6_1
+        bit_offset: 6
+        bit_width: 2
+        write_port: bus_comp_n_to_gpio6_1
+        description: ''
+      - name : comp_n_to_gpio1_4
+        bit_offset: 8
+        bit_width: 2
+        write_port: bus_comp_n_to_gpio1_4
+        description: ''
+  - name: reg_ana_adc0_in
+    size: 10
+    mode: w
+    fifo: no
+    offset: 100
+    bit_access: no
+    description: ''
+    fields:
+      - name : adc0_to_dac0
+        bit_offset: 0
+        bit_width: 1
+        write_port: bus_adc0_to_dac0
+        description: ''
+      - name : adc0_to_analog1
+        bit_offset: 1
+        bit_width: 1
+        write_port: bus_adc0_to_analog1
+        description: ''
+      - name : adc0_to_vbgtc
+        bit_offset: 2
+        bit_width: 1
+        write_port: bus_adc0_to_vbgtc
+        description: ''
+      - name : adc0_to_tempsense
+        bit_offset: 3
+        bit_width: 1
+        write_port: bus_adc0_to_tempsense
+        description: ''
+      - name : adc0_to_left_vref
+        bit_offset: 4
+        bit_width: 1
+        write_port: bus_adc0_to_left_vref
+        description: ''
+      - name : adc0_to_voutref
+        bit_offset: 5
+        bit_width: 1
+        write_port: bus_adc0_to_voutref
+        description: ''
+      - name : adc0_to_gpio6_4
+        bit_offset: 6
+        bit_width: 2
+        write_port: bus_adc0_to_gpio6_4
+        description: ''
+      - name : adc0_to_gpio1_3
+        bit_offset: 8
+        bit_width: 2
+        write_port: bus_adc0_to_gpio1_3
+        description: ''
+  - name: reg_ana_adc1_in
+    size: 9
+    mode: w
+    fifo: no
+    offset: 104
+    bit_access: no
+    description: ''
+    fields:
+      - name : adc1_to_dac1
+        bit_offset: 0
+        bit_width: 1
+        write_port: bus_adc1_to_dac1
+        description: ''
+      - name : adc1_to_analog0
+        bit_offset: 1
+        bit_width: 1
+        write_port: bus_adc1_to_analog0
+        description: ''
+      - name : adc1_to_vbgsc
+        bit_offset: 2
+        bit_width: 1
+        write_port: bus_adc1_to_vbgsc
+        description: ''
+      - name : adc1_to_right_vref
+        bit_offset: 3
+        bit_width: 1
+        write_port: bus_adc1_to_right_vref
+        description: ''
+      - name : adc1_to_vinref
+        bit_offset: 4
+        bit_width: 1
+        write_port: bus_adc1_to_vinref
+        description: ''
+      - name : adc1_to_gpio6_5
+        bit_offset: 5
+        bit_width: 2
+        write_port: bus_adc1_to_gpio6_5
+        description: ''
+      - name : adc1_to_gpio1_2
+        bit_offset: 7
+        bit_width: 2
+        write_port: bus_adc1_to_gpio1_2
+        description: ''
+  - name: reg_ana_sio_iso
+    size: 4
+    mode: w
+    fifo: no
+    offset: 108
+    bit_access: no
+    description: ''
+    fields:
+      - name : sio0_connect
+        bit_offset: 0
+        bit_width: 2
+        write_port: bus_sio0_connect
+        description: ''
+      - name : sio1_connect
+        bit_offset: 2
+        bit_width: 2
+        write_port: bus_sio1_connect
+        description: ''
+  - name: reg_ana_sio_ana
+    size: 4
+    mode: w
+    fifo: no
+    offset: 112
+    bit_access: no
+    description: ''
+    fields:
+      - name : analog0_connect
+        bit_offset: 0
+        bit_width: 2
+        write_port: bus_analog0_connect
+        description: ''
+      - name : analog1_connect
+        bit_offset: 2
+        bit_width: 2
+        write_port: bus_analog1_connect
+        description: ''
+  - name: reg_ana_uproj
+    size: 21
+    mode: w
+    fifo: no
+    offset: 116
+    bit_access: no
+    description: ''
+    fields:
+      - name : vbgtc_to_user
+        bit_offset: 0
+        bit_width: 1
+        write_port: bus_vbgtc_to_user
+        description: ''
+      - name : vbgsc_to_user
+        bit_offset: 1
+        bit_width: 1
+        write_port: bus_vbgsc_to_user
+        description: ''
+      - name : user_to_comp_n
+        bit_offset: 2
+        bit_width: 2
+        write_port: bus_user_to_comp_n
+        description: ''
+      - name : user_to_comp_p
+        bit_offset: 4
+        bit_width: 2
+        write_port: bus_user_to_comp_p
+        description: ''
+      - name : user_to_ulpcomp_n
+        bit_offset: 6
+        bit_width: 2
+        write_port: bus_user_to_ulpcomp_n
+        description: ''
+      - name : user_to_ulpcomp_p
+        bit_offset: 8
+        bit_width: 2
+        write_port: bus_user_to_ulpcomp_p
+        description: ''
+      - name : user_to_adc0
+        bit_offset: 10
+        bit_width: 2
+        write_port: bus_user_to_adc0
+        description: ''
+      - name : user_to_adc1
+        bit_offset: 12
+        bit_width: 2
+        write_port: bus_user_to_adc1
+        description: ''
+      - name : dac0_to_user
+        bit_offset: 14
+        bit_width: 1
+        write_port: bus_dac0_to_user
+        description: ''
+      - name : dac1_to_user
+        bit_offset: 15
+        bit_width: 1
+        write_port: bus_dac1_to_user
+        description: ''
+      - name : tempsense_to_user
+        bit_offset: 16
+        bit_width: 1
+        write_port: bus_tempsense_to_user
+        description: ''
+      - name : right_vref_to_user
+        bit_offset: 17
+        bit_width: 1
+        write_port: bus_right_vref_to_user
+        description: ''
+      - name : left_vref_to_user
+        bit_offset: 18
+        bit_width: 1
+        write_port: bus_left_vref_to_user
+        description: ''
+      - name : vinref_to_user
+        bit_offset: 19
+        bit_width: 1
+        write_port: bus_vinref_to_user
+        description: ''
+      - name : voutref_to_user
+        bit_offset: 20
+        bit_width: 1
+        write_port: bus_voutref_to_user
+        description: ''
+  - name: reg_ana_dac_out
+    size: 4
+    mode: w
+    fifo: no 
+    offset: 120
+    bit_access: no 
+    description: ''
+    fields:
+      - name: dac0_to_analog1
+        bit_offset: 0
+        bit_width: 1
+        write_port: bus_dac0_to_analog1
+        description: 
+      - name: dac1_to_analog0
+        bit_offset: 1
+        bit_width: 1
+        write_port: bus_dac1_to_analog0
+        description: 
+      - name: audiodac_out_to_analog1
+        bit_offset: 2
+        bit_width: 1
+        write_port: bus_audiodac_out_to_analog1
+        description: 
+      - name: audiodac_outb_to_analog0
+        bit_offset: 3
+        bit_width: 1
+        write_port: bus_audiodac_outb_to_analog0
+        description: 
+  - name: reg_left_instramp_ctrl
+    size: 11
+    mode: w
+    fifo: no
+    offset: 124
+    bit_access: no
+    description: ''
+    fields:
+      - name : left_instramp_ena
+        bit_offset: 0
+        bit_width: 1
+        write_port: bus_left_instramp_ena
+        description: instrumentation amplifier enable
+      - name : left_instramp_G1
+        bit_offset: 1
+        bit_width: 5
+        write_port: bus_left_instramp_G1
+        description: instrumentation amp programmable gain
+      - name : left_instramp_G2
+        bit_offset: 6
+        bit_width: 5
+        write_port: bus_left_instramp_G2
+        description: instrumentation amp programmable gain
+  - name: reg_left_opamp_ctrl
+    size: 18
+    mode: w
+    fifo: no
+    offset: 128
+    bit_access: no
+    description: ''
+    fields:
+      - name : left_hgbw_opamp_ena
+        bit_offset: 0
+        bit_width: 1
+        write_port: bus_left_hgbw_opamp_ena
+        description: high gain-bandwidth opamp enable
+      - name : left_lp_opamp_ena
+        bit_offset: 1
+        bit_width: 1
+        write_port: bus_left_lp_opamp_ena
+        description: low-power opamp enable
+      - name : left_rheostat1_b
+        bit_offset: 2
+        bit_width: 8
+        write_port: bus_left_rheostat1_b
+        description: rheostat programmable tap
+      - name : left_rheostat2_b
+        bit_offset: 10
+        bit_width: 8
+        write_port: bus_left_rheostat2_b
+        description: rheostat programmable tap
+  - name: reg_right_instramp_ctrl
+    size: 11
+    mode: w
+    fifo: no
+    offset: 132
+    bit_access: no
+    description: ''
+    fields:
+      - name : right_instramp_ena
+        bit_offset: 0
+        bit_width: 1
+        write_port: bus_right_instramp_ena
+        description: instrumentation amplifier enable
+      - name : right_instramp_G1
+        bit_offset: 1
+        bit_width: 5
+        write_port: bus_right_instramp_G1
+        description: instrumentation amp programmable gain
+      - name : right_instramp_G2
+        bit_offset: 6
+        bit_width: 5
+        write_port: bus_right_instramp_G2
+        description: instrumentation amp programmable gain
+  - name: reg_right_opamp_ctrl
+    size: 18
+    mode: w
+    fifo: no
+    offset: 136
+    bit_access: no
+    description: ''
+    fields:
+      - name : right_hgbw_opamp_ena
+        bit_offset: 0
+        bit_width: 1
+        write_port: bus_right_hgbw_opamp_ena
+        description: high gain-bandwidth opamp enable
+      - name : right_lp_opamp_ena
+        bit_offset: 1
+        bit_width: 1
+        write_port: bus_right_lp_opamp_ena
+        description: low-power opamp enable
+      - name : right_rheostat1_b
+        bit_offset: 2
+        bit_width: 8
+        write_port: bus_right_rheostat1_b
+        description: rheostat programmable tap
+      - name : right_rheostat2_b
+        bit_offset: 10
+        bit_width: 8
+        write_port: bus_right_rheostat2_b
+        description: rheostat programmable tap
+  - name: reg_comparator_ctrl
+    size: 10
+    mode: w
+    fifo: no
+    offset: 140
+    bit_access: no
+    description: ''
+    fields:
+      - name : comparator_0_ena
+        bit_offset: 0
+        bit_width: 1
+        write_port: bus_comparator_0_ena
+        description: comparator enable
+      - name : comparator_0_trim
+        bit_offset: 1
+        bit_width: 6
+        write_port: bus_comparator_0_trim
+        description: comparator offset trim
+      - name : comparator_0_hyst
+        bit_offset: 7
+        bit_width: 2
+        write_port: bus_comparator_0_hyst
+        description: comparator hysteresis trim
+      - name : comparator_1_ena
+        bit_offset: 9
+        bit_width: 1
+        write_port: bus_comparator_1_ena
+        description: ULP comparator enable
+  - name: reg_bandgap_ctrl
+    size: 25
+    mode: w
+    fifo: no
+    offset: 144
+    bit_access: no
+    description: ''
+    fields:
+      - name : bandgap_ena
+        bit_offset: 0
+        bit_width: 1
+        write_port: bus_bandgap_ena
+        description: bandgap enable
+      - name : bandgap_trim
+        bit_offset: 1
+        bit_width: 16
+        write_port: bus_bandgap_trim
+        description: bandgap trim
+      - name : bandgap_sel
+        bit_offset: 17
+        bit_width: 1
+        write_port: bus_bandgap_sel
+        description: select bandgap source (default 0)
+      - name : ldo_ena
+        bit_offset: 18
+        bit_width: 1
+        write_port: bus_ldo_ena
+        description: bandgap trim
+      - name : overvoltage_ena
+        bit_offset: 19
+        bit_width: 1
+        write_port: bus_overvoltage_ena
+        description: overvoltage detector enable
+      - name : overvoltage_trim
+        bit_offset: 20
+        bit_width: 4
+        write_port: bus_overvoltage_trim
+        description: overvoltage detector trip point set
+      - name : ldo_ref_sel
+        bit_offset: 24
+        bit_width: 1
+        write_port: bus_ldo_ref_sel
+        description: select bandgap reference (default 0)
+  - name: reg_ibias_ctrl
+    size: 30
+    mode: w
+    fifo: no
+    offset: 148
+    bit_access: no
+    description: ''
+    fields:
+      - name : ibias_ena
+        bit_offset: 0
+        bit_width: 1
+        write_port: bus_ibias_ena
+        description: biasgen master enable
+      - name : ibias_src_enb
+        bit_offset: 1
+        bit_width: 24
+        write_port: bus_ibias_src_enb
+        description: biasgen source disables
+      - name : ibias_snk_ena
+        bit_offset: 25
+        bit_width: 4
+        write_port: bus_ibias_snk_ena
+        description: sink current test enables
+      - name : ibias_ref_select
+        bit_offset: 29
+        bit_width: 1
+        write_port: bus_ibias_ref_select
+        description: select internal or bandgap reference
+  - name: reg_idac_ctrl
+    size: 13
+    mode: w
+    fifo: no
+    offset: 152
+    bit_access: no
+    description: ''
+    fields:
+      - name : idac_value
+        bit_offset: 0
+        bit_width: 12
+        write_port: bus_idac_value
+        description: current DAC value
+      - name : idac_ena
+        bit_offset: 12
+        bit_width: 1
+        write_port: bus_idac_ena
+        description: current DAC enable
+  - name: reg_tempsense_ctrl
+    size: 2
+    mode: w
+    fifo: no
+    offset: 156
+    bit_access: no
+    description: tempsense control 
+    fields:
+      - name: tempsense_ena
+        bit_offset: 0
+        bit_width: 1
+        write_port: bus_tempsense_ena
+        description: temperature sensor enable
+      - name: tempsense_sel
+        bit_offset: 1
+        bit_width: 1
+        write_port: bus_tempsense_sel
+        description: select temperature sensor output (default 0)
+  - name: reg_rdac_ctrl
+    size: 26
+    mode: w
+    fifo: no
+    offset: 160
+    bit_access: no
+    description: ''
+    fields:
+      - name : rdac0_ena
+        bit_offset: 0
+        bit_width: 1
+        write_port: bus_rdac0_ena
+        description: voltage DAC enable
+      - name : rdac0_value
+        bit_offset: 1
+        bit_width: 12
+        write_port: bus_rdac0_value
+        description: voltage DAC value
+      - name : rdac1_ena
+        bit_offset: 13
+        bit_width: 1
+        write_port: bus_rdac1_ena
+        description: voltage DAC enable
+      - name : rdac1_value
+        bit_offset: 14
+        bit_width: 12
+        write_port: bus_rdac1_value
+        description: voltage DAC value
+  - name: reg_comparator0_out
+    size: 1
+    mode: r
+    fifo: no
+    offset: 164
+    bit_access: no
+    read_port: bus_comparator_0_out
+    description: comparator output
+  - name: reg_comparator1_out
+    size: 1
+    mode: r
+    fifo: no
+    offset: 168
+    bit_access: no
+    read_port: bus_comparator_1_out
+    description: ULP comparator output
+  - name: reg_overvoltage_out
+    size: 1
+    mode: r
+    fifo: no
+    offset: 172
+    bit_access: no
+    read_port: bus_overvoltage_out
+    description: overvoltage output
+  - name: reg_vdda1_pwr_good
+    size: 1
+    mode: r
+    fifo: no
+    offset: 176
+    bit_access: no
+    read_port: bus_vdda1_pwr_good
+    description: power-good detect, right side 3.3V domain
+  - name: reg_vccd1_pwr_good
+    size: 1
+    mode: r
+    fifo: no
+    offset: 180
+    bit_access: no
+    read_port: bus_vccd1_pwr_good
+    description: power-good detect, right side 1.8V domain
+  - name: reg_vdda2_pwr_good
+    size: 1
+    mode: r
+    fifo: no
+    offset: 184
+    bit_access: no
+    read_port: bus_vdda2_pwr_good
+    description: power-good detect, left side 3.3V domain
+  - name: reg_vccd2_pwr_good
+    size: 1
+    mode: r
+    fifo: no
+    offset: 188
+    bit_access: no
+    read_port: bus_vccd2_pwr_good
+    description: power-good detect, left side 1.8V domain

@@ -1,0 +1,415 @@
+---
+info:
+  name: CLK_RST
+  description:
+  repo: 
+  owner: Efabless Corp.
+  license: APACHE 2.0
+  author: Mohamed Shalan
+  email: mshalan@efabless.com
+  version: v1.0.0
+  date: 9-6-2024
+  category: digital
+  tags:
+  bus:
+    - generic
+  type": soft
+  status: verified
+  cell_count:
+    - IP: 
+    - APB: 
+    - AHBL: 
+    - WB:
+  width": "0.0"
+  height": "0.0"
+  technology: n/a
+  clock_freq_mhz:
+    - IP: 
+    - APB: 
+    - AHBL: 
+    - WB:
+  digital_supply_voltage: n/a
+  analog_supply_voltage: n/a
+  irq_reg_offset: 0xFF00
+  fifo_reg_offset: 0xFE00
+
+ports:
+  - name: dll_en
+    width: 1
+    direction: input
+    description: Enable DLL
+  - name: dll_div
+    width: 8
+    direction: input
+    description: DLL feedback division ratio
+  - name: dll_dco
+    width: 1
+    direction: input
+    description: Run in DCO mode
+  - name: dll_ext_trim
+    width: 26
+    direction: input
+    description: External trim for DCO mode
+  - name: rcosc_500k_en
+    width: 1
+    direction: input
+    description:
+  - name: rcosc_16m_en
+    width: 1
+    direction: input
+    description:
+  - name: hsxo_en
+    width: 1
+    direction: input
+    description:
+  - name: lsxo_en
+    width: 1
+    direction: input
+    description:
+  - name: lsxo_standby
+    width: 1
+    direction: input
+    description:
+  - name: hsxo_standby
+    width: 1
+    direction: input
+    description:
+  - name: clk_mon_sel
+    width: 3
+    direction: input
+    description:
+  - name: sel_mux0
+    width: 1
+    direction: input
+    description: 'CLKMUX0 selection - 0: XCLK'  
+  - name: sel_mux1
+    width: 1
+    direction: input
+    description: 'CLKMUX1 selection - 0: ROSC 16MHz'
+  - name: sel_mux2
+    width: 1
+    direction: input
+    description: 'CLKMUX2 selection - 0: dll clk'
+  - name: sel_mux3
+    width: 1
+    direction: input
+    description: 'CLKMUX2 selection - 0: RCOSC 500KHz'
+  - name: sel_mux4
+    width: 1
+    direction: input
+    description: 'CLKMUX2 selection - 0: CLKMUX_3'
+  - name: sel_mux5
+    width: 1
+    direction: input
+    description: 'CLKMUX2 selection - 0: CLKMUX_4'
+  - name: sel_clkdiv0
+    width: 3
+    direction: input
+    description: 'CLKDIV1 control - 0xx: No division'
+  - name: sel_clkdiv1
+    width: 3
+    direction: input
+    description: 'CLKDIV1 control - 0xx: No division'
+  - name: gclk_en
+    width: 1
+    direction: input
+    description: 'Enable the gated gclk - 0: disable clock  1: enable clock '
+  - name: ghclk_en
+    width: 1
+    direction: input
+    description: 'Enable the gated ghclk0 - 0: disable clock  1: enable clock'
+  - name: gpclk0_en
+    width: 1
+    direction: input
+    description: 'Enable the gated gpclk0 - 0: disable clock  1: enable clock'
+  - name: gpclk1_en
+    width: 1
+    direction: input
+    description: 'Enable the gated gpclk1 - 0: disable clock  1: enable clock'
+  
+  
+
+external_interface:
+  - name: xclk
+    port: xclk
+    direction: input
+    description: External clock source
+    width: 1
+  - name: rcosc_500k
+    port: rcosc_500k
+    direction: input
+    description: Internal Low Speed RCOSC (500 KHz)
+    width: 1
+  - name: rcosc_16m
+    port: rcosc_16m
+    direction: input
+    description: Internal High SPeed RCOSC (16 MHz)
+    width: 1
+  - name: hsxo
+    port: hsxo
+    direction: input
+    description: High SPeed XO
+    width: 1
+  - name: lsxo
+    port: lsxo
+    direction: input
+    description:  Low SPeed XO (32.768KHz)
+    width: 1
+  - name: xrst_n
+    port: xrst_n
+    direction: input
+    description:  external reset
+    width: 1
+  - name: por_n
+    port: por_n
+    direction: input
+    description:  Power-on-Reset
+    width: 1
+  - name: hkrst_n
+    port: hkrst_n
+    direction: input
+    description:  Housekeeping Reset
+    width: 1
+  - name: clk
+    port: clk
+    width: 1
+    direction: output
+    description: 'system clock - CPU and AHB1'
+  - name: gclk
+    port: gclk
+    width: 1
+    direction: output
+    description: 'Gated system clock for the CPU'
+  - name: ghclk0
+    port: ghclk0
+    width: 1
+    direction: output
+    description: 'Gated system clock for the CPU'
+  - name: gpclk0
+    port: gpclk0
+    width: 1
+    direction: output
+    description: 'Gated peripheral bus 0'
+  - name: gpclk1
+    port: gpclk1
+    width: 1
+    direction: output
+    description: 'Gated peripheral bus 1'
+  - name: clk_mon
+    port: clk_mon
+    width: 1
+    direction: output
+    description: 'clock monitor'
+  - name: rst_n
+    port: rst_n
+    width: 1
+    direction: output
+    description: 'system reset'
+  - name: rcosc_500k_en_tf
+    port: rcosc_500k_en_tf
+    width: 1
+    direction: output
+    description:
+  - name: rcosc_16m_en_tf
+    port: rcosc_16m_en_tf
+    width: 1
+    direction: output
+    description:
+  - name: hsxo_en_tf
+    port: hsxo_en_tf
+    width: 1
+    direction: output
+    description:
+  - name: lsxo_en_tf
+    port: lsxo_en_tf
+    width: 1
+    direction: output
+    description: 
+  - name: lsxo_standby_tf
+    port: lsxo_standby_tf
+    width: 1
+    direction: output
+    description:
+  - name: hsxo_standby_tf
+    port: hsxo_standby_tf
+    width: 1
+    direction: output
+    description:
+  
+clock:
+  name: clk
+
+reset:
+  name: rst_n
+  level: 0
+
+registers:
+  - name: dll_ctrl
+    size: 10
+    mode: w
+    fifo: no
+    offset: 0
+    bit_access: no
+    description:
+    fields:
+      - name: dll_en
+        bit_offset: 0
+        bit_width: 1
+        write_port: dll_en
+        description: Enable DLL
+      - name: dll_dco
+        bit_offset: 1
+        bit_width: 1
+        write_port: dll_dco
+        description: Run in DCO mode
+      - name: dll_div
+        bit_offset: 2
+        bit_width: 8
+        write_port: dll_div
+        description: DLL feedback division ratio
+  - name: dll_ext_trim
+    size: 26
+    mode: w
+    fifo: no
+    offset: 4
+    bit_access: no
+    write_port: dll_ext_trim
+    description:
+  - name: clk_src_en
+    size: 4
+    mode: w
+    fifo: no
+    offset: 8
+    bit_access: no
+    description:
+    fields:
+      - name: rcosc_500k_en
+        bit_offset: 0
+        bit_width: 1
+        write_port: rcosc_500k_en
+        description:
+      - name: rcosc_16m_en
+        bit_offset: 1
+        bit_width: 1
+        write_port: rcosc_16m_en
+        description:
+      - name: hsxo_en
+        bit_offset: 2
+        bit_width: 1
+        write_port: hsxo_en
+        description:
+      - name: lsxo_en
+        bit_offset: 3
+        bit_width: 1
+        write_port: lsxo_en
+        description:
+  - name: clk_mon_sel
+    size: 3
+    mode: w
+    fifo: no
+    offset: 12
+    bit_access: no
+    write_port: clk_mon_sel
+    description:
+  - name: mux_ctrl
+    size: 6
+    mode: w
+    fifo: no
+    offset: 16
+    bit_access: no
+    description:
+    fields:
+      - name: sel_mux0
+        bit_offset: 0
+        bit_width: 1
+        write_port : sel_mux0
+        description: 'CLKMUX0 selection - 0: XCLK'  
+      - name: sel_mux1
+        bit_offset: 1
+        bit_width: 1
+        write_port : sel_mux1
+        description: 'CLKMUX1 selection - 0: ROSC 16MHz'
+      - name: sel_mux2
+        bit_offset: 2
+        bit_width: 1
+        write_port : sel_mux2
+        description: 'CLKMUX2 selection - 0: dll clk'
+      - name: sel_mux3
+        bit_offset: 3
+        bit_width: 1
+        write_port : sel_mux3
+        description: 'CLKMUX2 selection - 0: RCOSC 500KHz'
+      - name: sel_mux4
+        bit_offset: 4
+        bit_width: 1
+        write_port : sel_mux4
+        description: 'CLKMUX2 selection - 0: CLKMUX_3'
+      - name: sel_mux5
+        bit_offset: 5
+        bit_width: 1
+        write_port : sel_mux5
+        description: 'CLKMUX2 selection - 0: CLKMUX_4'
+  - name: clk_div
+    size: 6
+    mode: w
+    fifo: no
+    offset: 20
+    bit_access: no
+    description:
+    fields:
+      - name: sel_clkdiv0
+        bit_offset: 0
+        bit_width: 3
+        write_port: sel_clkdiv0
+        description: 'CLKDIV1 control - 0xx: No division'
+      - name: sel_clkdiv1
+        bit_offset: 3
+        bit_width: 3
+        write_port: sel_clkdiv0
+        description: 'CLKDIV1 control - 0xx: No division'
+  - name: gclks_en
+    size: 4
+    mode: w
+    fifo: no
+    offset: 24
+    bit_access: no
+    description:
+    fields:
+      - name: gclk_en
+        bit_offset: 0
+        bit_width: 1
+        write_port: gclk_en
+        description: 'Enable the gated gclk - 0: disable clock  1: enable clock '
+      - name: ghclk_en
+        bit_offset: 1
+        bit_width: 1
+        write_port: ghclk_en
+        description: 'Enable the gated ghclk0 - 0: disable clock  1: enable clock'
+      - name: gpclk0_en
+        bit_offset: 2
+        bit_width: 1
+        write_port: gpclk0_en
+        description: 'Enable the gated gpclk0 - 0: disable clock  1: enable clock'
+      - name: gpclk1_en
+        bit_offset: 3
+        bit_width: 1
+        write_port: gpclk1_en
+        description: 'Enable the gated gpclk1 - 0: disable clock  1: enable clock'
+  - name: xo_standby 
+    size: 2
+    mode: w
+    fifo: no
+    offset: 28
+    bit_access: no
+    description:
+    fields:
+      - name: lsxo_standby
+        bit_offset: 0
+        bit_width: 1
+        write_port: lsxo_standby
+        description: 
+      - name: hsxo_standby
+        bit_offset: 1
+        bit_width: 1
+        write_port: hsxo_standby
+        description: 
