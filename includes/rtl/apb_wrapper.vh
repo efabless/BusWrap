@@ -31,12 +31,12 @@
                                             else if(apb_we & (PADDR[`APB_AW-1:0]==``name``_OFFSET))\ 
                                                 name <= PWDATA[``size``-1:0];\
                                             else if(apb_we & (PADDR[`APB_AW-1:8]==``name``_BYTE_ADDR))\
-                                                case(PADDR[3:2])
-                                                    2'b00: name[ 7: 0] <= PWDATA[ 7: 0];
-                                                    2'b01: name[15: 8] <= PWDATA[15: 8];
-                                                    2'b10: name[23:16] <= PWDATA[23:16];
-                                                    2'b11: name[31:24] <= PWDATA[31:24];
-                                                endcase
+                                                case(PADDR[3:2])\
+                                                    2'b00: name[ 7: 0] <= PWDATA[ 7: 0];\
+                                                    2'b01: name[15: 8] <= PWDATA[15: 8];\
+                                                    2'b10: name[23:16] <= PWDATA[23:16];\
+                                                    2'b11: name[31:24] <= PWDATA[31:24];\
+                                                endcase\
                                             
     
 
