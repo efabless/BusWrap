@@ -39,6 +39,7 @@ INT_REG_OFF     = 0xFF00
 FIFO_REG_OFF    = 0xFE00
 BIT_BAND_OFF    = 0xE000
 BYTE_BAND_OFF   = 0xD000
+CLK_GATE_OFF    = INT_REG_OFF + 0x10
 
 # Interrupt registers offsets
 IC_OFF          = 0x0C + INT_REG_OFF
@@ -185,8 +186,24 @@ def print_wires(bus_type):
         clk_net = "clk_i"
         rst_net = "(~rst_i)"
 
+    # print the clock gating cell
+    clkgatecell = f"""
+        wire clk_g;
+        wire clk_gated_en = GCLK_REG[0];
+
+    (* keep *) sky130_fd_sc_hd__dlclkp_4 clk_gate(
+    `ifdef USE_POWER_PINS 
+        .VPWR(VPWR), 
+        .VGND(VGND), 
+    `endif 
+        .GCLK(clk_g), 
+        .GATE(clk_gated_en), 
+        .CLK({clk_net})
+        );
+        """
+    print(clkgatecell)
     # Print clock wire declaration
-    print(f"\twire\t\t{IP['clock']['name']} = {clk_net};")
+    print(f"\twire\t\t{IP['clock']['name']} = clk_g;") #{clk_net};")
 
     # Check if reset is active and set the 'mod' variable accordingly
     if IP['reset']['level'] == 0:
@@ -495,6 +512,11 @@ def print_IRQ_registers(bus_type):
     print(f"\tassign IRQ = |MIS_REG;")
     print()
 
+def print_GCLK_register(bus_type):
+    print(f"\tlocalparam\tGCLK_REG_OFFSET = `{bus_type}_AW'h{hex(CLK_GATE_OFF)[2:].zfill(4).upper()};")
+    print(f"\treg [0:0] GCLK_REG;")
+    print(f"\t`{bus_type}_REG(GCLK_REG, 0, 1)")
+    print()
 
 def print_registers_offsets(bus_type):
     """
@@ -551,6 +573,7 @@ def print_rdata(bus_type):
     if "flags" in IP:
         for r in IRQ_REGS:
             print(f"\t\t\t({prefix}ADDR[`{bus_type}_AW-1:0] == {r}_REG_OFFSET)\t? {r}_REG :")
+    print(f"\t\t\t({prefix}ADDR[`{bus_type}_AW-1:0] == GCLK_REG_OFFSET)\t? GCLK_REG :")
     """
     if "fifos" in IP:
         for f in IP["fifos"]:
@@ -629,6 +652,7 @@ def print_bus_wrapper(bus_type):
     print_registers_offsets(bus_type)
     print_wires(bus_type)
     print_registers(bus_type)
+    print_GCLK_register(bus_type)
     if "flags" in IP:
         print_IRQ_registers(bus_type)
     print_instance_to_wrap(bus_type)
@@ -811,6 +835,7 @@ def print_reg_def():
     print("\t__R \tMIS;")
     print("\t__R \tRIS;")
     print("\t__W \tIC;")
+    print("\t__W \tGCLK;")
     print("}", end="")
     print(f" {ip_name}_TYPE;")
     print("\n#endif\n")
@@ -1236,7 +1261,7 @@ def main():
         RIS_OFF         = 0x08 + INT_REG_OFF
         IM_OFF          = 0x00 + INT_REG_OFF
         MIS_OFF         = 0x04 + INT_REG_OFF
-    if "irq_reg_offset" in IP['info']:
+    if "fifo_reg_offset" in IP['info']:
         FIFO_REG_OFF = IP['info']['fifo_reg_offset']
         FLUSH_OFF       = 0x8 + FIFO_REG_OFF
         THRESHOLD_OFF   = 0x4 + FIFO_REG_OFF
