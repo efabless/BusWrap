@@ -146,8 +146,8 @@ def print_module_header(bus_type):
     if "external_interface" in IP:
         # Print {bus_type}_SLAVE_PORTS
         print ("`ifdef USE_POWER_PINS") 
-        print ("\tinput wire VPWR,") 
-        print ("\tinput wire VGND,") 
+        print ("\tinout VPWR,") 
+        print ("\tinout VGND,") 
         print ("`endif") 
         print(f"\t`{bus_type}_SLAVE_PORTS,")
 
