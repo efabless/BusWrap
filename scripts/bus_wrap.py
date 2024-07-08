@@ -145,6 +145,10 @@ def print_module_header(bus_type):
     print(" (")
     if "external_interface" in IP:
         # Print {bus_type}_SLAVE_PORTS
+        print ("`ifdef USE_POWER_PINS") 
+        print ("\tinput wire VPWR,") 
+        print ("\tinput wire VGND,") 
+        print ("`endif") 
         print(f"\t`{bus_type}_SLAVE_PORTS,")
 
         # Print details of each interface
@@ -195,6 +199,8 @@ def print_wires(bus_type):
     `ifdef USE_POWER_PINS 
         .VPWR(VPWR), 
         .VGND(VGND), 
+        .VNB(VGND),
+		.VPB(VPWR),
     `endif 
         .GCLK(clk_g), 
         .GATE(clk_gated_en), 
