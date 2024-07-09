@@ -192,6 +192,7 @@ def print_wires(bus_type):
 
     # print the clock gating cell
     clkgatecell = f"""
+        reg [0:0] GCLK_REG;
         wire clk_g;
         wire clk_gated_en = GCLK_REG[0];
 
@@ -520,7 +521,6 @@ def print_IRQ_registers(bus_type):
 
 def print_GCLK_register(bus_type):
     print(f"\tlocalparam\tGCLK_REG_OFFSET = `{bus_type}_AW'h{hex(CLK_GATE_OFF)[2:].zfill(4).upper()};")
-    print(f"\treg [0:0] GCLK_REG;")
     print(f"\t`{bus_type}_REG(GCLK_REG, 0, 1)")
     print()
 
