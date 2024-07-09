@@ -161,7 +161,11 @@ def print_module_header(bus_type):
                 print(f"\t{ifc['direction']}\twire\t[{ifc['width']}-1:0]\t{ifc['name']}")
     else:
         # Print only {bus_type}_SLAVE_PORTS
-        print("\t`{bus_type}_SLAVE_PORTS")
+        print ("`ifdef USE_POWER_PINS") 
+        print ("\tinout VPWR,") 
+        print ("\tinout VGND,") 
+        print ("`endif") 
+        print(f"\t`{bus_type}_SLAVE_PORTS")
 
     # Print end of module header
     print(");\n")
