@@ -212,7 +212,7 @@ def print_wires(bus_type):
         .CLK({clk_net})
         );
     `else
-    assign clk_g = {clk_net};
+    assign clk_g = (clk_gated_en) ? {clk_net}: 1'b0;
     `endif // SKY130
         """
     print(clkgatecell)
