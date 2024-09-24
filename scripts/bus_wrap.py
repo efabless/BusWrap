@@ -196,21 +196,24 @@ def print_wires(bus_type):
 
     # print the clock gating cell
     clkgatecell = f"""
-        reg [0:0] GCLK_REG;
-        wire clk_g;
-        wire clk_gated_en = GCLK_REG[0];
-
+    reg [0:0] GCLK_REG;
+    wire clk_g;
+    wire clk_gated_en = GCLK_REG[0];
+    `ifdef SKY130
     (* keep *) sky130_fd_sc_hd__dlclkp_4 clk_gate(
     `ifdef USE_POWER_PINS 
         .VPWR(VPWR), 
         .VGND(VGND), 
         .VNB(VGND),
 		.VPB(VPWR),
-    `endif 
+    `endif // USE_POWER_PINS
         .GCLK(clk_g), 
         .GATE(clk_gated_en), 
         .CLK({clk_net})
         );
+    `else
+    assign clk_g = {clk_net};
+    `endif // SKY130
         """
     print(clkgatecell)
     # Print clock wire declaration
