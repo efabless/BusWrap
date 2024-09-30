@@ -207,7 +207,7 @@ def print_wires(bus_type):
         .clk({clk_net}),
         .clk_en(clk_gated_en),
         .clk_o(clk_g)
-    )
+    );
     """
     print(clkgatecell)
     # Print clock wire declaration
