@@ -67,6 +67,7 @@
                                         input wire          PSEL,\
                                         output wire         PREADY,\
                                         output wire [31:0]  PRDATA,\
-                                        output wire         IRQ\
+                                        output wire         IRQ,\
+                                        input wire         sc_testmode\
                                         
 `define     APB_MIS_REG(size)           wire[size-1:0]      MIS_REG	= RIS_REG & IM_REG;
