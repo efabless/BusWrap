@@ -563,7 +563,7 @@ def print_registers_offsets(bus_type):
     print("")
     """
 def print_rdata(bus_type):
-    IRQ_REGS = ["IM", "MIS", "RIS", "IC"]
+    IRQ_REGS = ["IM", "MIS", "RIS"]
     prefix = "last_H"
     if bus_type == "APB":
         prefix = "P"
