@@ -198,7 +198,7 @@ def print_wires(bus_type):
     clkgatecell = f"""
     reg [0:0] GCLK_REG;
     wire clk_g;
-    wire clk_gated_en = GCLK_REG[0];
+    wire clk_gated_en = sc_testmode ? 1'b1 :GCLK_REG[0];
     ef_gating_cell clk_gate_cell(
         `ifdef USE_POWER_PINS 
         .vpwr(VPWR),

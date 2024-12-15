@@ -46,6 +46,7 @@
                                         input   wire            stb_i,\
                                         output  reg             ack_o,\
                                         input   wire            we_i,\
-                                        output  wire            IRQ
+                                        output  wire            IRQ,\
+                                        input   wire            sc_testmode\
                                         
 `define     WB_MIS_REG(size)           wire[size-1:0]      MIS_REG	= RIS_REG & IM_REG;

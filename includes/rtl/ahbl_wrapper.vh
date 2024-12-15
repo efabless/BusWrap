@@ -69,6 +69,7 @@
                                         input wire          HREADY,\
                                         output wire         HREADYOUT,\
                                         output wire [31:0]  HRDATA,\
-                                        output wire         IRQ\
+                                        output wire         IRQ,\
+                                        input wire         sc_testmode\
 
 `define     AHBL_MIS_REG(size)          wire[size-1:0]      MIS_REG	= RIS_REG & IM_REG;
