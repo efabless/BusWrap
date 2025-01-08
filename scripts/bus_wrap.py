@@ -1273,7 +1273,8 @@ def main():
     elif "-wb" in opts:   
         bus_type = "WB"
     else:
-        exit_with_message("You must specify a bus type using -wb, -apb or -ahbl option.")
+        if  "-md" not in opts and "-ch" not in opts:
+            exit_with_message("You must specify a bus type using -wb, -apb or -ahbl option.")
 
     if ".yaml" not in args[0] and ".yml" not in args[0] and ".json" not in args[0]:
         exit_with_message("First argument must be an IP description file in YAML or JSON format.")
