@@ -202,7 +202,7 @@ def print_wires(bus_type, is_dft=False):
     wire clk_g;
 
     wire clk_gated_en = {"" if not is_dft else "sc_testmode ? 1'b1 : "}GCLK_REG[0];
-    ef_gating_cell clk_gate_cell(
+    ef_util_gating_cell clk_gate_cell(
         `ifdef USE_POWER_PINS 
         .vpwr(VPWR),
         .vgnd(VGND),
@@ -1116,7 +1116,7 @@ def print_md_tables():
 
 
     print("### Clock Gating")
-    print("The IP has clock gating feature, enabling the selective activation and deactivation of the clock as required through the ``GCLK`` register. This functionality is implemented through the ``ef_util_gating_cell``, which is part of the the common modules library, [ef_util_lib.v](https://github.com/efabless/EF_IP_UTIL/blob/main/hdl/ef_util_lib.v). By default, the cell operates with a behavioral implementation, but when the ``SKY130`` macro is enabled, the ``sky130_fd_sc_hd__dlclkp_4`` clock gating cell is used.")
+    print("The IP has clock gating feature, enabling the selective activation and deactivation of the clock as required through the ``GCLK`` register. This functionality is implemented through the ``ef_util_gating_cell``, which is part of the the common modules library, [ef_util_lib.v](https://github.com/efabless/EF_IP_UTIL/blob/main/hdl/ef_util_lib.v). By default, the cell operates with a behavioral implementation, but when the ``CLKG_SKY130_HD`` macro is enabled, the ``sky130_fd_sc_hd__dlclkp_4`` clock gating cell is used.")
     
     print("\n### The Interface \n")
     print(f'<img src="docs/_static/{IP["info"]["name"]}.svg" width="600"/>')
