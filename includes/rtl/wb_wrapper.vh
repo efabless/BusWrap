@@ -37,8 +37,7 @@
                                         else \ 
                                             IC_REG <= sz'd0;
 
-`define     WB_SLAVE_PORTS              input   wire            ext_clk,\
-                                        input   wire            clk_i,\
+`define     WB_SLAVE_PORTS              input   wire            clk_i,\
                                         input   wire            rst_i,\
                                         input   wire [31:0]     adr_i,\
                                         input   wire [31:0]     dat_i,\
