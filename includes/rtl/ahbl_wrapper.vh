@@ -1,5 +1,6 @@
+`ifdef PRINT_LICENSE 
 /*
-	Copyright 2020 AUCOHL
+	Copyright 2024 Efabless Corp.
 
     Author: Mohamed Shalan (mshalan@aucegypt.edu)
 	
@@ -15,7 +16,7 @@
 	See the License for the specific language governing permissions and 
 	limitations under the License.
 */
-
+`endif // PRINT_LICENSE
 `define		AHBL_BLOCK(name, init)		always @(posedge HCLK or negedge HRESETn) if(~HRESETn) name <= init;
 
 `define     AHBL_CTRL_SIGNALS           reg  last_HSEL, last_HWRITE; reg [31:0] last_HADDR; reg [1:0] last_HTRANS;\
