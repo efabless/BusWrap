@@ -1,5 +1,6 @@
+`ifdef PRINT_LICENSE 
 /*
-	Copyright 2020 AUCOHL
+	Copyright 2024 Efabless Corp.
 
     Author: Mohamed Shalan (mshalan@aucegypt.edu)
 	
@@ -15,6 +16,7 @@
 	See the License for the specific language governing permissions and 
 	limitations under the License.
 */
+`endif // PRINT_LICENSE
 
 `define		APB_BLOCK(name, init)		always @(posedge PCLK or negedge PRESETn) if(~PRESETn) name <= init;
 
