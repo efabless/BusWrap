@@ -1140,9 +1140,9 @@ def print_md_tables():
     #     print ("## F/W Usage Guidelines:")
     #     print (IP['info']['firmware_guidelines'])
 
-    print("## Drivers Documentation:")
-    print(f"Driver documentation for {IP['info']['name']} is available [here](https://github.com/efabless/{IP['info']['name']}/blob/main/fw/README.md).")
-    print(f"You can also find a C example application using {IP['info']['name']} drivers [here]().")
+    # print("## Drivers Documentation:")
+    # print(f"Driver documentation for {IP['info']['name']} is available [here](https://github.com/efabless/{IP['info']['name']}/blob/main/fw/README.md).")
+    # print(f"You can also find a C example application using {IP['info']['name']} drivers [here]().")
 
     print("## Firmware Drivers:")
     print(f'Firmware drivers for {IP["info"]["name"]} can be found in the [fw](https://github.com/efabless/{IP["info"]["name"]}/tree/main/fw) directory. {IP["info"]["name"]} driver documentation  is available [here](https://github.com/efabless/{IP["info"]["name"]}/blob/main/fw/README.md).')
