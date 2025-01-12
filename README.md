@@ -13,6 +13,7 @@ For APB, AHB Lite and Wishbone buses. It converts an IP description in YAML (or 
     - `-tb` : generates a Verilog testbench for the generated bus wrapper.
     - `-ch` : generates a C header file containing the register definitions.
     - `-md` : generates documentation in MD and Bitfield formats.
+    - `-dft` : generate wrapper for dft.
 - Arguments:
     - `ip.yaml|ip.json`: A YAML/JSON file that contains the IP definition.
 

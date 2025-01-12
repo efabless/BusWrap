@@ -122,7 +122,7 @@ def print_header(bus_type):
    print(f"`include\t\t\t\"{bus_type.lower()}_wrapper.vh\"\n")  
 
 
-def print_module_header(bus_type):
+def print_module_header(bus_type, is_dft=False):
     """
     Prints the header of the generated file for the specified bus type.
 
@@ -149,6 +149,8 @@ def print_module_header(bus_type):
         print ("\tinout VPWR,") 
         print ("\tinout VGND,") 
         print ("`endif") 
+        if is_dft:
+            print(f"\tinput\twire\tsc_testmode,")
         print(f"\t`{bus_type}_SLAVE_PORTS,")
 
         # Print details of each interface
@@ -170,7 +172,7 @@ def print_module_header(bus_type):
     # Print end of module header
     print(");\n")
   
-def print_wires(bus_type):
+def print_wires(bus_type, is_dft=False):
     """
     Print the wire declarations for the given IP.
 
@@ -198,8 +200,9 @@ def print_wires(bus_type):
     clkgatecell = f"""
     reg [0:0] GCLK_REG;
     wire clk_g;
-    wire clk_gated_en = GCLK_REG[0];
-    ef_util_gating_cell clk_gate_cell(
+
+    wire clk_gated_en = {"" if not is_dft else "sc_testmode ? 1'b1 : "}GCLK_REG[0];
+    ef_gating_cell clk_gate_cell(
         `ifdef USE_POWER_PINS 
         .vpwr(VPWR),
         .vgnd(VGND),
@@ -563,7 +566,7 @@ def print_registers_offsets(bus_type):
     print("")
     """
 def print_rdata(bus_type):
-    IRQ_REGS = ["IM", "MIS", "RIS", "IC"]
+    IRQ_REGS = ["IM", "MIS", "RIS"]
     prefix = "last_H"
     if bus_type == "APB":
         prefix = "P"
@@ -652,12 +655,12 @@ def print_fifos(bus_type):
                 print(f"\tassign\t{f['register']}_WIRE = {f['data_port']};")
                 print(f"\tassign\t{f['control_port']} = {rd};")
 
-def print_bus_wrapper(bus_type):
+def print_bus_wrapper(bus_type, is_dft=False):
     print_license()
     print_header(bus_type)
-    print_module_header(bus_type)
+    print_module_header(bus_type, is_dft)
     print_registers_offsets(bus_type)
-    print_wires(bus_type)
+    print_wires(bus_type, is_dft)
     print_registers(bus_type)
     print_GCLK_register(bus_type)
     if "flags" in IP:
@@ -1198,6 +1201,7 @@ def print_help():
    print("\t-ahbl: generate AHBL wrapper")
    print("\t-tb  : generate a Verilog testbench for the generated bus wrapper")
    print("\t-ch  : generate a C header file containing the register definitions")
+   print("\t-dft  : generate wrapper for dft")
    print("Arguments:")
    print("\tip.yml: A YAML file that contains the IP definition")
 
@@ -1332,7 +1336,7 @@ def main():
         print_md_tables()
         #print_bf()
     else:
-        print_bus_wrapper(bus_type)
+        print_bus_wrapper(bus_type, is_dft="-dft" in opts)
   
 if __name__ == '__main__':
     main()
