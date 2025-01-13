@@ -16,7 +16,7 @@
 	See the License for the specific language governing permissions and 
 	limitations under the License.
 */
-`endif // PRINT_LICENSE
+`endif
 
 `define		APB_BLOCK(name, init)		always @(posedge PCLK or negedge PRESETn) if(~PRESETn) name <= init;
 

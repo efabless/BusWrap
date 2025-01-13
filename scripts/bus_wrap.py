@@ -1,8 +1,7 @@
 """
-Copyright (c) 2020 AUCOHL
+	Copyright 2024 Efabless Corp.
 
-
-   Author: Mohamed Shalan (mshalan@aucegypt.edu)
+   Author: Mohamed Shalan (mshalan@efabless.com)
   
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.

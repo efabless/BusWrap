@@ -16,7 +16,7 @@
 	See the License for the specific language governing permissions and 
 	limitations under the License.
 */
-`endif // PRINT_LICENSE
+`endif
 
 `define     WB_BLOCK(name, init)        always @(posedge clk_i or posedge rst_i) if(rst_i) name <= init;
 
