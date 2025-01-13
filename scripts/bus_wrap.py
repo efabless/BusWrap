@@ -978,7 +978,7 @@ def print_md_tables():
         print("> **_NOTE:_** `TB_APB_SLAVE_CONN is a convenient macro provided by [BusWrap](https://github.com/efabless/BusWrap/tree/main).")
 
     print("#### Wrappers with DFT support")
-    print("Wrappers in the directory ``/hdl/rtl/bus_wrappers/DFT`` have an extra input port ``sc_testmode`` to enable the clock gate whenever the scan chain testmode is enabled.") 
+    print("Wrappers in the directory ``/hdl/rtl/bus_wrappers/DFT`` have an extra input port ``sc_testmode`` to disable the clock gate whenever the scan chain testmode is enabled.") 
 
     print("\n## Implementation example  \n")
     print(f"The following table is the result for implementing the {IP['info']['name']} IP with different wrappers using Sky130 PDK and [OpenLane2](https://github.com/efabless/openlane2) flow.")
