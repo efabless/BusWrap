@@ -1117,10 +1117,11 @@ def print_md_tables():
 
     print("### Clock Gating")
     print("The IP has clock gating feature, enabling the selective activation and deactivation of the clock as required through the ``GCLK`` register. This functionality is implemented through the ``ef_util_gating_cell``, which is part of the the common modules library, [ef_util_lib.v](https://github.com/efabless/EF_IP_UTIL/blob/main/hdl/ef_util_lib.v). By default, the cell operates with a behavioral implementation, but when the ``CLKG_SKY130_HD`` macro is enabled, the ``sky130_fd_sc_hd__dlclkp_4`` clock gating cell is used.")
-    print("**Note:** If you choose the [OpenLane2](https://github.com/efabless/openlane2) flow for implementation and would like to add the clock gating feature, you need to add ``SKY130`` macro to the ``VERILOG_DEFINES`` configuration variable. Update the YAML configuration file as follows: ")
+    print("")
+    print("**Note:** If you choose the [OpenLane2](https://github.com/efabless/openlane2) flow for implementation and would like to add the clock gating feature, you need to add ``CLKG_SKY130_HD`` macro to the ``VERILOG_DEFINES`` configuration variable. Update the YAML configuration file as follows: ")
     print("```")
     print("VERILOG_DEFINES:") 
-    print("- SKY130")
+    print("- CLKG_SKY130_HD")
     print("```")
 
     print("\n### The Interface \n")
