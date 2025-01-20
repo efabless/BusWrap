@@ -77,7 +77,7 @@ def print_license():
        print("\tLicensed under the Apache License, Version 2.0 (the \"License\");")
        print("\tyou may not use this file except in compliance with the License.")
        print("\tYou may obtain a copy of the License at\n")
-       print("\t    http://www.apache.org/licenses/LICENSE-2.0\n")
+       print("\t    www.apache.org/licenses/LICENSE-2.0\n")
        print("\tUnless required by applicable law or agreed to in writing, software")
        print("\tdistributed under the License is distributed on an \"AS IS\" BASIS,")
        print("\tWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.")
@@ -784,11 +784,22 @@ def print_reg_def():
     print_license()
     print(f"#ifndef {ip_name}REGS_H")
     print(f"#define {ip_name}REGS_H\n")
+    print(''' 
+/******************************************************************************
+* Includes
+******************************************************************************/
+include \"EF_Driver_Common.h\"
+
+/******************************************************************************
+* Macros and Constants
+******************************************************************************/
+''')
+
     print("#ifndef IO_TYPES")
     print("#define IO_TYPES")
-    print("#define   __R     volatile const unsigned int")
-    print("#define   __W     volatile       unsigned int")
-    print("#define   __RW    volatile       unsigned int")
+    print("#define   __R     volatile const uint32_t")
+    print("#define   __W     volatile       uint32_t")
+    print("#define   __RW    volatile       uint32_t")
     print("#endif\n")
 
     for r in IP["registers"]:
@@ -798,9 +809,21 @@ def print_reg_def():
                     width = get_param_default(f['bit_width'])
                 else:
                     width = f['bit_width']
-                print(f"#define {ip_name}_{r['name'].upper()}_REG_{f['name'].upper()}_BIT\t{f['bit_offset']}")
+                print(f"#define {ip_name}_{r['name'].upper()}_REG_{f['name'].upper()}_BIT\t((uint32_t){f['bit_offset']})")
+
                 mask = hex((2**width - 1) << f['bit_offset'])
-                print(f"#define {ip_name}_{r['name'].upper()}_REG_{f['name'].upper()}_MASK\t{mask}")
+                print(f"#define {ip_name}_{r['name'].upper()}_REG_{f['name'].upper()}_MASK\t((uint32_t){mask})")
+                
+        if "size" in r:
+            if not isinstance(r['size'], int):
+                size = get_param_default(r['size'])
+            else:
+                size= r['size']
+                
+            max_register_value = (2** size) -1
+            print(f"#define {ip_name}_{r['name'].upper()}_REG_MAX_VALUE\t((uint32_t)0x{max_register_value:X})\n")
+
+            
     print()   
     
     # Add Int Registers fields
@@ -814,10 +837,18 @@ def print_reg_def():
             else:
                 width = get_param_default(w)
             pattern = (2**width - 1) << c
-            print(f"#define {ip_name}_{flag['name'].upper()}_FLAG\t{hex(pattern)}")
+            print(f"#define {ip_name}_{flag['name'].upper()}_FLAG\t((uint32_t){hex(pattern)})")
+
             c = c + width
 
     print()
+    
+    print('''
+          
+/******************************************************************************
+* Typedefs and Enums
+******************************************************************************/
+          ''')
 
     print(f"typedef struct _{ip_name}_TYPE_ "+"{")
     off = 0
@@ -847,7 +878,32 @@ def print_reg_def():
     print("\t__W \tGCLK;")
     print("}", end="")
     print(f" {ip_name}_TYPE;")
-    print("\n#endif\n")
+    
+        
+    print(f"\ntypedef struct _{ip_name}_TYPE_ *{ip_name}_TYPE_PTR;     // Pointer to the register structure")
+    print('''
+  
+/******************************************************************************
+* Function Prototypes
+******************************************************************************/
+
+
+
+/******************************************************************************
+* External Variables
+******************************************************************************/
+
+
+
+
+#endif
+
+/******************************************************************************
+* End of File
+******************************************************************************/
+          
+          ''')
+
 
 
 """
