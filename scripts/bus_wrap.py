@@ -788,7 +788,7 @@ def print_reg_def():
 /******************************************************************************
 * Includes
 ******************************************************************************/
-include \"EF_Driver_Common.h\"
+#include \"EF_Driver_Common.h\"
 
 /******************************************************************************
 * Macros and Constants
@@ -813,6 +813,22 @@ include \"EF_Driver_Common.h\"
 
                 mask = hex((2**width - 1) << f['bit_offset'])
                 print(f"#define {ip_name}_{r['name'].upper()}_REG_{f['name'].upper()}_MASK\t((uint32_t){mask})")
+        else:
+            # If there are no fields in the register, then the register should have a single feild
+            # The field should have the name of the register
+            # The field should have a mask corresponding to the size of the register
+            # The bit offset should be 0
+            if not isinstance(r['size'], int):
+                size = get_param_default(r['size'])
+            else:
+                size = r['size']
+            
+            field_name = r['name']  
+            mask = hex((2**size - 1))
+            
+            print(f"#define {ip_name}_{r['name'].upper()}_REG_{field_name.upper()}_BIT\t((uint32_t)0)")
+            print(f"#define {ip_name}_{r['name'].upper()}_REG_{field_name.upper()}_MASK\t((uint32_t){mask})")
+            
                 
         if "size" in r:
             if not isinstance(r['size'], int):
