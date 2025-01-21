@@ -927,7 +927,7 @@ def print_md_tables():
     print("## The wrapped IP\n")    
     if (IP['info']['bus'][0]=='generic'):
         print("\n APB, AHBL, and Wishbone wrappers are provided. All wrappers provide the same programmer's interface as outlined in the following sections.")
-        print("\n#### Wrapped IP System Integration\n")
+        print("\n### Wrapped IP System Integration\n")
         print("Based on your use case, use one of the provided wrappers or create a wrapper for your system bus type. For an example of how to integrate the wishbone wrapper:")
         print("```verilog")
         print(f"{IP['info']['name']}_WB INST (")
@@ -976,11 +976,21 @@ def print_md_tables():
         print("```")
         print("> **_NOTE:_** `TB_APB_SLAVE_CONN is a convenient macro provided by [BusWrap](https://github.com/efabless/BusWrap/tree/main).")
 
-    print("#### Wrappers with DFT support")
-    print("Wrappers in the directory ``/hdl/rtl/bus_wrappers/DFT`` have an extra input port ``sc_testmode`` to disable the clock gate whenever the scan chain testmode is enabled.") 
+    print("### Wrappers with DFT support")
+    print("Wrappers in the directory ``/hdl/rtl/bus_wrappers/DFT`` have an extra input port ``sc_testmode`` to disable the clock gate whenever the scan chain testmode is enabled.")
+
+    if "external_interface" in IP:
+        print("### External IO interfaces")
+        print("|IO name|Direction|Width|Description|")
+        print("|---|---|---|---|")
+        for port in IP["external_interface"]:
+            print(f"|{port['name']}|{port['direction']}|{port['width']}|{port['description']}|")      
+
+    print("### Interrupt Request Line (irq)")
+    print ("This IP generates interrupts on specific events, which are described in the [Interrupt Flags](#interrupt-flags) section bellow. The IRQ port should be connected to the system interrupt controller.")
 
     print("\n## Implementation example  \n")
-    print(f"The following table is the result for implementing the {IP['info']['name']} IP with different wrappers using Sky130 PDK and [OpenLane2](https://github.com/efabless/openlane2) flow.")
+    print(f"The following table is the result for implementing the {IP['info']['name']} IP with different wrappers using Sky130 HD library and [OpenLane2](https://github.com/efabless/openlane2) flow.")
     print("|Module | Number of cells | Max. freq |")
     print("|---|---|---|")
     if (IP['info']['bus'][0]=='generic'):
@@ -1097,10 +1107,10 @@ def print_md_tables():
         c = 0;
         print("\n### Interrupt Flags\n")
         print("The wrapped IP provides four registers to deal with interrupts: IM, RIS, MIS and IC. These registers exist for all wrapper types.\n\nEach register has a group of bits for the interrupt sources/flags.")
-        print(f"- `IM` [offset: {hex(IM_OFF)}]: is used to enable/disable interrupt sources.\n")
-        print(f"- `RIS` [offset: {hex(RIS_OFF)}]: has the current interrupt status (interrupt flags) whether they are enabled or disabled.\n")
-        print(f"- `MIS` [offset: {hex(MIS_OFF)}]: is the result of masking (ANDing) RIS by IM.\n")
-        print(f"- `IC` [offset: {hex(IC_OFF)}]: is used to clear an interrupt flag.\n")
+        print(f"- `IM` [offset: ``{hex(IM_OFF)}``]: is used to enable/disable interrupt sources.\n")
+        print(f"- `RIS` [offset: ``{hex(RIS_OFF)}``]: has the current interrupt status (interrupt flags) whether they are enabled or disabled.\n")
+        print(f"- `MIS` [offset: ``{hex(MIS_OFF)}``]: is the result of masking (ANDing) RIS by IM.\n")
+        print(f"- `IC` [offset: ``{hex(IC_OFF)}``]: is used to clear an interrupt flag.\n")
         print("\nThe following are the bit definitions for the interrupt registers:\n")
         print("|Bit|Flag|Width|Description|")
         print("|---|---|---|---|")
@@ -1123,7 +1133,35 @@ def print_md_tables():
     print("- CLKG_SKY130_HD")
     print("```")
 
-    print("\n### The Interface \n")
+    
+
+    # if "firmware_guidelines" in IP['info']:
+    #     print ("## F/W Usage Guidelines:")
+    #     print (IP['info']['firmware_guidelines'])
+
+    # print("## Drivers Documentation:")
+    # print(f"Driver documentation for {IP['info']['name']} is available [here](https://github.com/efabless/{IP['info']['name']}/blob/main/fw/README.md).")
+    # print(f"You can also find a C example application using {IP['info']['name']} drivers [here]().")
+
+    print("## Firmware Drivers:")
+    print(f'Firmware drivers for {IP["info"]["name"]} can be found in the [{IP["info"]["name"]}](https://github.com/efabless/EF_APIs_HUB/tree/main/{IP["info"]["name"]}) directory in the [EF_APIs_HUB](https://github.com/efabless/EF_APIs_HUB) repo. {IP["info"]["name"]} driver documentation  is available [here](https://github.com/efabless/EF_APIs_HUB/tree/main/{IP["info"]["name"]}/README.md).')
+    print(f'You can also find an example C application using the {IP["info"]["name"]} drivers [here](https://github.com/efabless/EF_APIs_HUB/tree/main/{IP["info"]["name"]}/{IP["info"]["name"]}_example.c).')
+
+    print("## Installation:")
+    print("You can install the IP either by cloning this repository or by using [IPM](https://github.com/efabless/IPM).")
+    print("### 1. Using [IPM](https://github.com/efabless/IPM):")
+    print("- [Optional] If you do not have IPM installed, follow the installation guide [here](https://github.com/efabless/IPM/blob/main/README.md)")
+    print(f'- After installing IPM, execute the following command ```ipm install {IP["info"]["name"]}```.')
+    print("> **Note:** This method is recommended as it automatically installs [EF_IP_UTIL](https://github.com/efabless/EF_IP_UTIL.git) as a dependency.")
+    print("### 2. Cloning this repo: ")
+    print("- Clone [EF_IP_UTIL](https://github.com/efabless/EF_IP_UTIL.git) repository, which includes the required modules from the common modules library, [ef_util_lib.v](https://github.com/efabless/EF_IP_UTIL/blob/main/hdl/ef_util_lib.v).")
+    print("```git clone https://github.com/efabless/EF_IP_UTIL.git```")
+    print("- Clone the IP repository")
+    print(f"```git clone {IP['info']['repo']}```")
+    
+    print("\n### The Wrapped IP Interface \n")
+    print(">**_NOTE:_** This section is intended for advanced users who wish to gain more information about the interface of the wrapped IP, in case they want to create their own wrappers.")
+    print("")
     print(f'<img src="docs/_static/{IP["info"]["name"]}.svg" width="600"/>')
 
     if "parameters" in IP:
@@ -1144,30 +1182,6 @@ def print_md_tables():
             for port in IP["ports"]:
                 print(f"|{port['name']}|{port['direction']}|{port['width']}|{port['description']}|")
 
-    # if "firmware_guidelines" in IP['info']:
-    #     print ("## F/W Usage Guidelines:")
-    #     print (IP['info']['firmware_guidelines'])
-
-    # print("## Drivers Documentation:")
-    # print(f"Driver documentation for {IP['info']['name']} is available [here](https://github.com/efabless/{IP['info']['name']}/blob/main/fw/README.md).")
-    # print(f"You can also find a C example application using {IP['info']['name']} drivers [here]().")
-
-    print("## Firmware Drivers:")
-    print(f'Firmware drivers for {IP["info"]["name"]} can be found in the [fw](https://github.com/efabless/{IP["info"]["name"]}/tree/main/fw) directory. {IP["info"]["name"]} driver documentation  is available [here](https://github.com/efabless/{IP["info"]["name"]}/blob/main/fw/README.md).')
-    print(f'You can also find an example C application using the {IP["info"]["name"]} drivers [here]().')
-
-    print("## Installation:")
-    print("You can install the IP either by cloning this repository or by using [IPM](https://github.com/efabless/IPM).")
-    print("##### 1. Using [IPM](https://github.com/efabless/IPM):")
-    print("- [Optional] If you do not have IPM installed, follow the installation guide [here](https://github.com/efabless/IPM/blob/main/README.md)")
-    print(f'- After installing IPM, execute the following command ```ipm install {IP["info"]["name"]}```.')
-    print("> **Note:** This method is recommended as it automatically installs [EF_IP_UTIL](https://github.com/efabless/EF_IP_UTIL.git) as a dependency.")
-    print("##### 2. Cloning this repo: ")
-    print("- Clone [EF_IP_UTIL](https://github.com/efabless/EF_IP_UTIL.git) repository, which includes the required modules from the common modules library, [ef_util_lib.v](https://github.com/efabless/EF_IP_UTIL/blob/main/hdl/ef_util_lib.v).")
-    print("```git clone https://github.com/efabless/EF_IP_UTIL.git```")
-    print("- Clone the IP repository")
-    print(f"```git clone {IP['info']['repo']}```")
-    
     print ("## Run cocotb UVM Testbench:")
     print ("In IP directory run:")
     print (" ```shell")
