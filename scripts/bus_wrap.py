@@ -885,17 +885,24 @@ def print_reg_def():
         off = off + 4
 
     #print(f"{off} - {INT_REG_OFF}")
-    reserved_size = int((INT_REG_OFF - off)/4)
-    print(f"\t__R \treserved_{g}[{(reserved_size)}];")
-    print("\t__RW\tIM;")
-    print("\t__R \tMIS;")
-    print("\t__R \tRIS;")
-    print("\t__W \tIC;")
-    print("\t__W \tGCLK;")
+    if "flags" in IP:
+        reserved_size = int((INT_REG_OFF - off)/4)
+        print(f"\t__R \treserved_{g}[{(reserved_size)}];")
+        print("\t__RW\tIM;")
+        print("\t__R \tMIS;")
+        print("\t__R \tRIS;")
+        print("\t__W \tIC;")
+
+    if IP['clock']['gated']=='yes':
+        if "flags" not in IP:
+            reserved_size = int((CLK_GATE_OFF - off)/4)
+            print(f"\t__R \treserved_{g}[{(reserved_size)}];")
+    
+        print("\t__W \tGCLK;")
+        
     print("}", end="")
     print(f" {ip_name}_TYPE;")
     
-        
     print(f"\ntypedef struct _{ip_name}_TYPE_ *{ip_name}_TYPE_PTR;     // Pointer to the register structure")
     print('''
   
