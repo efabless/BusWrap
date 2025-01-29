@@ -885,17 +885,24 @@ def print_reg_def():
         off = off + 4
 
     #print(f"{off} - {INT_REG_OFF}")
-    reserved_size = int((INT_REG_OFF - off)/4)
-    print(f"\t__R \treserved_{g}[{(reserved_size)}];")
-    print("\t__RW\tIM;")
-    print("\t__R \tMIS;")
-    print("\t__R \tRIS;")
-    print("\t__W \tIC;")
-    print("\t__W \tGCLK;")
+    if "flags" in IP:
+        reserved_size = int((INT_REG_OFF - off)/4)
+        print(f"\t__R \treserved_{g}[{(reserved_size)}];")
+        print("\t__RW\tIM;")
+        print("\t__R \tMIS;")
+        print("\t__R \tRIS;")
+        print("\t__W \tIC;")
+
+    if IP['clock']['gated']=='yes':
+        if "flags" not in IP:
+            reserved_size = int((CLK_GATE_OFF - off)/4)
+            print(f"\t__R \treserved_{g}[{(reserved_size)}];")
+    
+        print("\t__W \tGCLK;")
+        
     print("}", end="")
     print(f" {ip_name}_TYPE;")
     
-        
     print(f"\ntypedef struct _{ip_name}_TYPE_ *{ip_name}_TYPE_PTR;     // Pointer to the register structure")
     print('''
   
@@ -1185,15 +1192,15 @@ def print_md_tables():
             print(f"|{c}|{flag['name'].upper()}|{w}|{flag['description']}|")
             c += w
 
-
-    print("### Clock Gating")
-    print("The IP includes a clock gating feature that allows selective activation and deactivation of the clock using the ``GCLK`` register. This capability is implemented through the ``ef_util_gating_cell`` module, which is part of the common modules library, [ef_util_lib.v](https://github.com/efabless/EF_IP_UTIL/blob/main/hdl/ef_util_lib.v). By default, the clock gating is disabled. To enable behavioral implmentation clock gating, only for simulation purposes, you should define the ``CLKG_GENERIC`` macro. Alternatively, define the ``CLKG_SKY130_HD`` macro if you wish to use the SKY130 HD library clock gating cell, ``sky130_fd_sc_hd__dlclkp_4``.")
-    print("")
-    print("**Note:** If you choose the [OpenLane2](https://github.com/efabless/openlane2) flow for implementation and would like to enable the clock gating feature, you need to add ``CLKG_SKY130_HD`` macro to the ``VERILOG_DEFINES`` configuration variable. Update OpenLane2 YAML configuration file as follows: ")
-    print("```")
-    print("VERILOG_DEFINES:") 
-    print("- CLKG_SKY130_HD")
-    print("```")
+    if IP['clock']['gated']=='yes': 
+        print("### Clock Gating")
+        print("The IP includes a clock gating feature that allows selective activation and deactivation of the clock using the ``GCLK`` register. This capability is implemented through the ``ef_util_gating_cell`` module, which is part of the common modules library, [ef_util_lib.v](https://github.com/efabless/EF_IP_UTIL/blob/main/hdl/ef_util_lib.v). By default, the clock gating is disabled. To enable behavioral implmentation clock gating, only for simulation purposes, you should define the ``CLKG_GENERIC`` macro. Alternatively, define the ``CLKG_SKY130_HD`` macro if you wish to use the SKY130 HD library clock gating cell, ``sky130_fd_sc_hd__dlclkp_4``.")
+        print("")
+        print("**Note:** If you choose the [OpenLane2](https://github.com/efabless/openlane2) flow for implementation and would like to enable the clock gating feature, you need to add ``CLKG_SKY130_HD`` macro to the ``VERILOG_DEFINES`` configuration variable. Update OpenLane2 YAML configuration file as follows: ")
+        print("```")
+        print("VERILOG_DEFINES:") 
+        print("- CLKG_SKY130_HD")
+        print("```")
 
     print("\n### The Interface \n")
     print(f'<img src="docs/_static/{IP["info"]["name"]}.svg" width="600"/>')
@@ -1258,6 +1265,10 @@ def print_md_tables():
     print (" ```shell")
     print (" make run_all_tests TAG=<new_tag> BUS_TYPE=<bus_type>")
     print (" ```")
+    
+    if "References" in IP['info']:
+        print("# References:\n")
+        print(IP['info']['References'])
           
       
 def print_help():
