@@ -166,6 +166,8 @@ def print_module_header(bus_type, is_dft=False):
         print ("\tinout VPWR,") 
         print ("\tinout VGND,") 
         print ("`endif") 
+        if is_dft:
+            print(f"\tinput\twire\tsc_testmode,")
         print(f"\t`{bus_type}_SLAVE_PORTS")
 
     # Print end of module header
@@ -1214,10 +1216,10 @@ def print_md_tables():
     # print("## Drivers Documentation:")
     # print(f"Driver documentation for {IP['info']['name']} is available [here](https://github.com/efabless/{IP['info']['name']}/blob/main/fw/README.md).")
     # print(f"You can also find a C example application using {IP['info']['name']} drivers [here]().")
-
+    ip_name = IP["info"]["name"].lstrip("EF_")
     print("## Firmware Drivers:")
-    print(f'Firmware drivers for {IP["info"]["name"]} can be found in the [{IP["info"]["name"]}](https://github.com/efabless/EF_APIs_HUB/tree/main/{IP["info"]["name"]}) directory in the [EF_APIs_HUB](https://github.com/efabless/EF_APIs_HUB) repo. {IP["info"]["name"]} driver documentation  is available [here](https://github.com/efabless/EF_APIs_HUB/tree/main/{IP["info"]["name"]}/README.md).')
-    print(f'You can also find an example C application using the {IP["info"]["name"]} drivers [here](https://github.com/efabless/EF_APIs_HUB/tree/main/{IP["info"]["name"]}/{IP["info"]["name"]}_example.c).')
+    print(f'Firmware drivers for {IP["info"]["name"]} can be found in the [Drivers](https://github.com/efabless/EFIS/tree/main/Drivers) directory in the [EFIS](https://github.com/efabless/EFIS) (Efabless Firmware Interface Standard) repo. {IP["info"]["name"]} driver documentation  is available [here](https://github.com/efabless/EFIS/blob/main/Drivers/docs/EF_Driver_{ip_name}/README.md).')
+    print(f'You can also find an example C application using the {IP["info"]["name"]} drivers [here](https://github.com/efabless/EFIS/tree/main/Drivers/docs/EF_Driver_{ip_name}/example).')
 
     print("## Installation:")
     print("You can install the IP either by cloning this repository or by using [IPM](https://github.com/efabless/IPM).")
