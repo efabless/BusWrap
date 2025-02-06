@@ -1227,8 +1227,8 @@ def print_md_tables():
     # print(f"You can also find a C example application using {IP['info']['name']} drivers [here]().")
     ip_name = IP["info"]["name"].lstrip("EF_")
     print("## Firmware Drivers:")
-    print(f'Firmware drivers for {IP["info"]["name"]} can be found in the [Drivers](https://github.com/efabless/EFIS/tree/main/Drivers) directory in the [EFIS](https://github.com/efabless/EFIS) (Efabless Firmware Interface Standard) repo. {IP["info"]["name"]} driver documentation  is available [here](https://github.com/efabless/EFIS/blob/main/Drivers/docs/EF_Driver_{ip_name}/README.md).')
-    print(f'You can also find an example C application using the {IP["info"]["name"]} drivers [here](https://github.com/efabless/EFIS/tree/main/Drivers/docs/EF_Driver_{ip_name}/example).')
+    print(f'Firmware drivers for {IP["info"]["name"]} can be found in the [Drivers](https://github.com/efabless/EFIS/tree/main/Drivers) directory in the [EFIS](https://github.com/efabless/EFIS) (Efabless Firmware Interface Standard) repo. {IP["info"]["name"]} driver documentation  is available [here](https://github.com/efabless/EFIS/blob/main/Drivers/Docs/{IP["info"]["name"]}/README.md).')
+    print(f'You can also find an example C application using the {IP["info"]["name"]} drivers [here](https://github.com/efabless/EFIS/tree/main/Drivers/Docs/{IP["info"]["name"]}/example).')
 
     print("## Installation:")
     print("You can install the IP either by cloning this repository or by using [IPM](https://github.com/efabless/IPM).")
