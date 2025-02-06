@@ -366,7 +366,8 @@ def print_registers(bus_type):
                     exit_with_message("Byte addressing is available only for APB wrappers!")
 
         if r['fifo'] is True:
-            print(f"\twire\t[{r['size']}-1:0]\t{r['name']}_WIRE;")
+            if "r" in r['mode']:
+                print(f"\twire\t[{r['size']}-1:0]\t{r['name']}_WIRE;")
         else:
             if "auto_clear" in r:
                 if r['mode'] != 'w':
@@ -576,8 +577,9 @@ def print_rdata(bus_type):
         print(f"\tassign\tHRDATA = ")
     
     for index,r in enumerate(IP['registers']):
-        if "r" in r['mode'] or r['fifo'] is True:
-            print(f"\t\t\t({prefix}ADDR[`{bus_type}_AW-1:0] == {r['name']}_REG_OFFSET)\t? {r['name']}_WIRE :")
+        if  r['fifo'] is True or "r" in r['mode']:
+            if "r" in r['mode']:
+                print(f"\t\t\t({prefix}ADDR[`{bus_type}_AW-1:0] == {r['name']}_REG_OFFSET)\t? {r['name']}_WIRE :")
         else:
             print(f"\t\t\t({prefix}ADDR[`{bus_type}_AW-1:0] == {r['name']}_REG_OFFSET)\t? {r['name']}_REG :")
     
