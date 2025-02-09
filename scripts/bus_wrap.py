@@ -610,7 +610,8 @@ def print_wb_dat_o(bus_type):
 
     for index,r in enumerate(IP['registers']):
         if "r" in r['mode'] or r['fifo'] is True:
-            print(f"\t\t\t(adr_i[`{bus_type}_AW-1:0] == {r['name']}_REG_OFFSET)\t? {r['name']}_WIRE :")
+            if "r" in r['mode']:
+                print(f"\t\t\t(adr_i[`{bus_type}_AW-1:0] == {r['name']}_REG_OFFSET)\t? {r['name']}_WIRE :")
         else:
             print(f"\t\t\t(adr_i[`{bus_type}_AW-1:0] == {r['name']}_REG_OFFSET)\t? {r['name']}_REG :")
 
