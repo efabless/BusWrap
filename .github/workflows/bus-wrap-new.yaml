@@ -1,0 +1,40 @@
+name: CI New
+
+on:
+  push: # This now triggers on pushes to any branch
+permissions:
+  pull-requests: write
+  contents: write
+
+jobs:
+  prepare-ips-matrix:
+    runs-on: ubuntu-latest
+    name: Prepare IPs matrix
+    outputs: 
+      ips_matrix: ${{ steps.set-matrix.outputs.ips_matrix }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set IPs matrix
+        id: set-matrix
+        run: |
+          echo "ips_matrix=$(python3 ./.github/scripts/get_ips_matrix.py)" >> $GITHUB_OUTPUT
+
+  Run:
+    needs: [Prepare-ips-matrix]
+    uses: ./.github/workflows/run_ip.yaml
+    secrets: inherit
+    strategy:
+      fail-fast: false
+      matrix:
+        test: ${{fromJSON(needs.Prepare-ips-matrix.outputs.ips_matrix)}}
+    with:
+      repo: ${{ matrix.ips.repo }}
+      name: ${{ matrix.ips.name }}
+      fw: ${{ matrix.ips.fw }}
+      docs: ${{ matrix.ips.docs }}
+      bus_wrapper: ${{ matrix.ips.bus_wrapper }}
+      bus_wrapper_ref: ${{ github.head_ref || github.ref_name }}
+      pr_base: main
+      pr_branch: "ci-buswrapper-BUSWRAP_COMMIT"
+      pr_title: "ci[buswrapper]: run bus_wrap(BUSWRAP_COMMIT) on IP_NAME(IP_BRANCH)"
+      commit_msg: "run bus_wrap(BUSWRAP_COMMIT) on IP_NAME(IP_COMMIT)"

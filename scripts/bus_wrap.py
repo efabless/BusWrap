@@ -65,7 +65,6 @@ def print_license():
        print("\tthe following conditions:\n")
        print("\tThe above copyright notice and this permission notice shall be")
        print("\tincluded in all copies or substantial portions of the Software.\n")
-       print("\tTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,")
        print("\tEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF")
        print("\tMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND")
        print("\tNONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE")
