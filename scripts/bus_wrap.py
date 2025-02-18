@@ -1265,7 +1265,7 @@ def print_md_tables():
             for port in IP["ports"]:
                 print(f"|{port['name']}|{port['direction']}|{port['width']}|{port['description']}|")
 
-    print ("## Run cocotb UVM Testbench:")
+    print ("## Run cocotb UVM Testbench2:")
     print ("In IP directory run:")
     print (" ```shell")
     print (" cd verify/uvm-python/")
