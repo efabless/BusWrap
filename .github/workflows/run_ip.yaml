@@ -154,8 +154,8 @@ jobs:
     - name: Create PR
       if: ${{ steps.check_diff.outputs.changed == 'true' }} 
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.OL_BOT_GITHUB_TOKEN }}
+        GH_TOKEN: ${{ secrets.OL_BOT_GITHUB_TOKEN }}
       run: |
         set -x
         ip_name=${{ inputs.name }}
@@ -178,8 +178,8 @@ jobs:
         msg="${msg/IP_BRANCH/"$ip_branch"}"
         echo "there are changes pushing to $branch"
         cd ${{ env.IP_PATH }}
-        git config --local user.name "github-actions[bot]"
-        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git checkout -b $branch
         git add .
         git commit -m "$msg"
