@@ -19,6 +19,21 @@ jobs:
         run: |
           echo "ips_matrix=$(python3 ./.github/scripts/get_ips_matrix.py)" >> $GITHUB_OUTPUT
 
+  Check-context:
+    needs: [Prepare-ips-matrix]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Context
+        run: |
+          cat << 'EOF'
+          "${{ toJSON(needs) }}"
+          EOF
+      - name: Check Context
+        run: |
+          cat << 'EOF'
+          ${{ fromJSON(needs.Prepare-ips-matrix.outputs.ips_matrix) }}
+          EOF
+
   Run:
     needs: [Prepare-ips-matrix]
     uses: ./.github/workflows/run_ip.yaml
@@ -26,7 +41,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        test: ${{fromJSON(needs.Prepare-ips-matrix.outputs.ips_matrix)}}
+        test: ${{ fromJSON(needs.Prepare-ips-matrix.outputs.ips_matrix) }}
     with:
       repo: ${{ matrix.ips.repo }}
       name: ${{ matrix.ips.name }}
