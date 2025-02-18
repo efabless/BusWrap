@@ -182,6 +182,7 @@ jobs:
         git checkout -b $branch
         git add .
         git commit -m "$msg"
+        git config --unset-all http.https://github.com/.extraheader
         git push -f --set-upstream origin $branch
         pr=$(gh pr list --search "${title}" --state open)
         if [[ -n "${pr}" ]]; then
