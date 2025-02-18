@@ -61,6 +61,7 @@ jobs:
       name: Checkout ${{ inputs.repo }}
       with:
         path: ${{ env.IP_PATH }}
+        repository: ${{ inputs.repo }}
         ref: ${{ inputs.pr_base }}
     - name: Generate Wrapper
       if: ${{ inputs.bus_wrapper == 'true' }}
