@@ -28,20 +28,13 @@ jobs:
           cat << 'EOF'
           "${{ toJSON(needs) }}"
           EOF
-      - name: Check Context
-        run: |
-          cat << 'EOF'
-          ${{ fromJSON(needs.Prepare-ips-matrix.outputs.ips_matrix) }}
-          EOF
-
   Run:
     needs: [Prepare-ips-matrix]
     uses: ./.github/workflows/run_ip.yaml
     secrets: inherit
     strategy:
       fail-fast: false
-      matrix:
-        test: ${{ fromJSON(needs.Prepare-ips-matrix.outputs.ips_matrix) }}
+      matrix: ${{ fromJSON(needs.Prepare-ips-matrix.outputs.ips_matrix) }}
     with:
       repo: ${{ matrix.ips.repo }}
       name: ${{ matrix.ips.name }}
