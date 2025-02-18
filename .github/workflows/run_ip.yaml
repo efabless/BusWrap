@@ -58,7 +58,7 @@ jobs:
         path: ${{ env.BUSWRAP_PATH }}
         ref: ${{ env.BUSWRAP_REF }}
     - uses: actions/checkout@v4
-      name: Checkout ${{ inputs.ip_repo }}
+      name: Checkout ${{ inputs.repo }}
       with:
         path: ${{ env.IP_PATH }}
         ref: ${{ inputs.pr_base }}

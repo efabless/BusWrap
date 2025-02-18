@@ -31,6 +31,7 @@ jobs:
   Run:
     needs: [Prepare-ips-matrix]
     uses: ./.github/workflows/run_ip.yaml
+    name: ${{ matrix.ips.name }}
     secrets: inherit
     strategy:
       fail-fast: false
