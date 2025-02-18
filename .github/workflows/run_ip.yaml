@@ -63,6 +63,7 @@ jobs:
         path: ${{ env.IP_PATH }}
         repository: ${{ inputs.repo }}
         ref: ${{ inputs.pr_base }}
+        token: ${{ secrets.GITHUB_TOKEN }}
     - name: Generate Wrapper
       if: ${{ inputs.bus_wrapper == 'true' }}
       run: |
