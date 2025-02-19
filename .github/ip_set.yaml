@@ -9,7 +9,7 @@
 #  repo: efabless/EF_TMR32.git
 - name: EF_QSPI_XIP_CTRL
   fw: false
-  wrapper: false
+  bus_wrapper: false
   repo: efabless/EF_QSPI_XIP_CTRL.git
 #- name: OL-DFFRAM
 #  repo: efabless/OL-DFFRAM.git

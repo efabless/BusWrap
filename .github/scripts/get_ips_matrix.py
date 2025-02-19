@@ -11,15 +11,15 @@ def main():
         name = item["name"]
         repo = item["repo"]
         fw = item.get("fw", "true")
-        docs = item.get("fw", "true")
+        docs = item.get("docs", "true")
         bus_wrapper = item.get("bus_wrapper", "true")
         output_matrix["ips"].append(
             {
                 "name": name,
                 "repo": repo,
                 "fw": str(fw).lower(),
-                "docs": docs,
-                "bus_wrapper": bus_wrapper,
+                "docs": str(docs).lower(),
+                "bus_wrapper": str(bus_wrapper).lower(),
             }
         )
 
