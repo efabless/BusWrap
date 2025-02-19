@@ -33,6 +33,7 @@ on:
 jobs:
   Main:
     runs-on: ubuntu-latest
+    if: ${{ !startsWith(inputs.pr_base, 'ci-') }}
     name: Run BusWarp on ${{ inputs.name }}
     steps:
     - name: Set variables
