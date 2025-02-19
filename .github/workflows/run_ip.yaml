@@ -63,7 +63,7 @@ jobs:
         path: ${{ env.IP_PATH }}
         repository: ${{ inputs.repo }}
         ref: ${{ inputs.pr_base }}
-        token: ${{ secrets.OL_BOT_GITHUB_TOKEN }}
+        token: ${{ secrets.EFSTAFF_TOKEN }}
     - name: Generate Wrapper
       if: ${{ inputs.bus_wrapper == 'true' }}
       run: |
@@ -154,8 +154,8 @@ jobs:
     - name: Create PR
       if: ${{ steps.check_diff.outputs.changed == 'true' }} 
       env:
-        GITHUB_TOKEN: ${{ secrets.OL_BOT_GITHUB_TOKEN }}
-        GH_TOKEN: ${{ secrets.OL_BOT_GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.EFSTAFF_TOKEN }}
+        GH_TOKEN: ${{ secrets.EFSTAFF_TOKEN }}
       run: |
         set -x
         ip_name=${{ inputs.name }}
