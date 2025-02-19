@@ -17,7 +17,7 @@ def main():
             {
                 "name": name,
                 "repo": repo,
-                "fw": fw,
+                "fw": str(fw).lower(),
                 "docs": docs,
                 "bus_wrapper": bus_wrapper,
             }

@@ -178,8 +178,8 @@ jobs:
         msg="${msg/IP_BRANCH/"$ip_branch"}"
         echo "there are changes pushing to $branch"
         cd ${{ env.IP_PATH }}
-        git config --local user.name "github-actions[bot]"
-        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "ef-staff"
+        git config --local user.email "ef-staff@users.noreply.github.com"
         git checkout -b $branch
         git add .
         git commit -m "$msg"
