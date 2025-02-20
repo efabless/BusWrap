@@ -1,7 +1,7 @@
-name: CI New
+name: Regression
 
 on:
-  push: # This now triggers on pushes to any branch
+  push:
 permissions:
   pull-requests: write
   contents: write
@@ -30,7 +30,7 @@ jobs:
           EOF
   Run:
     needs: [Prepare-ips-matrix]
-    uses: ./.github/workflows/run_ip.yaml
+    uses: ./.github/workflows/buswrap.yaml
     name: ${{ matrix.ips.name }}
     secrets: inherit
     strategy:

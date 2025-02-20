@@ -3,7 +3,7 @@ import json
 
 
 def main():
-    test_set_yaml = ".github/ip_set.yaml"
+    test_set_yaml = ".github/ips.yaml"
     output_matrix = {"ips": []}
     test_set_stream = open(test_set_yaml)
     data = yaml.load(test_set_stream, Loader=yaml.Loader)

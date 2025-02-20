@@ -65,6 +65,7 @@ def print_license():
        print("\tthe following conditions:\n")
        print("\tThe above copyright notice and this permission notice shall be")
        print("\tincluded in all copies or substantial portions of the Software.\n")
+       print("\tTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,")
        print("\tEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF")
        print("\tMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND")
        print("\tNONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE")
@@ -1265,7 +1266,7 @@ def print_md_tables():
             for port in IP["ports"]:
                 print(f"|{port['name']}|{port['direction']}|{port['width']}|{port['description']}|")
 
-    print ("## Run cocotb UVM Testbench2:")
+    print ("## Run cocotb UVM Testbench:")
     print ("In IP directory run:")
     print (" ```shell")
     print (" cd verify/uvm-python/")
