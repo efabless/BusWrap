@@ -22,6 +22,7 @@
   bus_wrapper: false
 - name: EF_I2C
   bus_wrapper: false
+  fw: false
   repo: efabless/EF_I2C.git
 - name: EF_QSPI_FLASH_WRITER
   repo: efabless/EF_QSPI_FLASH_WRITER.git

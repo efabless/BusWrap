@@ -202,10 +202,15 @@ jobs:
       run: |
         echo "there are no changes not pushing"
     - name: Check Context
+      if: failure()
+      run: |
+          echo "Failed" >> $GITHUB_STEP_SUMMARY
+    - name: Check Context
       shell: bash
       if: always()
       run: |
         cat << 'EOF'
         "${{ toJSON(steps) }}"
         "${{ toJSON(inputs) }}"
+        "${{ toJSON(github) }}"
         EOF
