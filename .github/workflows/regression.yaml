@@ -19,8 +19,8 @@ jobs:
         run: |
           echo "ips_matrix=$(python3 ./.github/scripts/get_ips_matrix.py)" >> $GITHUB_OUTPUT
 
-  Check-context:
-    needs: [Prepare-ips-matrix]
+  Debug:
+    needs: [prepare-ips-matrix]
     runs-on: ubuntu-latest
     steps:
       - name: Check Context
@@ -31,7 +31,7 @@ jobs:
   Run:
     needs: [Prepare-ips-matrix]
     uses: ./.github/workflows/buswrap.yaml
-    name: ${{ matrix.ips.name }}
+    name: buswrap/${{ matrix.ips.name }}
     secrets: inherit
     strategy:
       fail-fast: false

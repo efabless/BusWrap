@@ -1,23 +1,35 @@
-#- name: EF_GPIO8
-#  repo: efabless/EF_GPIO8.git
-#  fw: false
-#  docs: false
-#  bus_wrapper: false
-#- name: EF_UART
-#  repo: efabless/EF_UART.git
-#- name: EF_TMR32
-#  repo: efabless/EF_TMR32.git
 - name: EF_QSPI_XIP_CTRL
   fw: false
   bus_wrapper: false
   repo: efabless/EF_QSPI_XIP_CTRL.git
-#- name: OL-DFFRAM
-#  repo: efabless/OL-DFFRAM.git
+- name: EF_GPIO8
+  repo: efabless/EF_GPIO8.git
+- name: EF_UART
+  repo: efabless/EF_UART.git
+- name: EF_I2S
+  repo: efabless/EF_I2S.git
 - name: EF_SPI
   repo: efabless/EF_SPI.git
-#- name: EF_I2C
-#  repo: efabless/EF_I2C.git
-#- name: EF_I2S
-#  repo: efabless/EF_I2S.git
-#- name: EF_PSRAM_CTRL_V2
-#  repo: efabless/EF_PSRAM_CTRL_V2.git
+- name: EF_TMR32
+  repo: efabless/EF_TMR32.git
+- name: EF_WDT32
+  repo: efabless/EF_WDT32.git
+- name: EF_AES
+  repo: efabless/EF_AES.git
+  bus_wrapper: false
+- name: EF_SHA256
+  repo: efabless/EF_SHA256.git
+  bus_wrapper: false
+- name: EF_I2C
+  repo: efabless/EF_I2C.git
+- name: EF_QSPI_FLASH_WRITER
+  repo: efabless/EF_QSPI_FLASH_WRITER.git
+  fw: false
+  bus_wrapper: false
+- name: EF_PSRAM_CTRL
+  repo: efabless/EF_PSRAM_CTRL.git
+  bus_wrapper: false
+- name: EF_SRAM_1024x32
+  repo: efabless/EF_SRAM_1024x32.git
+  fw: false
+  bus_wrapper: false
