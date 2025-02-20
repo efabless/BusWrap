@@ -2,6 +2,8 @@ name: Regression
 
 on:
   push:
+    branches:
+      - "main"
 permissions:
   pull-requests: write
   contents: write
@@ -31,7 +33,7 @@ jobs:
   Run:
     needs: [Prepare-ips-matrix]
     uses: ./.github/workflows/buswrap.yaml
-    name: buswrap/${{ matrix.ips.name }}
+    name: buswrap / ${{ matrix.ips.name }}
     secrets: inherit
     strategy:
       fail-fast: false
