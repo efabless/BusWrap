@@ -187,15 +187,16 @@ jobs:
         git push -f --set-upstream origin $branch
         pr=$(gh pr list --search "${title}" --state open)
         if [[ -n "${pr}" ]]; then
-          echo "PR '$title' already exists"
-          exit 0
+          result="PR '$title' already exists"
         else
-          gh pr create \
+          result=$(gh pr create \
             -B "${{inputs.pr_base}}"\
             -H "$branch"\
             --title "$title"\
-            --body "Created by CI Github action"
+            --body "Created by CI Github action")
         fi
+        echo "$result"
+        echo "$result" >> $GITHUB_STEP_SUMMARY
     - name: Not Push to branch
       if: ${{ steps.check_diff.outputs.changed == 'false' }} 
       run: |

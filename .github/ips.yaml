@@ -21,6 +21,7 @@
   repo: efabless/EF_SHA256.git
   bus_wrapper: false
 - name: EF_I2C
+  bus_wrapper: false
   repo: efabless/EF_I2C.git
 - name: EF_QSPI_FLASH_WRITER
   repo: efabless/EF_QSPI_FLASH_WRITER.git
@@ -29,7 +30,7 @@
 - name: EF_PSRAM_CTRL
   repo: efabless/EF_PSRAM_CTRL.git
   bus_wrapper: false
-- name: EF_SRAM_1024x32
-  repo: efabless/EF_SRAM_1024x32.git
-  fw: false
-  bus_wrapper: false
+#- name: EF_SRAM_1024x32
+#  repo: efabless/EF_SRAM_1024x32.git
+#  fw: false
+#  bus_wrapper: false
